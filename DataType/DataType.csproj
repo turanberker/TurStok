@@ -43,10 +43,11 @@
     <Compile Include="FaturaEntity.cs" />
     <Compile Include="KategoriEntity.cs" />
     <Compile Include="MarkaEntity.cs" />
+    <Compile Include="OdemeSekliEntity.cs" />
     <Compile Include="OlcuBirimiEntity.cs" />
     <Compile Include="ParaBirimiEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaklamaKosulu.cs" />
+    <Compile Include="SaklamaKosuluEntity.cs" />
     <Compile Include="StokEntity.cs" />
     <Compile Include="TedarikciEntity.cs" />
     <Compile Include="UrunEntity.cs" />

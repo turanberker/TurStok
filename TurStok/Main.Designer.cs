@@ -36,6 +36,12 @@
             this.tanımlamalarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ölçüBirimleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.markalarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kategorilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.depolarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.paraBirimiTanimlaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saklamaKoşullarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tedarikçilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ödemeŞekilleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.islemlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.faturalarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -48,7 +54,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.kategorilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ürünlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -97,7 +103,13 @@
             this.tanımlamalarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ölçüBirimleriToolStripMenuItem,
             this.markalarToolStripMenuItem,
-            this.kategorilerToolStripMenuItem});
+            this.kategorilerToolStripMenuItem,
+            this.depolarToolStripMenuItem,
+            this.paraBirimiTanimlaToolStripMenuItem,
+            this.saklamaKoşullarıToolStripMenuItem,
+            this.tedarikçilerToolStripMenuItem,
+            this.ödemeŞekilleriToolStripMenuItem,
+            this.ürünlerToolStripMenuItem});
             this.tanımlamalarToolStripMenuItem.Enabled = false;
             this.tanımlamalarToolStripMenuItem.Name = "tanımlamalarToolStripMenuItem";
             this.tanımlamalarToolStripMenuItem.Size = new System.Drawing.Size(115, 23);
@@ -106,16 +118,58 @@
             // ölçüBirimleriToolStripMenuItem
             // 
             this.ölçüBirimleriToolStripMenuItem.Name = "ölçüBirimleriToolStripMenuItem";
-            this.ölçüBirimleriToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+            this.ölçüBirimleriToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
             this.ölçüBirimleriToolStripMenuItem.Text = "Ölçü Birimleri";
             this.ölçüBirimleriToolStripMenuItem.Click += new System.EventHandler(this.ölçüBirimleriToolStripMenuItem_Click);
             // 
             // markalarToolStripMenuItem
             // 
             this.markalarToolStripMenuItem.Name = "markalarToolStripMenuItem";
-            this.markalarToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+            this.markalarToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
             this.markalarToolStripMenuItem.Text = "Markalar";
             this.markalarToolStripMenuItem.Click += new System.EventHandler(this.markalarToolStripMenuItem_Click);
+            // 
+            // kategorilerToolStripMenuItem
+            // 
+            this.kategorilerToolStripMenuItem.Name = "kategorilerToolStripMenuItem";
+            this.kategorilerToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.kategorilerToolStripMenuItem.Text = "Kategoriler";
+            this.kategorilerToolStripMenuItem.Click += new System.EventHandler(this.kategorilerToolStripMenuItem_Click);
+            // 
+            // depolarToolStripMenuItem
+            // 
+            this.depolarToolStripMenuItem.Name = "depolarToolStripMenuItem";
+            this.depolarToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.depolarToolStripMenuItem.Text = "Depolar";
+            this.depolarToolStripMenuItem.Click += new System.EventHandler(this.depolarToolStripMenuItem_Click);
+            // 
+            // paraBirimiTanimlaToolStripMenuItem
+            // 
+            this.paraBirimiTanimlaToolStripMenuItem.Name = "paraBirimiTanimlaToolStripMenuItem";
+            this.paraBirimiTanimlaToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.paraBirimiTanimlaToolStripMenuItem.Text = "Para Birimileri";
+            this.paraBirimiTanimlaToolStripMenuItem.Click += new System.EventHandler(this.paraBirimiTanimlaToolStripMenuItem_Click);
+            // 
+            // saklamaKoşullarıToolStripMenuItem
+            // 
+            this.saklamaKoşullarıToolStripMenuItem.Name = "saklamaKoşullarıToolStripMenuItem";
+            this.saklamaKoşullarıToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.saklamaKoşullarıToolStripMenuItem.Text = "Saklama Koşulları";
+            this.saklamaKoşullarıToolStripMenuItem.Click += new System.EventHandler(this.saklamaKoşullarıToolStripMenuItem_Click);
+            // 
+            // tedarikçilerToolStripMenuItem
+            // 
+            this.tedarikçilerToolStripMenuItem.Name = "tedarikçilerToolStripMenuItem";
+            this.tedarikçilerToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.tedarikçilerToolStripMenuItem.Text = "Tedarikçiler";
+            this.tedarikçilerToolStripMenuItem.Click += new System.EventHandler(this.tedarikçilerToolStripMenuItem_Click);
+            // 
+            // ödemeŞekilleriToolStripMenuItem
+            // 
+            this.ödemeŞekilleriToolStripMenuItem.Name = "ödemeŞekilleriToolStripMenuItem";
+            this.ödemeŞekilleriToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.ödemeŞekilleriToolStripMenuItem.Text = "Ödeme Şekilleri";
+            this.ödemeŞekilleriToolStripMenuItem.Click += new System.EventHandler(this.ödemeŞekilleriToolStripMenuItem_Click);
             // 
             // islemlerToolStripMenuItem
             // 
@@ -129,7 +183,7 @@
             // faturalarToolStripMenuItem
             // 
             this.faturalarToolStripMenuItem.Name = "faturalarToolStripMenuItem";
-            this.faturalarToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.faturalarToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
             this.faturalarToolStripMenuItem.Text = "Faturalar";
             this.faturalarToolStripMenuItem.Click += new System.EventHandler(this.faturalarToolStripMenuItem_Click);
             // 
@@ -230,12 +284,12 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // kategorilerToolStripMenuItem
+            // ürünlerToolStripMenuItem
             // 
-            this.kategorilerToolStripMenuItem.Name = "kategorilerToolStripMenuItem";
-            this.kategorilerToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
-            this.kategorilerToolStripMenuItem.Text = "Kategoriler";
-            this.kategorilerToolStripMenuItem.Click += new System.EventHandler(this.kategorilerToolStripMenuItem_Click);
+            this.ürünlerToolStripMenuItem.Name = "ürünlerToolStripMenuItem";
+            this.ürünlerToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.ürünlerToolStripMenuItem.Text = "Ürünler";
+            this.ürünlerToolStripMenuItem.Click += new System.EventHandler(this.ürünlerToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -287,6 +341,12 @@
         private System.Windows.Forms.ToolStripMenuItem markalarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem faturalarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kategorilerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem depolarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem paraBirimiTanimlaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saklamaKoşullarıToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tedarikçilerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ödemeŞekilleriToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ürünlerToolStripMenuItem;
     }
 }
 

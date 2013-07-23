@@ -15,5 +15,6 @@ namespace DataType
         public long ParaBirimiID { get; set; }
         public decimal? Kur { get; set; }
         public Boolean OdemeYapildimi { get; set; }
+        public long OdemeSekliID { get; set; }
     }
 }

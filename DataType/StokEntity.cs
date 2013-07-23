@@ -16,5 +16,6 @@ namespace DataType
         public DateTime GelisTarihi { get; set; }
         public DateTime? SonKullanmaTarihi { get; set; }
         public long? IlgiliFaturaID { get; set; }
+        public long OlcuBirimID { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataType
 {
-    public class SaklamaKosulu
+    public class SaklamaKosuluEntity
     {
         public long SaklamaKosuluID { get; set; }
         public string SaklamaKosuluAdi { get; set; }

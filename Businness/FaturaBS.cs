@@ -21,11 +21,11 @@ namespace Businness
         }
         public DataTable JoinListe()
         {
-            return vek.GetDataTable(CommandType.Text, "select f.FaturaID,f.FaturaNo,f.TedarikciID,f.SiparisTarihi,f.Aciklama,f.ParaBirimiID,f.Kur,f.ODemeYapildimi,t.TedarikciAdi,p.ParaBirimi from Fatura f inner join Tedarikci t on t.TedarikciID=f.TedarikciID inner join ParaBirimi p on p.ParaBirimiID=f.ParaBirimiID");
+            return vek.GetDataTable(CommandType.Text, "select f.FaturaID,f.FaturaNo,f.TedarikciID,f.SiparisTarihi, f.Aciklama,f.ParaBirimiID,f.Kur, f.ODemeYapildimi, t.TedarikciAdi,p.ParaBirimi, f.OdemeSekliID,od.OdemeSekli from Fatura f inner join Tedarikci t on t.TedarikciID=f.TedarikciID inner join ParaBirimi p on p.ParaBirimiID=f.ParaBirimiID inner join OdemeSekli od on od.OdemeSekilID=f.OdemeSekliID");
         }
         public long Insert(FaturaEntity entity)
         {
-            return Convert.ToInt64(vek.ExecuteScalar(CommandType.Text, "Insert into Fatura (FaturaNo,TedarikciID,SiparisTarihi,Aciklama,ParaBirimiID,Kur,ODemeYapildimi) values(@a,@bi,@sip,@ac,@pb,@kur,1) Select @@Identity", entity.FaturaNo,entity.TedarikciID,entity.SiparisTarihi,entity.Aciklama,entity.ParaBirimiID, entity.Kur));
+            return Convert.ToInt64(vek.ExecuteScalar(CommandType.Text, "Insert into Fatura (FaturaNo,TedarikciID,SiparisTarihi,Aciklama,ParaBirimiID,Kur,ODemeYapildimi, OdemeSekliID) values(@a,@bi,@sip,@ac,@pb,@kur,0,@oId) Select @@Identity", entity.FaturaNo,entity.TedarikciID,entity.SiparisTarihi,entity.Aciklama,entity.ParaBirimiID, entity.Kur,entity.OdemeSekliID));
         }
     }
 }

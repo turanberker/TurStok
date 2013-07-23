@@ -45,12 +45,18 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>DAL.settings</DependentUpon>
     </Compile>
+    <Compile Include="DepoBS.cs" />
     <Compile Include="DisposeEt.cs" />
     <Compile Include="FaturaBS.cs" />
     <Compile Include="KategoriBS.cs" />
     <Compile Include="MarkaBS.cs" />
+    <Compile Include="OdemeSekliBS.cs" />
     <Compile Include="OlcuBirimiBS.cs" />
+    <Compile Include="ParaBirimiBS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaklamaKosuluBS.cs" />
+    <Compile Include="TedarikciBS.cs" />
+    <Compile Include="UrunBS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataType\DataType.csproj">
