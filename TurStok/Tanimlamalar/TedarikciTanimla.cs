@@ -57,7 +57,7 @@ namespace TurStok.Tanimlamalar
             {
                 using (TedarikciBS bs = new TedarikciBS())
                 {
-                    TedarikciEntity entity = new TedarikciEntity { TedarikciAdi = txtAdi.Text, Telefon = txtTelefon.Text, Faks = txtFaks.Text, Adres = txtAdres.Text, EklenmeTarihi = Convert.ToDateTime(DateTime.Today.ToString("dd.MM.yyyy")), BankaHesapNo = txtHesapNo.Text, IBAN = txtIBAN.Text, EMail = txtEMail.Text, YurtIcimi = chkYurtIci.Checked };
+                    TedarikciEntity entity = new TedarikciEntity { TedarikciAdi = txtAdi.Text, Telefon = txtTelefon.Text, Faks = txtFaks.Text, Adres = txtAdres.Text, EklenmeTarihi = Convert.ToDateTime(DateTime.Today), BankaHesapNo = txtHesapNo.Text, IBAN = txtIBAN.Text, EMail = txtEMail.Text, YurtIcimi = chkYurtIci.Checked };
                     if (bs.Insert(entity))
                     {
                         GridDoldur();

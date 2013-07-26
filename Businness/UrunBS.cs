@@ -21,11 +21,11 @@ namespace Businness
         }
         public DataTable JoinListe()
         {
-            return vek.GetDataTable(CommandType.Text, "select u.UrunID, u.KategoriID,  u.AzamiMiktar, u.SaklamaKosuluID, u.UrunAdi, k.KategoriAdi,k.MiadVarmi, sk.SaklamaKosulu from Urun U inner join Kategori k on k.KategoriID=u.KategoriID inner join SaklamaKosulu sk on sk.SaklamaKosuluID=u.SaklamaKosuluID");
+            return vek.GetDataTable(CommandType.Text, "select u.UrunID, u.KategoriID,  u.AzamiMiktar, u.SaklamaKosuluID, u.UrunAdi,u.OlcuBirimID,ob.OlcuBirimi, k.KategoriAdi,k.MiadVarmi, sk.SaklamaKosulu from Urun U inner join Kategori k on k.KategoriID=u.KategoriID inner join SaklamaKosulu sk on sk.SaklamaKosuluID=u.SaklamaKosuluID inner join OlcuBirimi ob on u.OlcuBirimID=ob.OlcuBirimiID");
         }
         public bool Insert(UrunEntity entity)
         {
-            return vek.ExecuteNonQuery(CommandType.Text, "Insert into Urun (UrunAdi, AzamiMiktar,  SaklamaKosuluID, KategoriID, ) values(@a, @b, @c, @d)", entity.UrunAdi, entity.AzamiMiktar,entity.SaklamaKosuluID, entity.KategoriID) > 0 ? true : false;
+            return vek.ExecuteNonQuery(CommandType.Text, "Insert into Urun (UrunAdi, AzamiMiktar,  SaklamaKosuluID, KategoriID, OlcuBirimID ) values(@a, @b, @c, @d, @e)", entity.UrunAdi, entity.AzamiMiktar, entity.SaklamaKosuluID, entity.KategoriID,entity.OlcuBirimID) > 0 ? true : false;
         }
     }
 }

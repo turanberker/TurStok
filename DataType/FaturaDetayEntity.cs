@@ -13,8 +13,9 @@ namespace DataType
         public long MarkaID { get; set; }
         public decimal SiparisVerilenMiktar { get; set; }
         public decimal? GelenMiktar { get; set; }
-        public long OlcuBirimiID { get; set; }
+    
         public decimal BirimFiyati { get; set; }
         public int KDVOrani { get; set; }
+        public bool TeslimAlindimi { get; set; }
     }
 }

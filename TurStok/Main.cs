@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using TurStok.Islemler;
 using TurStok.Tanimlamalar;
 
 namespace TurStok
@@ -16,7 +17,7 @@ namespace TurStok
         {
             InitializeComponent();
         }
-        Form Varmi(string frmtext)
+        protected Form Varmi(string frmtext)
         {
             Form frm = null;
             foreach (Form item in this.MdiChildren)
@@ -70,6 +71,7 @@ namespace TurStok
                 cikisToolStripMenuItem.Enabled = true;
                 bağlanToolStripMenuItem.Enabled = false;
                 toolStripLabel2.Text = "Admin - " + DateTime.Today.ToString("dd.MM.yyyy");
+                toolStripButton1.Enabled = true;
 
                 groupBox1.Visible = false;
 
@@ -82,6 +84,7 @@ namespace TurStok
                 cikisToolStripMenuItem.Enabled = true;
                 bağlanToolStripMenuItem.Enabled = false;
                 toolStripLabel2.Text = "User - " + DateTime.Today.ToString("dd.MM.yyyy");
+                toolStripButton1.Enabled = true;
                 groupBox1.Visible = false;
             }
             else
@@ -100,6 +103,7 @@ namespace TurStok
             cikisToolStripMenuItem.Enabled = false;
             bağlanToolStripMenuItem.Enabled = true;
             groupBox1.Visible = true;
+            toolStripButton1.Enabled = false;
             toolStripLabel2.Text = "Giriş Yapın - " + DateTime.Today.ToString("dd.MM.yyyy");
         }
 
@@ -238,6 +242,38 @@ namespace TurStok
             if (f == null)
             {
                 f = new UrunTanimla();
+                f.MdiParent = this;
+                f.Show();
+            }
+            else
+            {
+                f.BringToFront();
+                this.ActivateMdiChild(f);
+            }
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Form f = Varmi("Stok");
+            if (f == null)
+            {
+                f = new Stok();
+                f.MdiParent = this;
+                f.Show();
+            }
+            else
+            {
+                f.BringToFront();
+                this.ActivateMdiChild(f);
+            }
+        }
+
+        private void stokGirişiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form f = Varmi("Stok Girişi");
+            if (f == null)
+            {
+                f = new StokGirisi();
                 f.MdiParent = this;
                 f.Show();
             }

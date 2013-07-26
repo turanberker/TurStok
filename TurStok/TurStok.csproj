@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Islemler\FaturaEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Islemler\FaturaEkle.Designer.cs">
+      <DependentUpon>FaturaEkle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Islemler\Faturalar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,12 +59,25 @@
       <DependentUpon>Faturalar.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\GridDoldurucular.cs" />
+    <Compile Include="Islemler\StokGirisi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Islemler\StokGirisi.Designer.cs">
+      <DependentUpon>StokGirisi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Stok.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stok.Designer.cs">
+      <DependentUpon>Stok.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tanimlamalar\ComboboxItem.cs" />
     <Compile Include="Tanimlamalar\DepoTanimla.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,11 +134,25 @@
     <Compile Include="Tanimlamalar\UrunTanimla.Designer.cs">
       <DependentUpon>UrunTanimla.cs</DependentUpon>
     </Compile>
+    <Compile Include="TurStokDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TurStokDataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Islemler\FaturaEkle.resx">
+      <DependentUpon>FaturaEkle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Islemler\Faturalar.resx">
       <DependentUpon>Faturalar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Islemler\StokGirisi.resx">
+      <DependentUpon>StokGirisi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stok.resx">
+      <DependentUpon>Stok.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tanimlamalar\DepoTanimla.resx">
       <DependentUpon>DepoTanimla.cs</DependentUpon>
@@ -168,6 +201,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TurStokDataSet.xsc">
+      <DependentUpon>TurStokDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TurStokDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TurStokDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TurStokDataSet.xss">
+      <DependentUpon>TurStokDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Businness\Businness.csproj">
@@ -178,6 +222,9 @@
       <Project>{38f6aa2f-55b2-4652-a6a2-faa022a3eef5}</Project>
       <Name>DataType</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon\Odeme.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

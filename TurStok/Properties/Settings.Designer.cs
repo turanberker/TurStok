@@ -22,5 +22,15 @@ namespace TurStok.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=JOHN-WEB-PC\\GTIDB;Initial Catalog=TurStok;Integrated Security=True")]
+        public string TurStokConnectionString {
+            get {
+                return ((string)(this["TurStokConnectionString"]));
+            }
+        }
     }
 }

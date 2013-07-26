@@ -13,5 +13,6 @@ namespace DataType
        
         public long SaklamaKosuluID { get; set; }
         public string UrunAdi { get; set; }
+        public long OlcuBirimID { get; set; }
     }
 }
