@@ -56,6 +56,7 @@
     <Compile Include="ParaBirimiBS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaklamaKosuluBS.cs" />
+    <Compile Include="StokBS.cs" />
     <Compile Include="TedarikciBS.cs" />
     <Compile Include="UrunBS.cs" />
   </ItemGroup>

@@ -17,7 +17,7 @@ namespace TurStok
         {
             InitializeComponent();
         }
-        protected Form Varmi(string frmtext)
+        public Form Varmi(string frmtext)
         {
             Form frm = null;
             foreach (Form item in this.MdiChildren)
@@ -43,6 +43,8 @@ namespace TurStok
         private void Main_Load(object sender, EventArgs e)
         {
             toolStripLabel2.Text = "Giriş Yapın - " + DateTime.Today.ToString("dd.MM.yyyy");
+            groupBox1.Left=this.Width/2- groupBox1.Width/2;
+            groupBox1.Top = this.Height / 2 - groupBox1.Height / 2;
         }
 
         private void ölçüBirimleriToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,10 +111,10 @@ namespace TurStok
 
         private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form f = Varmi("Marka Tanimla");
+            Form f = Varmi("Marka Tanımla");
             if (f == null)
             {
-                f = new MarkaTanimla();
+                f = new MarkaTanimla(this as Main);
                 f.MdiParent = this;
                 f.Show();
             }
@@ -145,7 +147,7 @@ namespace TurStok
             Form f = Varmi("Kategori Tanımla");
             if (f == null)
             {
-                f = new KategoriTanimla();
+                f = new KategoriTanimla(this as Main);
                 f.MdiParent = this;
                 f.Show();
             }
@@ -161,7 +163,7 @@ namespace TurStok
             Form f = Varmi("Depo Tanımla");
             if (f == null)
             {
-                f = new DepoTanimla();
+                f = new DepoTanimla(this as Main);
                 f.MdiParent = this;
                 f.Show();
             }
@@ -225,7 +227,7 @@ namespace TurStok
             Form f = Varmi("Odeme Şekli Tanimla");
             if (f == null)
             {
-                f = new OdemeSekliTanimla();
+                f = new OdemeSekliTanimla(this as Main);
                 f.MdiParent = this;
                 f.Show();
             }

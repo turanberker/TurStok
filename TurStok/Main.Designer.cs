@@ -193,14 +193,14 @@
             // faturalarToolStripMenuItem
             // 
             this.faturalarToolStripMenuItem.Name = "faturalarToolStripMenuItem";
-            this.faturalarToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.faturalarToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
             this.faturalarToolStripMenuItem.Text = "Faturalar";
             this.faturalarToolStripMenuItem.Click += new System.EventHandler(this.faturalarToolStripMenuItem_Click);
             // 
             // stokGirişiToolStripMenuItem
             // 
             this.stokGirişiToolStripMenuItem.Name = "stokGirişiToolStripMenuItem";
-            this.stokGirişiToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.stokGirişiToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
             this.stokGirişiToolStripMenuItem.Text = "Stok Girişi";
             this.stokGirişiToolStripMenuItem.Click += new System.EventHandler(this.stokGirişiToolStripMenuItem_Click);
             // 
@@ -211,7 +211,7 @@
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox1.Location = new System.Drawing.Point(198, 116);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(360, 225);
@@ -221,7 +221,7 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.button1.Location = new System.Drawing.Point(265, 136);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 39);
@@ -252,20 +252,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(48, 103);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 23);
+            this.label2.Size = new System.Drawing.Size(47, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "Şifre";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.Location = new System.Drawing.Point(48, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 23);
+            this.label1.Size = new System.Drawing.Size(109, 19);
             this.label1.TabIndex = 3;
             this.label1.Text = "Kullanıcı Adı";
             // 
@@ -319,6 +319,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1059, 540);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox1);

@@ -12,6 +12,22 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\ibrah_000\Desktop\9u89\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,9 +50,22 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>36EFF0DB19FA13F0C38130FF23C8D87A6D9CC4E8</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>TurStok_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -77,12 +106,23 @@
     <Compile Include="Stok.Designer.cs">
       <DependentUpon>Stok.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tanimlamalar\ComboboxItem.cs" />
+    <Compile Include="Tanimlamalar\DepoEkleGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tanimlamalar\DepoEkleGuncelle.Designer.cs">
+      <DependentUpon>DepoEkleGuncelle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tanimlamalar\DepoTanimla.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tanimlamalar\DepoTanimla.Designer.cs">
       <DependentUpon>DepoTanimla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tanimlamalar\KategoriEkleGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tanimlamalar\KategoriEkleGuncelle.Designer.cs">
+      <DependentUpon>KategoriEkleGuncelle.cs</DependentUpon>
     </Compile>
     <Compile Include="Tanimlamalar\KategoriTanimla.cs">
       <SubType>Form</SubType>
@@ -90,11 +130,23 @@
     <Compile Include="Tanimlamalar\KategoriTanimla.Designer.cs">
       <DependentUpon>KategoriTanimla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tanimlamalar\MarkaEkleGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tanimlamalar\MarkaEkleGuncelle.Designer.cs">
+      <DependentUpon>MarkaEkleGuncelle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tanimlamalar\MarkaTanimla.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tanimlamalar\MarkaTanimla.Designer.cs">
       <DependentUpon>MarkaTanimla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tanimlamalar\OdemeSekliEkleGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tanimlamalar\OdemeSekliEkleGuncelle.Designer.cs">
+      <DependentUpon>OdemeSekliEkleGuncelle.cs</DependentUpon>
     </Compile>
     <Compile Include="Tanimlamalar\OdemeSekliTanimla.cs">
       <SubType>Form</SubType>
@@ -154,14 +206,26 @@
     <EmbeddedResource Include="Stok.resx">
       <DependentUpon>Stok.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tanimlamalar\DepoEkleGuncelle.resx">
+      <DependentUpon>DepoEkleGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tanimlamalar\DepoTanimla.resx">
       <DependentUpon>DepoTanimla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tanimlamalar\KategoriEkleGuncelle.resx">
+      <DependentUpon>KategoriEkleGuncelle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tanimlamalar\KategoriTanimla.resx">
       <DependentUpon>KategoriTanimla.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tanimlamalar\MarkaEkleGuncelle.resx">
+      <DependentUpon>MarkaEkleGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tanimlamalar\MarkaTanimla.resx">
       <DependentUpon>MarkaTanimla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tanimlamalar\OdemeSekliEkleGuncelle.resx">
+      <DependentUpon>OdemeSekliEkleGuncelle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tanimlamalar\OdemeSekliTanimla.resx">
       <DependentUpon>OdemeSekliTanimla.cs</DependentUpon>
@@ -212,6 +276,7 @@
     <None Include="TurStokDataSet.xss">
       <DependentUpon>TurStokDataSet.xsd</DependentUpon>
     </None>
+    <None Include="TurStok_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Businness\Businness.csproj">
@@ -225,6 +290,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon\Odeme.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.4.0">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 4.0 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

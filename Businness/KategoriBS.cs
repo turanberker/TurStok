@@ -27,5 +27,9 @@ namespace Businness
         {
             return vek.ExecuteNonQuery(CommandType.Text, "Insert into Kategori (KategoriAdi, MiadVarmi) values(@ob, @mi)", entity.KategoriAdi, entity.MiadVarmi) > 0 ? true : false;
         }
+        public bool Update(KategoriEntity entity)
+        {
+            return vek.ExecuteNonQuery(CommandType.Text, "Update Kategori set KategoriAdi=@b, MiadVarmi=@c where KategoriID=@a ",  entity.KategoriAdi, entity.MiadVarmi,entity.KategoriID) > 0 ? true : false;
+        }
     }
 }

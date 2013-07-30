@@ -13,17 +13,19 @@ namespace TurStok.Tanimlamalar
 {
     public partial class OdemeSekliTanimla : Form
     {
-        public OdemeSekliTanimla()
+        public OdemeSekliTanimla(Main form)
         {
             InitializeComponent();
+            anaform = form;
         }
-        DataTable dt = new DataTable();
+        private Main anaform;
+        public DataTable dt = new DataTable();
         Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
-        protected void GridDoldur()
+        public void GridDoldur()
         {
             dt = arac.OdemeSekliDoldur();
             grdOlcuBirimi.DataSource = dt;
-            txtAdi.Text = "";
+          
         }
         private void OdemeSekliTanimla_Load(object sender, EventArgs e)
         {
@@ -32,26 +34,28 @@ namespace TurStok.Tanimlamalar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtAdi.Text))
+            Form f = anaform.Varmi("Ödeme Şekli Ekle Güncelle");
+            if (f != null)
             {
-                MessageBox.Show("Ödeme Şekli Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                f.Close();
             }
-            else if (dt.Rows.Cast<DataRow>().Where(x => (x["OdemeSekli"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
+            f = new OdemeSekliEkleGuncelle();
+            f.MdiParent = anaform;
+            f.Show();
+        }
+
+        private void grdOlcuBirimi_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRow secilen = dt.Rows.Cast<DataRow>().Where(x => x["OdemeSekilID"].ToString() == grdOlcuBirimi.Rows[e.RowIndex].Cells["ID"].Value.ToString()).FirstOrDefault();
+            OdemeSekliEntity entity = new OdemeSekliEntity { OdemeSekilID = Convert.ToInt64(secilen["OdemeSekilID"]), OdemeSekli = secilen["OdemeSekli"].ToString() };
+            Form f = anaform.Varmi("Ödeme Şekli Ekle Güncelle");
+            if (f != null)
             {
-                MessageBox.Show("Böyle Bir Ödeme Şekli Vardır. Aynı Ödeme Şeklini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                f.Close();
             }
-            else
-            {
-                using (OdemeSekliBS bs = new OdemeSekliBS())
-                {
-                    OdemeSekliEntity entity = new OdemeSekliEntity { OdemeSekli = txtAdi.Text };
-                    if (bs.Insert(entity))
-                    {
-                        GridDoldur();
-                    }
-                }
-                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            f = new OdemeSekliEkleGuncelle(entity);
+            f.MdiParent = anaform;
+            f.Show();
         }
     }
 }

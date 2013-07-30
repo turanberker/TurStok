@@ -15,7 +15,7 @@ namespace DataType
         public decimal KalanMiktar { get; set; }
         public DateTime GelisTarihi { get; set; }
         public DateTime? SonKullanmaTarihi { get; set; }
-        public long? IlgiliFaturaID { get; set; }
+        public long? FaturaDetayID { get; set; }
         public long OlcuBirimID { get; set; }
     }
 }

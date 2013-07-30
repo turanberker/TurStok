@@ -27,5 +27,9 @@ namespace Businness
         {
             return vek.ExecuteNonQuery(CommandType.Text, "Insert into Depo (DepoAdi) values(@ob)", entity.DepoAdi) > 0 ? true : false;
         }
+        public bool Update(DepoEntity entity)
+        {
+            return vek.ExecuteNonQuery(CommandType.Text, "Update Depo set DepoAdi=@b where DepoID=@a ", entity.DepoAdi, entity.DepoID) > 0 ? true : false;
+        }
     }
 }

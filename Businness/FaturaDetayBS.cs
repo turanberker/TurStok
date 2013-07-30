@@ -24,7 +24,11 @@ namespace Businness
         }
         public DataTable JoinListeforStokGiris()
         {
-            return vek.GetDataTable(CommandType.Text, "select fd.FaturaDetayID, fd.UrunID, fd.MarkaID, fd.SiparisVerilenMiktar, fd.GelenMiktar, fd.TeslimAlindimi,u.UrunAdi, m.MarkaAdi, ob.OlcuBirimi from FaturaDetay fd inner join Urun u on u.UrunID=fd.UrunID inner join Marka m on m.MarkaID=fd.MarkaID inner join OlcuBirimi ob on ob.OlcuBirimiID=u.OlcuBirimID where fd.TeslimAlindimi=0");
+            return vek.GetDataTable(CommandType.Text, "select fd.FaturaDetayID, fd.UrunID, fd.MarkaID, fd.SiparisVerilenMiktar,  u.UrunAdi, m.MarkaAdi, ob.OlcuBirimi, k.MiadVarmi, f.TedarikciID,ob.OlcuBirimiID from FaturaDetay fd inner join Fatura f on f.FaturaID=fd.FaturaID inner join Urun u on u.UrunID=fd.UrunID inner join Marka m on m.MarkaID=fd.MarkaID inner join OlcuBirimi ob on ob.OlcuBirimiID=u.OlcuBirimID inner join Kategori k on k.KategoriID=u.KategoriID where fd.TeslimAlindimi=0");
+        }
+        public bool TeslimAl(long FaturaDetayID, decimal gelen)
+        {
+            return vek.ExecuteNonQuery(CommandType.Text,"update FaturaDetay set GelenMiktar=@gelen, TeslimAlindimi=1 where FaturaDetayID=@ID", gelen, FaturaDetayID) > 0 ? true : false;
         }
     }
 }

@@ -27,5 +27,9 @@ namespace Businness
         {
             return vek.ExecuteNonQuery(CommandType.Text, "Insert into Marka (MarkaAdi) values(@ob)", entity.MarkaAdi) > 0 ? true : false;
         }
+        public bool Update(MarkaEntity entity)
+        {
+            return vek.ExecuteNonQuery(CommandType.Text, "Update Marka set MarkaAdi=@b where MarkaID=@a ", entity.MarkaAdi, entity.MarkaID) > 0 ? true : false;
+        }
     }
 }

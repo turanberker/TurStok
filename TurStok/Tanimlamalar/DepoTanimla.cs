@@ -13,45 +13,47 @@ namespace TurStok.Tanimlamalar
 {
     public partial class DepoTanimla : Form
     {
-        public DepoTanimla()
+        public DepoTanimla(Main form)
         {
             InitializeComponent();
+            anaform = form;
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtAdi.Text))
-            {
-                MessageBox.Show("Depo Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (dt.Rows.Cast<DataRow>().Where(x => (x["DepoAdi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
-            {
-                MessageBox.Show("Böyle Bir Depo Vardır. Aynı Depo İsmini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                using (DepoBS bs = new DepoBS())
-                {
-                    DepoEntity entity = new DepoEntity { DepoAdi = txtAdi.Text};
-                    if (bs.Insert(entity))
-                    {
-                        GridDoldur();
-                    }
-                }
-                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-        DataTable dt = new DataTable();
+        private Main anaform;
+        public DataTable dt = new DataTable();
         Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
         private void DepoTanimla_Load(object sender, EventArgs e)
         {
             GridDoldur();
         }
-        protected void GridDoldur()
+        public void GridDoldur()
         {
             dt = arac.DepoDoldur();
             grdOlcuBirimi.DataSource = dt;
-            txtAdi.Text = "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form f = anaform.Varmi("Depo Ekle Güncelle");
+            if (f != null)
+            {
+                f.Close();
+            }
+            f = new DepoEkleGuncelle();
+            f.MdiParent = anaform;
+            f.Show();
+        }
+        private void grdOlcuBirimi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRow secilen = dt.Rows.Cast<DataRow>().Where(x => x["DepoID"].ToString() == grdOlcuBirimi.Rows[e.RowIndex].Cells["ID"].Value.ToString()).FirstOrDefault();
+            DepoEntity entity = new DepoEntity { DepoID = Convert.ToInt64(secilen["DepoID"]), DepoAdi = secilen["DepoAdi"].ToString()};
+            Form f = anaform.Varmi("Depo Ekle Güncelle");
+            if (f != null)
+            {
+                f.Close();
+            }
+            f = new DepoEkleGuncelle(entity);
+            f.MdiParent = anaform;
+            f.Show();
         }
 
     }

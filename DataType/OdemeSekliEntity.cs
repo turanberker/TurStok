@@ -7,7 +7,7 @@ namespace DataType
 {
     public class OdemeSekliEntity
     {
-        public long OdemeSekliID { get; set; }
+        public long OdemeSekilID { get; set; }
         public string OdemeSekli { get; set; }
     }
 }

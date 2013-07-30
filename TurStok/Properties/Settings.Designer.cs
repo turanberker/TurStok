@@ -32,5 +32,15 @@ namespace TurStok.Properties {
                 return ((string)(this["TurStokConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\DataSet\\Tables.sdf")]
+        public string TablesConnectionString {
+            get {
+                return ((string)(this["TablesConnectionString"]));
+            }
+        }
     }
 }

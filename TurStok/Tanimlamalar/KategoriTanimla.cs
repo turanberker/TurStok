@@ -13,48 +13,48 @@ namespace TurStok.Tanimlamalar
 {
     public partial class KategoriTanimla : Form
     {
-        public KategoriTanimla()
+        public KategoriTanimla(Main form)
         {
             InitializeComponent();
+            anaform = form;
         }
-        DataTable dt = new DataTable();
+        private Main anaform;
+        public DataTable dt = new DataTable();
         Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
-        
         private void KategoriTanimla_Load(object sender, EventArgs e)
         {
             GridDoldur();
         }
-        protected void GridDoldur()
+        public void GridDoldur()
         {
             dt = arac.KategoriDoldur();
             grdOlcuBirimi.DataSource = dt;
-            txtAdi.Text = "";
-            checkBox1.Checked = false;
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtAdi.Text))
+            Form f = anaform.Varmi("Kategori Ekle Güncelle");
+            if (f != null)
             {
-                MessageBox.Show("kategori Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                f.Close();
             }
-            else if (dt.Rows.Cast<DataRow>().Where(x => (x["KategoriAdi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
-            {
-                MessageBox.Show("Böyle Bir Kategori Vardır. Aynı Kategori Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                using (KategoriBS bs = new KategoriBS())
-                {
-                    KategoriEntity entity = new KategoriEntity { KategoriAdi = txtAdi.Text , MiadVarmi=checkBox1.Checked};
-                    if (bs.Insert(entity))
-                    {
-                        GridDoldur();
-                    }
-                }
-                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            f = new KategoriEkleGuncelle();
+            f.MdiParent = anaform;
+            f.Show();
         }
 
+        private void grdOlcuBirimi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRow secilen = dt.Rows.Cast<DataRow>().Where(x => x["KategoriID"].ToString() == grdOlcuBirimi.Rows[e.RowIndex].Cells["ID"].Value.ToString()).FirstOrDefault();
+            KategoriEntity entity = new KategoriEntity { KategoriID = Convert.ToInt64(secilen["KategoriID"]), KategoriAdi = secilen["KategoriAdi"].ToString(), MiadVarmi = secilen["MiadVarmi"].ToString() == "True" ? true : false };
+            Form f = anaform.Varmi("Kategori Ekle Güncelle");
+            if (f != null)
+            {
+                f.Close();
+            }
+            f = new KategoriEkleGuncelle(entity);
+            f.MdiParent = anaform;
+            f.Show();
+        }
+       
     }
 }
