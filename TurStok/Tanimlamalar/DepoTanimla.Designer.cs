@@ -90,9 +90,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 622);
+            this.ClientSize = new System.Drawing.Size(365, 560);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.grdOlcuBirimi);
+            this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "DepoTanimla";
             this.Text = "Depo Tanımla";
             this.Load += new System.EventHandler(this.DepoTanimla_Load);

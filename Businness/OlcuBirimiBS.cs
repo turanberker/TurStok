@@ -27,5 +27,9 @@ namespace Businness
         {
             return vek.ExecuteNonQuery(CommandType.Text, "Insert into OlcuBirimi (OlcuBirimi) values(@ob)", entity.OlcuBirimi) > 0 ? true : false;
         }
+        public bool Update(OlcuBirimiEntity entity)
+        {
+            return vek.ExecuteNonQuery(CommandType.Text, "Update OlcuBirimi set OlcuBirimi=@b where OlcuBirimiID=@a ", entity.OlcuBirimi, entity.OlcuBirimiID) > 0 ? true : false;
+        }
     }
 }

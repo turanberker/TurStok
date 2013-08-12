@@ -27,5 +27,9 @@ namespace Businness
         {
             return vek.ExecuteNonQuery(CommandType.Text, "Insert into ParaBirimi (ParaBirimi) values(@ob)", entity.ParaBirimi) > 0 ? true : false;
         }
+        public bool Update(ParaBirimiEntity entity)
+        {
+            return vek.ExecuteNonQuery(CommandType.Text, "Update ParaBirimi set ParaBirimi=@b  where ParaBirimiID=@a ", entity.ParaBirimi, entity.ParaBirimiID) > 0 ? true : false;
+        }
     }
 }

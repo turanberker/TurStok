@@ -33,12 +33,12 @@ namespace TurStok.Tanimlamalar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form f = anaform.Varmi("Depo Ekle Güncelle");
+            Form f = anaform.Varmi("DepoEkleGuncelle");
             if (f != null)
             {
                 f.Close();
             }
-            f = new DepoEkleGuncelle();
+            f = new DepoEkleGuncelle(this as DepoTanimla);
             f.MdiParent = anaform;
             f.Show();
         }
@@ -46,12 +46,12 @@ namespace TurStok.Tanimlamalar
         {
             DataRow secilen = dt.Rows.Cast<DataRow>().Where(x => x["DepoID"].ToString() == grdOlcuBirimi.Rows[e.RowIndex].Cells["ID"].Value.ToString()).FirstOrDefault();
             DepoEntity entity = new DepoEntity { DepoID = Convert.ToInt64(secilen["DepoID"]), DepoAdi = secilen["DepoAdi"].ToString()};
-            Form f = anaform.Varmi("Depo Ekle Güncelle");
+            Form f = anaform.Varmi("DepoEkleGuncelle");
             if (f != null)
             {
                 f.Close();
             }
-            f = new DepoEkleGuncelle(entity);
+            f = new DepoEkleGuncelle(this as DepoTanimla, entity);
             f.MdiParent = anaform;
             f.Show();
         }

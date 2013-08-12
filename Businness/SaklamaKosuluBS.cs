@@ -27,5 +27,9 @@ namespace Businness
         {
             return vek.ExecuteNonQuery(CommandType.Text, "Insert into SaklamaKosulu (SaklamaKosulu) values(@ob)", entity.SaklamaKosuluAdi) > 0 ? true : false;
         }
+        public bool Update(SaklamaKosuluEntity entity)
+        {
+            return vek.ExecuteNonQuery(CommandType.Text, "Update SaklamaKosulu set SaklamaKosulu=@b  where SaklamaKosuluID=@a ", entity.SaklamaKosuluAdi, entity.SaklamaKosuluID) > 0 ? true : false;
+        }
     }
 }

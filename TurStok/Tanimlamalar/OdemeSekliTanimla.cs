@@ -34,12 +34,12 @@ namespace TurStok.Tanimlamalar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form f = anaform.Varmi("Ödeme Şekli Ekle Güncelle");
+            Form f = anaform.Varmi("OdemeSekliEkleGuncelle");
             if (f != null)
             {
                 f.Close();
             }
-            f = new OdemeSekliEkleGuncelle();
+            f = new OdemeSekliEkleGuncelle(this as OdemeSekliTanimla);
             f.MdiParent = anaform;
             f.Show();
         }
@@ -48,12 +48,12 @@ namespace TurStok.Tanimlamalar
         {
             DataRow secilen = dt.Rows.Cast<DataRow>().Where(x => x["OdemeSekilID"].ToString() == grdOlcuBirimi.Rows[e.RowIndex].Cells["ID"].Value.ToString()).FirstOrDefault();
             OdemeSekliEntity entity = new OdemeSekliEntity { OdemeSekilID = Convert.ToInt64(secilen["OdemeSekilID"]), OdemeSekli = secilen["OdemeSekli"].ToString() };
-            Form f = anaform.Varmi("Ödeme Şekli Ekle Güncelle");
+            Form f = anaform.Varmi("OdemeSekliEkleGuncelle");
             if (f != null)
             {
                 f.Close();
             }
-            f = new OdemeSekliEkleGuncelle(entity);
+            f = new OdemeSekliEkleGuncelle(this as OdemeSekliTanimla,entity);
             f.MdiParent = anaform;
             f.Show();
         }

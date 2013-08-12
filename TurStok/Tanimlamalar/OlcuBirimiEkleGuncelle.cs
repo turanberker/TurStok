@@ -11,39 +11,40 @@ using System.Windows.Forms;
 
 namespace TurStok.Tanimlamalar
 {
-    public partial class OdemeSekliEkleGuncelle : Form
+    public partial class OlcuBirimiEkleGuncelle : Form
     {
-        public OdemeSekliEkleGuncelle(OdemeSekliTanimla form)
+        public OlcuBirimiEkleGuncelle(OlcuBirimiTanimla form)
         {
             InitializeComponent();
-            f = form as OdemeSekliTanimla;
+            f = form as OlcuBirimiTanimla;
         }
-        public OdemeSekliEkleGuncelle(OdemeSekliTanimla form,OdemeSekliEntity entity)
+        public OlcuBirimiEkleGuncelle(OlcuBirimiTanimla form,OlcuBirimiEntity entity)
         {
             InitializeComponent();
-            f = form as OdemeSekliTanimla;
-            txtAdi.Text = entity.OdemeSekli;
-            button1.Tag = entity.OdemeSekilID;
+            f = form as OlcuBirimiTanimla;
+            txtAdi.Text = entity.OlcuBirimi;
+            button1.Tag = entity.OlcuBirimiID;
             button1.Text = "Güncelle";
         }
-        OdemeSekliTanimla f;
+        OlcuBirimiTanimla f;
         private void button1_Click(object sender, EventArgs e)
         {
+            
             if (string.IsNullOrEmpty(txtAdi.Text))
             {
-                MessageBox.Show("Ödeme Şekli Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ölçü Birimi Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (f.dt.Rows.Cast<DataRow>().Where(x => (x["OdemeSekli"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
+            else if (f.dt.Rows.Cast<DataRow>().Where(x => (x["OlcuBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
             {
-                MessageBox.Show("Böyle Bir Ödeme Şekli Vardır. Aynı İsmi Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Böyle Bir Ölçü Birimi Vardır. Aynı Ölçü Birimini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (button1.Text == "Ekle")
                 {
-                    using (OdemeSekliBS bs = new OdemeSekliBS())
+                    using (OlcuBirimiBS bs = new OlcuBirimiBS())
                     {
-                        OdemeSekliEntity entity = new OdemeSekliEntity { OdemeSekli = txtAdi.Text };
+                        OlcuBirimiEntity entity = new OlcuBirimiEntity { OlcuBirimi = txtAdi.Text };
                         if (bs.Insert(entity))
                         {
                             MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -57,9 +58,9 @@ namespace TurStok.Tanimlamalar
                 }
                 else if (button1.Text == "Güncelle")
                 {
-                    using (OdemeSekliBS bs = new OdemeSekliBS())
+                    using (OlcuBirimiBS bs = new OlcuBirimiBS())
                     {
-                        OdemeSekliEntity entity = new OdemeSekliEntity { OdemeSekilID = Convert.ToInt64(button1.Tag), OdemeSekli = txtAdi.Text };
+                        OlcuBirimiEntity entity = new OlcuBirimiEntity { OlcuBirimiID = Convert.ToInt64(button1.Tag), OlcuBirimi = txtAdi.Text };
                         if (bs.Update(entity))
                         {
                             MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -79,6 +80,16 @@ namespace TurStok.Tanimlamalar
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtAdi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

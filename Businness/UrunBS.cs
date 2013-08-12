@@ -27,5 +27,9 @@ namespace Businness
         {
             return vek.ExecuteNonQuery(CommandType.Text, "Insert into Urun (UrunAdi, AzamiMiktar,  SaklamaKosuluID, KategoriID, OlcuBirimID ) values(@a, @b, @c, @d, @e)", entity.UrunAdi, entity.AzamiMiktar, entity.SaklamaKosuluID, entity.KategoriID,entity.OlcuBirimID) > 0 ? true : false;
         }
+        public bool Update(UrunEntity entity)
+        {
+            return vek.ExecuteNonQuery(CommandType.Text, "Update Urun set  UrunAdi=@a,  AzamiMiktar=@b ,  SaklamaKosuluID=@c, KategoriID=@d, OlcuBirimID=@e where UrunID=@f", entity.UrunAdi, entity.AzamiMiktar, entity.SaklamaKosuluID, entity.KategoriID, entity.OlcuBirimID, entity.UrunID) > 0 ? true : false;
+        }
     }
 }

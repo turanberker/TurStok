@@ -30,5 +30,9 @@ namespace Businness
         {
             return vek.ExecuteNonQuery(CommandType.Text,"update FaturaDetay set GelenMiktar=@gelen, TeslimAlindimi=1 where FaturaDetayID=@ID", gelen, FaturaDetayID) > 0 ? true : false;
         }
+        public DataTable JoinListebyFaturaDetayID(long FaturaDetayID)
+        {
+            return vek.GetDataTable(CommandType.Text, "select  fd.SiparisVerilenMiktar, fd.GelenMiktar, fd.BirimFiyati, fd.KDVOrani, fd.TeslimAlindimi, fd.SiparisVerilenMiktar*fd.BirimFiyati ToplamFiyat,fd.BirimFiyati*fd.SiparisVerilenMiktar*fd.KDVOrani/100 KDVTutari, fd.BirimFiyati*fd.SiparisVerilenMiktar*(100+fd.KDVOrani)/100 KDVDahil,u.UrunAdi, m.MarkaAdi, ob.OlcuBirimi from FaturaDetay fd inner join Urun u on u.UrunID=fd.UrunID inner join Marka m on m.MarkaID=fd.MarkaID inner join OlcuBirimi ob on ob.OlcuBirimiID=u.OlcuBirimID where FaturaID=(select FaturaID from FaturaDetay where FaturaDetayID=@ID)", FaturaDetayID);
+        }
     }
 }

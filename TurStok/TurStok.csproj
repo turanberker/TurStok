@@ -75,6 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Islemler\FaturaDetay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Islemler\FaturaDetay.Designer.cs">
+      <DependentUpon>FaturaDetay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Islemler\FaturaEkle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,12 @@
       <DependentUpon>Faturalar.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\GridDoldurucular.cs" />
+    <Compile Include="Islemler\StokDetay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Islemler\StokDetay.Designer.cs">
+      <DependentUpon>StokDetay.cs</DependentUpon>
+    </Compile>
     <Compile Include="Islemler\StokGirisi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +166,12 @@
     <Compile Include="Tanimlamalar\OdemeSekliTanimla.Designer.cs">
       <DependentUpon>OdemeSekliTanimla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tanimlamalar\OlcuBirimiEkleGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tanimlamalar\OlcuBirimiEkleGuncelle.Designer.cs">
+      <DependentUpon>OlcuBirimiEkleGuncelle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tanimlamalar\OlcuBirimiTanimla.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,11 +180,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tanimlamalar\ParaBirimiEkleGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tanimlamalar\ParaBirimiEkleGuncelle.Designer.cs">
+      <DependentUpon>ParaBirimiEkleGuncelle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tanimlamalar\ParaBirimiTanimla.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tanimlamalar\ParaBirimiTanimla.Designer.cs">
       <DependentUpon>ParaBirimiTanimla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tanimlamalar\SaklamaKosuluEkleGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tanimlamalar\SaklamaKosuluEkleGuncelle.Designer.cs">
+      <DependentUpon>SaklamaKosuluEkleGuncelle.cs</DependentUpon>
     </Compile>
     <Compile Include="Tanimlamalar\SaklamaKosuluTanimla.cs">
       <SubType>Form</SubType>
@@ -174,11 +204,23 @@
     <Compile Include="Tanimlamalar\SaklamaKosuluTanimla.Designer.cs">
       <DependentUpon>SaklamaKosuluTanimla.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tanimlamalar\TedarikciEkleGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tanimlamalar\TedarikciEkleGuncelle.Designer.cs">
+      <DependentUpon>TedarikciEkleGuncelle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tanimlamalar\TedarikciTanimla.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Tanimlamalar\TedarikciTanimla.Designer.cs">
       <DependentUpon>TedarikciTanimla.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tanimlamalar\UrunEkleGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tanimlamalar\UrunEkleGuncelle.Designer.cs">
+      <DependentUpon>UrunEkleGuncelle.cs</DependentUpon>
     </Compile>
     <Compile Include="Tanimlamalar\UrunTanimla.cs">
       <SubType>Form</SubType>
@@ -191,11 +233,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TurStokDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Islemler\FaturaDetay.resx">
+      <DependentUpon>FaturaDetay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Islemler\FaturaEkle.resx">
       <DependentUpon>FaturaEkle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Islemler\Faturalar.resx">
       <DependentUpon>Faturalar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Islemler\StokDetay.resx">
+      <DependentUpon>StokDetay.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Islemler\StokGirisi.resx">
       <DependentUpon>StokGirisi.cs</DependentUpon>
@@ -230,6 +278,9 @@
     <EmbeddedResource Include="Tanimlamalar\OdemeSekliTanimla.resx">
       <DependentUpon>OdemeSekliTanimla.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tanimlamalar\OlcuBirimiEkleGuncelle.resx">
+      <DependentUpon>OlcuBirimiEkleGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tanimlamalar\OlcuBirimiTanimla.resx">
       <DependentUpon>OlcuBirimiTanimla.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,14 +294,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Tanimlamalar\ParaBirimiEkleGuncelle.resx">
+      <DependentUpon>ParaBirimiEkleGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tanimlamalar\ParaBirimiTanimla.resx">
       <DependentUpon>ParaBirimiTanimla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tanimlamalar\SaklamaKosuluEkleGuncelle.resx">
+      <DependentUpon>SaklamaKosuluEkleGuncelle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tanimlamalar\SaklamaKosuluTanimla.resx">
       <DependentUpon>SaklamaKosuluTanimla.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tanimlamalar\TedarikciEkleGuncelle.resx">
+      <DependentUpon>TedarikciEkleGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tanimlamalar\TedarikciTanimla.resx">
       <DependentUpon>TedarikciTanimla.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tanimlamalar\UrunEkleGuncelle.resx">
+      <DependentUpon>UrunEkleGuncelle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tanimlamalar\UrunTanimla.resx">
       <DependentUpon>UrunTanimla.cs</DependentUpon>

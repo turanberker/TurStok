@@ -11,39 +11,40 @@ using System.Windows.Forms;
 
 namespace TurStok.Tanimlamalar
 {
-    public partial class OdemeSekliEkleGuncelle : Form
+    public partial class SaklamaKosuluEkleGuncelle : Form
     {
-        public OdemeSekliEkleGuncelle(OdemeSekliTanimla form)
+        public SaklamaKosuluEkleGuncelle(SaklamaKosuluTanimla form)
         {
             InitializeComponent();
-            f = form as OdemeSekliTanimla;
+            f = form as SaklamaKosuluTanimla;
         }
-        public OdemeSekliEkleGuncelle(OdemeSekliTanimla form,OdemeSekliEntity entity)
+        public SaklamaKosuluEkleGuncelle(SaklamaKosuluTanimla form, SaklamaKosuluEntity entity)
         {
             InitializeComponent();
-            f = form as OdemeSekliTanimla;
-            txtAdi.Text = entity.OdemeSekli;
-            button1.Tag = entity.OdemeSekilID;
+            f = form as SaklamaKosuluTanimla;
+            txtAdi.Text = entity.SaklamaKosuluAdi;
+            button1.Tag = entity.SaklamaKosuluID;
             button1.Text = "Güncelle";
         }
-        OdemeSekliTanimla f;
+        SaklamaKosuluTanimla f;
         private void button1_Click(object sender, EventArgs e)
         {
+           
             if (string.IsNullOrEmpty(txtAdi.Text))
             {
-                MessageBox.Show("Ödeme Şekli Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Saklama Koşulu Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (f.dt.Rows.Cast<DataRow>().Where(x => (x["OdemeSekli"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
+            else if (f.dt.Rows.Cast<DataRow>().Where(x => (x["SaklamaKosulu"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
             {
-                MessageBox.Show("Böyle Bir Ödeme Şekli Vardır. Aynı İsmi Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Böyle Bir Saklama Koşulu Mevcuttur. Aynı Kuşulu Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (button1.Text == "Ekle")
                 {
-                    using (OdemeSekliBS bs = new OdemeSekliBS())
+                    using (SaklamaKosuluBS bs = new SaklamaKosuluBS())
                     {
-                        OdemeSekliEntity entity = new OdemeSekliEntity { OdemeSekli = txtAdi.Text };
+                        SaklamaKosuluEntity entity = new SaklamaKosuluEntity { SaklamaKosuluAdi = txtAdi.Text };
                         if (bs.Insert(entity))
                         {
                             MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -57,9 +58,9 @@ namespace TurStok.Tanimlamalar
                 }
                 else if (button1.Text == "Güncelle")
                 {
-                    using (OdemeSekliBS bs = new OdemeSekliBS())
+                    using (SaklamaKosuluBS bs = new SaklamaKosuluBS())
                     {
-                        OdemeSekliEntity entity = new OdemeSekliEntity { OdemeSekilID = Convert.ToInt64(button1.Tag), OdemeSekli = txtAdi.Text };
+                        SaklamaKosuluEntity entity = new SaklamaKosuluEntity { SaklamaKosuluID = Convert.ToInt64(button1.Tag), SaklamaKosuluAdi = txtAdi.Text };
                         if (bs.Update(entity))
                         {
                             MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);

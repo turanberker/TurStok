@@ -13,32 +13,24 @@ namespace TurStok.Tanimlamalar
 {
     public partial class KategoriEkleGuncelle : Form
     {
-        public KategoriEkleGuncelle()
+        public KategoriEkleGuncelle(KategoriTanimla form)
         {
             InitializeComponent();
-
+            f = form as KategoriTanimla;
         }
-        public KategoriEkleGuncelle(KategoriEntity entity)
+        KategoriTanimla f;
+        public KategoriEkleGuncelle(KategoriTanimla form, KategoriEntity entity)
         {
             InitializeComponent();
             txtAdi.Text = entity.KategoriAdi;
             checkBox1.Checked = entity.MiadVarmi;
             button1.Tag = entity.KategoriID;
             button1.Text = "Güncelle";
+            f = form as KategoriTanimla;
         }
 
-        Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
         private void button1_Click(object sender, EventArgs e)
         {
-            KategoriTanimla f = null;
-            foreach (Form item in this.ParentForm.MdiChildren)
-            {
-                if (item.Text == "Kategori Tanımla")
-                {
-                    f = item as KategoriTanimla;
-                    break;
-                }
-            }
             if (string.IsNullOrEmpty(txtAdi.Text))
             {
                 MessageBox.Show("kategori Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);

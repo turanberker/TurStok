@@ -17,41 +17,48 @@ namespace TurStok.Tanimlamalar
         {
             InitializeComponent();
         }
-        DataTable dt = new DataTable();
+        public ParaBirimiTanimla(Main form)
+        {
+            InitializeComponent();
+            anaform = form as Main;
+        }
+        private Main anaform;
+        public DataTable dt = new DataTable();
         Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
         private void ParaBirimiTanimla_Load(object sender, EventArgs e)
         {
             GridDoldur();
         }
-        protected void GridDoldur()
+        public void GridDoldur()
         {
             dt = arac.ParaBirimiDoldur();
             grdOlcuBirimi.DataSource = dt;
-            txtAdi.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtAdi.Text))
+            Form f = anaform.Varmi("ParaBirimiEkleGuncelle");
+            if (f != null)
             {
-                MessageBox.Show("Para Birimi Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                f.Close();
             }
-            else if (dt.Rows.Cast<DataRow>().Where(x => (x["ParaBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
+            f = new ParaBirimiEkleGuncelle(this as ParaBirimiTanimla);
+            f.MdiParent = anaform;
+            f.Show();
+        }
+
+        private void grdOlcuBirimi_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRow secilen = dt.Rows.Cast<DataRow>().Where(x => x["ParaBirimiID"].ToString() == grdOlcuBirimi.Rows[e.RowIndex].Cells["ID"].Value.ToString()).FirstOrDefault();
+            ParaBirimiEntity entity = new ParaBirimiEntity { ParaBirimiID = Convert.ToInt64(secilen["ParaBirimiID"]), ParaBirimi = secilen["ParaBirimi"].ToString() };
+            Form f = anaform.Varmi("ParaBirimiEkleGuncelle");
+            if (f != null)
             {
-                MessageBox.Show("Böyle Bir Para Birimi Vardır. Aynı Para Birimini İsmini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                f.Close();
             }
-            else
-            {
-                using (ParaBirimiBS bs = new ParaBirimiBS())
-                {
-                    ParaBirimiEntity entity = new ParaBirimiEntity { ParaBirimi = txtAdi.Text };
-                    if (bs.Insert(entity))
-                    {
-                        GridDoldur();
-                    }
-                }
-                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            f = new ParaBirimiEkleGuncelle(this as ParaBirimiTanimla, entity);
+            f.MdiParent = anaform;
+            f.Show();
         }
     }
 }

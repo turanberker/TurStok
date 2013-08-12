@@ -17,144 +17,55 @@ namespace TurStok.Tanimlamalar
         {
             InitializeComponent();
         }
-        DataTable dt = new DataTable();
-        Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
-        private void maskedTextBox3_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        public TedarikciTanimla(Main form)
         {
-
+            InitializeComponent();
+            anaform = form as Main ;
         }
+        private Main anaform;
+        public DataTable dt = new DataTable();
+        Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
+
 
         private void TedarikciTanimla_Load(object sender, EventArgs e)
         {
             GridDoldur();
         }
-        protected void GridDoldur()
+        public void GridDoldur()
         {
             dt = arac.TedarikcileriDoldur();
             grdOlcuBirimi.DataSource = dt;
-            txtAdi.Text = "";
-            txtEMail.Text = "";
-            txtFaks.Text = "";
-            txtAdres.Text = "";
-            txtHesapNo.Text = "";
-            txtIBAN.Text = "90";
-            txtTelefon.Text = "90";
-            chkYurtIci.Checked = false;
+            
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtAdi.Text))
+            Form f = anaform.Varmi("TedarikciEkleGuncelle");
+            if (f != null)
             {
-                MessageBox.Show("Ölçü Birimi Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                f.Close();
             }
-            else if (dt.Rows.Cast<DataRow>().Where(x => (x["TedarikciAdi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
+            f = new TedarikciEkleGuncelle(this as TedarikciTanimla);
+            f.MdiParent = anaform;
+            f.Show();
+        }
+
+       
+        private void grdOlcuBirimi_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRow secilen = dt.Rows.Cast<DataRow>().Where(x => x["TedarikciID"].ToString() == grdOlcuBirimi.Rows[e.RowIndex].Cells["TedarikciID"].Value.ToString()).FirstOrDefault();
+            TedarikciEntity entity = new TedarikciEntity { TedarikciID = Convert.ToInt64(secilen["TedarikciID"]), TedarikciAdi = secilen["TedarikciAdi"].ToString(), Adres = secilen["Adres"].ToString(), BankaHesapNo = secilen["BankaHesapNo"].ToString(), EklenmeTarihi=Convert.ToDateTime(secilen["EklenmeTarihi"]), EMail=secilen["EMail"].ToString(), Faks=secilen["Faks"].ToString(), IBAN=secilen["IBAN"].ToString(), Telefon=secilen["Telefon"].ToString(), YurtIcimi=secilen["YurtIcimi"].ToString()=="True"?true:false };
+            Form f = anaform.Varmi("TedarikciEkleGuncelle");
+            if (f != null)
             {
-                MessageBox.Show("Böyle bir ölçü birimi verdır. Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                f.Close();
             }
-            else
-            {
-                using (TedarikciBS bs = new TedarikciBS())
-                {
-                    TedarikciEntity entity = new TedarikciEntity { TedarikciAdi = txtAdi.Text, Telefon = txtTelefon.Text, Faks = txtFaks.Text, Adres = txtAdres.Text, EklenmeTarihi = Convert.ToDateTime(DateTime.Today), BankaHesapNo = txtHesapNo.Text, IBAN = txtIBAN.Text, EMail = txtEMail.Text, YurtIcimi = chkYurtIci.Checked };
-                    if (bs.Insert(entity))
-                    {
-                        GridDoldur();
-                    }
-                }
-                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            f = new TedarikciEkleGuncelle(this as TedarikciTanimla,entity);
+            f.MdiParent = anaform;
+            f.Show();
         }
 
-        private void grdOlcuBirimi_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chkYurtIci_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtHesapNo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtIBAN_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEMail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFaks_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void txtTelefon_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void txtAdres_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void grdOlcuBirimi_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void txtAdi_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

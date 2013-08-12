@@ -11,39 +11,45 @@ using System.Windows.Forms;
 
 namespace TurStok.Tanimlamalar
 {
-    public partial class OdemeSekliEkleGuncelle : Form
+    public partial class ParaBirimiEkleGuncelle : Form
     {
-        public OdemeSekliEkleGuncelle(OdemeSekliTanimla form)
+        public ParaBirimiEkleGuncelle(ParaBirimiTanimla form)
         {
             InitializeComponent();
-            f = form as OdemeSekliTanimla;
+            f = form as ParaBirimiTanimla;
         }
-        public OdemeSekliEkleGuncelle(OdemeSekliTanimla form,OdemeSekliEntity entity)
+        public ParaBirimiEkleGuncelle (ParaBirimiTanimla form, ParaBirimiEntity entity)
         {
             InitializeComponent();
-            f = form as OdemeSekliTanimla;
-            txtAdi.Text = entity.OdemeSekli;
-            button1.Tag = entity.OdemeSekilID;
+            f = form as ParaBirimiTanimla;
+            txtAdi.Text = entity.ParaBirimi;
+            button1.Tag = entity.ParaBirimiID;
             button1.Text = "Güncelle";
         }
-        OdemeSekliTanimla f;
+        ParaBirimiTanimla f;
+        private void ParaBirimiEkleGuncelle_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            
             if (string.IsNullOrEmpty(txtAdi.Text))
             {
-                MessageBox.Show("Ödeme Şekli Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Para Birimi Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (f.dt.Rows.Cast<DataRow>().Where(x => (x["OdemeSekli"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
+            else if (f.dt.Rows.Cast<DataRow>().Where(x => (x["ParaBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
             {
-                MessageBox.Show("Böyle Bir Ödeme Şekli Vardır. Aynı İsmi Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Böyle Bir Para Birimi Vardır. Aynı Para Birimini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (button1.Text == "Ekle")
                 {
-                    using (OdemeSekliBS bs = new OdemeSekliBS())
+                    using (ParaBirimiBS bs = new ParaBirimiBS())
                     {
-                        OdemeSekliEntity entity = new OdemeSekliEntity { OdemeSekli = txtAdi.Text };
+                        ParaBirimiEntity entity = new ParaBirimiEntity { ParaBirimi = txtAdi.Text };
                         if (bs.Insert(entity))
                         {
                             MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -57,9 +63,9 @@ namespace TurStok.Tanimlamalar
                 }
                 else if (button1.Text == "Güncelle")
                 {
-                    using (OdemeSekliBS bs = new OdemeSekliBS())
+                    using (ParaBirimiBS bs = new ParaBirimiBS())
                     {
-                        OdemeSekliEntity entity = new OdemeSekliEntity { OdemeSekilID = Convert.ToInt64(button1.Tag), OdemeSekli = txtAdi.Text };
+                        ParaBirimiEntity entity = new ParaBirimiEntity { ParaBirimiID = Convert.ToInt64(button1.Tag), ParaBirimi = txtAdi.Text };
                         if (bs.Update(entity))
                         {
                             MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);

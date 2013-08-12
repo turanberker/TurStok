@@ -13,30 +13,22 @@ namespace TurStok.Tanimlamalar
 {
     public partial class MarkaEkleGuncelle : Form
     {
-        public MarkaEkleGuncelle()
+        public MarkaEkleGuncelle(MarkaTanimla form)
         {
             InitializeComponent();
+            f = form as MarkaTanimla;
         }
-        public MarkaEkleGuncelle(MarkaEntity entity)
+        public MarkaEkleGuncelle(MarkaTanimla form,MarkaEntity entity)
         {
             InitializeComponent();
             txtAdi.Text = entity.MarkaAdi;
             button1.Tag = entity.MarkaID;
             button1.Text = "Güncelle";
+            f = form as MarkaTanimla;
         }
-        Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
-
+        MarkaTanimla f;
         private void button1_Click(object sender, EventArgs e)
-        {
-            MarkaTanimla f = null;
-            foreach (Form item in this.ParentForm.MdiChildren)
-            {
-                if (item.Text == "Marka Tanımla")
-                {
-                    f = item as MarkaTanimla;
-                    break;
-                }
-            }
+        {            
             if (string.IsNullOrEmpty(txtAdi.Text))
             {
                 MessageBox.Show("Marka Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);

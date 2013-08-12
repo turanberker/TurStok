@@ -28,20 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.txtUrunAdi = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.grdOlcuBirimi = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbOlcuBirimi = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbSaklamaKosuluID = new System.Windows.Forms.ComboBox();
-            this.txtAzami = new System.Windows.Forms.TextBox();
-            this.cmbKategoriID = new System.Windows.Forms.ComboBox();
-            this.TedarikciID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UrunAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KategoriAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,69 +42,18 @@
             this.OlcuBirimiID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MiadVarmi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdOlcuBirimi)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(674, 32);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 16);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Saklama Kosulu";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(353, 32);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 16);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Azami Miktarı";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(161, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Kategorisi";
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(10, 92);
+            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(902, 496);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(105, 56);
             this.button1.TabIndex = 2;
             this.button1.Text = "Ekle";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtUrunAdi
-            // 
-            this.txtUrunAdi.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUrunAdi.Location = new System.Drawing.Point(10, 63);
-            this.txtUrunAdi.MaxLength = 50;
-            this.txtUrunAdi.Name = "txtUrunAdi";
-            this.txtUrunAdi.Size = new System.Drawing.Size(148, 23);
-            this.txtUrunAdi.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ürün Adı";
             // 
             // grdOlcuBirimi
             // 
@@ -123,7 +61,7 @@
             this.grdOlcuBirimi.AllowUserToDeleteRows = false;
             this.grdOlcuBirimi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdOlcuBirimi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TedarikciID,
+            this.ID,
             this.SNo,
             this.UrunAdi,
             this.KategoriAdi,
@@ -139,83 +77,16 @@
             this.grdOlcuBirimi.ReadOnly = true;
             this.grdOlcuBirimi.Size = new System.Drawing.Size(995, 478);
             this.grdOlcuBirimi.TabIndex = 6;
+            this.grdOlcuBirimi.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdOlcuBirimi_CellContentDoubleClick);
             // 
-            // groupBox1
+            // ID
             // 
-            this.groupBox1.Controls.Add(this.cmbOlcuBirimi);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cmbSaklamaKosuluID);
-            this.groupBox1.Controls.Add(this.txtAzami);
-            this.groupBox1.Controls.Add(this.cmbKategoriID);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.txtUrunAdi);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 496);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(995, 132);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Ekleme Paneli";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // cmbOlcuBirimi
-            // 
-            this.cmbOlcuBirimi.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.cmbOlcuBirimi.FormattingEnabled = true;
-            this.cmbOlcuBirimi.Location = new System.Drawing.Point(487, 63);
-            this.cmbOlcuBirimi.Name = "cmbOlcuBirimi";
-            this.cmbOlcuBirimi.Size = new System.Drawing.Size(184, 24);
-            this.cmbOlcuBirimi.TabIndex = 22;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(484, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 16);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Ölçü Birimi";
-            // 
-            // cmbSaklamaKosuluID
-            // 
-            this.cmbSaklamaKosuluID.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.cmbSaklamaKosuluID.FormattingEnabled = true;
-            this.cmbSaklamaKosuluID.Location = new System.Drawing.Point(677, 62);
-            this.cmbSaklamaKosuluID.Name = "cmbSaklamaKosuluID";
-            this.cmbSaklamaKosuluID.Size = new System.Drawing.Size(184, 24);
-            this.cmbSaklamaKosuluID.TabIndex = 20;
-            this.cmbSaklamaKosuluID.SelectedIndexChanged += new System.EventHandler(this.cmbSaklamaKosuluID_SelectedIndexChanged);
-            // 
-            // txtAzami
-            // 
-            this.txtAzami.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.txtAzami.Location = new System.Drawing.Point(356, 63);
-            this.txtAzami.Name = "txtAzami";
-            this.txtAzami.Size = new System.Drawing.Size(125, 23);
-            this.txtAzami.TabIndex = 19;
-            // 
-            // cmbKategoriID
-            // 
-            this.cmbKategoriID.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.cmbKategoriID.FormattingEnabled = true;
-            this.cmbKategoriID.Location = new System.Drawing.Point(165, 63);
-            this.cmbKategoriID.Name = "cmbKategoriID";
-            this.cmbKategoriID.Size = new System.Drawing.Size(184, 24);
-            this.cmbKategoriID.TabIndex = 18;
-            // 
-            // TedarikciID
-            // 
-            this.TedarikciID.DataPropertyName = "UrunID";
-            this.TedarikciID.HeaderText = "ID";
-            this.TedarikciID.Name = "TedarikciID";
-            this.TedarikciID.ReadOnly = true;
-            this.TedarikciID.Visible = false;
-            this.TedarikciID.Width = 200;
+            this.ID.DataPropertyName = "UrunID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            this.ID.Width = 200;
             // 
             // SNo
             // 
@@ -300,35 +171,22 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 642);
+            this.ClientSize = new System.Drawing.Size(1018, 569);
             this.Controls.Add(this.grdOlcuBirimi);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.button1);
             this.Name = "UrunTanimla";
             this.Text = "Urun Tanımla";
             this.Load += new System.EventHandler(this.UrunTanimla_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdOlcuBirimi)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox txtUrunAdi;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView grdOlcuBirimi;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cmbSaklamaKosuluID;
-        private System.Windows.Forms.TextBox txtAzami;
-        private System.Windows.Forms.ComboBox cmbKategoriID;
-        private System.Windows.Forms.ComboBox cmbOlcuBirimi;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TedarikciID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn SNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn UrunAdi;
         private System.Windows.Forms.DataGridViewTextBoxColumn KategoriAdi;

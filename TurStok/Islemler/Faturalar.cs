@@ -15,11 +15,13 @@ namespace TurStok
 {
     public partial class Faturalar : Form
     {
-        public Faturalar()
+        public Faturalar(Main form)
         {
             InitializeComponent();
-        }    
-        DataTable dt = new DataTable();
+            anaform = form;
+        }
+        private Main anaform;
+        public DataTable dt = new DataTable();
         Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
         private void Faturalar_Load(object sender, EventArgs e)
         {
@@ -45,8 +47,15 @@ namespace TurStok
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            FaturaEkle f = new FaturaEkle();
+            Form f = anaform.Varmi("FaturaEkle");
+            if (f != null)
+            {
+                f.Close();
+            }
+            f = new FaturaEkle(this as Faturalar);
+            f.MdiParent = anaform;
             f.Show();
+           
         }
         private void grdFatura_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -76,10 +85,15 @@ namespace TurStok
             }
             else
             {
-
+                
+                grdFaturaDetay.DataSource = null;
                 groupBox1.Visible = true;
                 string faturaId = grdFatura.Rows[e.RowIndex].Cells["FaturaID"].Value.ToString();
                 grdFaturaDetay.DataSource = arac.FaturaDetayDoldur(Convert.ToInt64(faturaId));
+                grdFaturaDetay.Columns["FaturaDetayID"].Visible = false;
+                grdFaturaDetay.Columns[2].Visible = false;
+                grdFaturaDetay.Columns["UrunId"].Visible = false;
+                grdFaturaDetay.Columns["MarkaID"].Visible = false;
             }
         }
         void FaturaFiltrele()

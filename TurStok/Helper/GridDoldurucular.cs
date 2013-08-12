@@ -108,5 +108,29 @@ namespace TurStok.Helper
             }
             return dt;
         }
+        public DataTable StoguGetir()
+        {
+            using (StokBS bs = new StokBS())
+            {
+                dt = bs.JoinListe();
+            }
+            return dt;
+        }
+        public DataTable FaturaDetayDoldurbyFaturaDetayID(long FaturaDetayID)
+        {
+            using (FaturaDetayBS bs = new FaturaDetayBS())
+            {
+                dt = bs.JoinListebyFaturaDetayID(FaturaDetayID);
+            }
+            return dt;
+        }
+        public DataTable FaturDoldurbyFaturaDetayID(long FaturaDetayID)
+        {
+            using (FaturaBS bs = new FaturaBS())
+            {
+                dt = bs.FaturaGetirbyFaturaDetayID(FaturaDetayID);
+            }
+            return dt;
+        }
     }
 }

@@ -32,12 +32,12 @@ namespace TurStok.Tanimlamalar
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Form f = anaform.Varmi("Kategori Ekle Güncelle");
+            Form f = anaform.Varmi("KategoriEkleGuncelle");
             if (f != null)
             {
                 f.Close();
             }
-            f = new KategoriEkleGuncelle();
+            f = new KategoriEkleGuncelle(this as KategoriTanimla);
             f.MdiParent = anaform;
             f.Show();
         }
@@ -46,12 +46,12 @@ namespace TurStok.Tanimlamalar
         {
             DataRow secilen = dt.Rows.Cast<DataRow>().Where(x => x["KategoriID"].ToString() == grdOlcuBirimi.Rows[e.RowIndex].Cells["ID"].Value.ToString()).FirstOrDefault();
             KategoriEntity entity = new KategoriEntity { KategoriID = Convert.ToInt64(secilen["KategoriID"]), KategoriAdi = secilen["KategoriAdi"].ToString(), MiadVarmi = secilen["MiadVarmi"].ToString() == "True" ? true : false };
-            Form f = anaform.Varmi("Kategori Ekle Güncelle");
+            Form f = anaform.Varmi("KategoriEkleGuncelle");
             if (f != null)
             {
                 f.Close();
             }
-            f = new KategoriEkleGuncelle(entity);
+            f = new KategoriEkleGuncelle(this as KategoriTanimla,entity);
             f.MdiParent = anaform;
             f.Show();
         }

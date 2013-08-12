@@ -34,12 +34,12 @@ namespace TurStok
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Form f = anaform.Varmi("Marka Ekle Güncelle");
+            Form f = anaform.Varmi("MarkaEkleGuncelle");
             if (f != null)
             {
                 f.Close();
             }
-            f = new MarkaEkleGuncelle();
+            f = new MarkaEkleGuncelle(this as MarkaTanimla);
             f.MdiParent = anaform;
             f.Show();
         }
@@ -47,12 +47,12 @@ namespace TurStok
         {
             DataRow secilen = dt.Rows.Cast<DataRow>().Where(x => x["MarkaID"].ToString() == grdOlcuBirimi.Rows[e.RowIndex].Cells["ID"].Value.ToString()).FirstOrDefault();
             MarkaEntity entity = new MarkaEntity { MarkaID = Convert.ToInt64(secilen["MarkaID"]), MarkaAdi = secilen["MarkaAdi"].ToString()};
-            Form f = anaform.Varmi("Marka Ekle Güncelle");
+            Form f = anaform.Varmi("MarkaEkleGuncelle");
             if (f != null)
             {
                 f.Close();
             }
-            f = new MarkaEkleGuncelle(entity);
+            f = new MarkaEkleGuncelle(this as MarkaTanimla,entity);
             f.MdiParent = anaform;
             f.Show();
         }

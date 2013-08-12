@@ -13,18 +13,20 @@ namespace TurStok.Tanimlamalar
 {
     public partial class DepoEkleGuncelle : Form
     {
-        public DepoEkleGuncelle()
+        public DepoEkleGuncelle(DepoTanimla Form)
         {
             InitializeComponent();
+            f = Form as DepoTanimla;
         }
-        public DepoEkleGuncelle(DepoEntity entity)
+        public DepoEkleGuncelle(DepoTanimla Form, DepoEntity entity)
         {
             InitializeComponent();
+            f = Form as DepoTanimla;
             txtAdi.Text = entity.DepoAdi;
             button1.Tag = entity.DepoID;
             button1.Text = "Güncelle";
         }
-        Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
+        DepoTanimla f;
         private void DepoEkleGuncelle_Load(object sender, EventArgs e)
         {
 
@@ -32,15 +34,6 @@ namespace TurStok.Tanimlamalar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DepoTanimla f = null;
-            foreach (Form item in this.ParentForm.MdiChildren)
-            {
-                if (item.Text == "Depo Tanımla")
-                {
-                    f = item as DepoTanimla;
-                    break;
-                }
-            }
             if (string.IsNullOrEmpty(txtAdi.Text))
             {
                 MessageBox.Show("Depo Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);

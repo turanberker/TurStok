@@ -17,41 +17,48 @@ namespace TurStok.Tanimlamalar
         {
             InitializeComponent();
         }
-        DataTable dt = new DataTable();
+        public SaklamaKosuluTanimla(Main form)
+        {
+            InitializeComponent();
+            anaform = form as Main;
+        }
+        private Main anaform;
+        public DataTable dt = new DataTable();
         Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtAdi.Text))
+            Form f = anaform.Varmi("SaklamaKosuluEkleGuncelle");
+            if (f != null)
             {
-                MessageBox.Show("Saklama Koşulu Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                f.Close();
             }
-            else if (dt.Rows.Cast<DataRow>().Where(x => (x["SaklamaKosulu"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
-            {
-                MessageBox.Show("Böyle Bir Koşul Vardır. Aynı Koşulu Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                using (SaklamaKosuluBS bs = new SaklamaKosuluBS())
-                {
-                    SaklamaKosuluEntity entity = new SaklamaKosuluEntity { SaklamaKosuluAdi = txtAdi.Text };
-                    if (bs.Insert(entity))
-                    {
-                        GridDoldur();
-                    }
-                }
-                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            f = new SaklamaKosuluEkleGuncelle(this as SaklamaKosuluTanimla);
+            f.MdiParent = anaform;
+            f.Show();
         }
 
         private void SaklamaKosuluTanimla_Load(object sender, EventArgs e)
         {
             GridDoldur();
         }
-        protected void GridDoldur()
+        public void GridDoldur()
         {
             dt = arac.SaklamaKosuluDoldur();
             grdOlcuBirimi.DataSource = dt;
-            txtAdi.Text = "";
+        }
+
+        private void grdOlcuBirimi_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRow secilen = dt.Rows.Cast<DataRow>().Where(x => x["SaklamaKosuluID"].ToString() == grdOlcuBirimi.Rows[e.RowIndex].Cells["ID"].Value.ToString()).FirstOrDefault();
+            SaklamaKosuluEntity entity = new SaklamaKosuluEntity { SaklamaKosuluID = Convert.ToInt64(secilen["SaklamaKosuluID"]), SaklamaKosuluAdi = secilen["SaklamaKosulu"].ToString() };
+            Form f = anaform.Varmi("SaklamaKosuluEkleGuncelle");
+            if (f != null)
+            {
+                f.Close();
+            }
+            f = new SaklamaKosuluEkleGuncelle(this as SaklamaKosuluTanimla,entity);
+            f.MdiParent = anaform;
+            f.Show();
         }
     }
 }

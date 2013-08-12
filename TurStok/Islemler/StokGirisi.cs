@@ -13,11 +13,12 @@ namespace TurStok.Islemler
 {
     public partial class StokGirisi : Form
     {
-        public StokGirisi()
+        public StokGirisi(Main f)
         {
             InitializeComponent();
+            anaform = f;
         }
-
+        private Main anaform;
         private void grdFaturaDetay_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (grdBeklenen.Columns[e.ColumnIndex].Name == "Gir")
@@ -68,6 +69,7 @@ namespace TurStok.Islemler
                             if (sbs.Insert(entity))
                             {
                                 MessageBox.Show("Malzeme Stoğa Eklenmiştir.", "Onay", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                anaform.GridleriDoldur();
                             }
                             else
                             {
@@ -99,19 +101,6 @@ namespace TurStok.Islemler
         {
             dt = arac.BeklenenMalzemeleriDoldur();
             grdBeklenen.DataSource = dt;
-            // DataGridViewComboBoxColumn Depolar = new DataGridViewComboBoxColumn();
-            // Depolar.DisplayMember = "DepoAdi";
-            // Depolar.ValueMember = "DepoID";
-            // Depolar.HeaderText = "Depo Seçin";
-            // Depolar.Name = "Depo";
-            // Depolar.DataPropertyName = "DepoID";
-            // Depolar.DataSource = arac.DepoDoldur();
-            // Depolar.Frozen = false;
-            //// grdBeklenen.Columns.Add(Depolar);
-            // grdBeklenen.Columns.Insert(9, Depolar);
-
-
-
         }
     }
 }

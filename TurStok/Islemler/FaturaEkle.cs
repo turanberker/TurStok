@@ -13,10 +13,12 @@ namespace TurStok.Islemler
 {
     public partial class FaturaEkle : Form
     {
-        public FaturaEkle()
+        public FaturaEkle(Faturalar form)
         {
             InitializeComponent();
+            f = form as Faturalar;
         }
+        Faturalar f;
         DataTable detaylar = new DataTable();
         Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
         protected void cmbleriDoldur()
@@ -135,7 +137,7 @@ namespace TurStok.Islemler
                     }
                 }
                 MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Faturalar f = new Faturalar();
+                
                 f.GridDoldur();
                 this.Close();
             }

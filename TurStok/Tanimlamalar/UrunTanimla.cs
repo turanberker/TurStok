@@ -13,86 +13,53 @@ namespace TurStok.Tanimlamalar
 {
     public partial class UrunTanimla : Form
     {
-        public UrunTanimla()
+        public UrunTanimla(Main form)
         {
             InitializeComponent();
+            anaform = form as Main;
         }
-        DataTable dt = new DataTable();
+        private Main anaform;
+        public DataTable dt = new DataTable();
         Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
-        protected void GridDoldur()
+        public void GridDoldur()
         {
             dt = arac.UrunDoldur();
             grdOlcuBirimi.DataSource = dt;
-            txtUrunAdi.Text = "";
-            txtAzami.Text = "";
-            cmbSaklamaKosuluID.SelectedIndex = 0;
-            cmbKategoriID.SelectedIndex = 0;
-            cmbOlcuBirimi.SelectedIndex = 0;
-
-
         }
 
-        protected void cmbleriDoldur()
-        {
-            DataTable Kategoriler = arac.KategoriDoldur();
-            DataTable SaklamaKosulu = arac.SaklamaKosuluDoldur();
-            DataTable OlcuBirimleri = arac.OlcuBirimiDoldur();
-            cmbKategoriID.ValueMember = "KategoriID";
-            cmbKategoriID.DisplayMember = "KategoriAdi";
-            cmbSaklamaKosuluID.ValueMember = "SaklamaKosuluID";
-            cmbSaklamaKosuluID.DisplayMember = "SaklamaKosulu";
-            cmbKategoriID.DataSource = Kategoriler;
-            cmbSaklamaKosuluID.DataSource = SaklamaKosulu;
-            cmbOlcuBirimi.ValueMember = "OlcuBirimiID";
-            cmbOlcuBirimi.DisplayMember = "OlcuBirimi";
-            cmbOlcuBirimi.DataSource = OlcuBirimleri;
 
-        }
         private void UrunTanimla_Load(object sender, EventArgs e)
         {
-            cmbleriDoldur();
             GridDoldur();
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            decimal dec;
-            if (cmbKategoriID.SelectedValue == "0" || cmbSaklamaKosuluID.SelectedValue == "0" || string.IsNullOrEmpty(txtUrunAdi.Text)|| cmbOlcuBirimi.SelectedValue=="0" || !decimal.TryParse(txtAzami.Text, out dec))
+            Form f = anaform.Varmi("UrunEkleGuncelle");
+            if (f != null)
             {
-                MessageBox.Show("İlgili alanları doldurmanız gerekmektedir.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                f.Close();
             }
-            else if (dt.Rows.Cast<DataRow>().Where(x => (x["UrunAdi"]).ToString().ToLower().Trim() == txtUrunAdi.Text.ToLower().Trim()).Count() > 0)
+            f = new UrunEkleGuncelle(this as UrunTanimla);
+            f.MdiParent = anaform;
+            f.Show();
+        }
+
+        private void grdOlcuBirimi_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataRow secilen = dt.Rows.Cast<DataRow>().Where(x => x["UrunID"].ToString() == grdOlcuBirimi.Rows[e.RowIndex].Cells["ID"].Value.ToString()).FirstOrDefault();
+            UrunEntity entity = new UrunEntity { UrunID = Convert.ToInt64(secilen["UrunID"]), UrunAdi = secilen["UrunAdi"].ToString(), AzamiMiktar = Convert.ToDecimal(secilen["AzamiMiktar"]), KategoriID = Convert.ToInt64(secilen["KategoriID"]), OlcuBirimID=Convert.ToInt64(secilen["OlcuBirimID"]), SaklamaKosuluID=Convert.ToInt64(secilen["SaklamaKosuluID"]) };
+            Form f = anaform.Varmi("UrunEkleGuncelle");
+            if (f != null)
             {
-                MessageBox.Show("Böyle Bir Ürün Vardır. Aynı Ürünü Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                f.Close();
             }
-            else
-            {
-                using (UrunBS bs = new UrunBS())
-                {
-                    UrunEntity entity = new UrunEntity { UrunAdi = txtUrunAdi.Text, KategoriID = Convert.ToInt64(cmbKategoriID.SelectedValue), SaklamaKosuluID = Convert.ToInt64(cmbSaklamaKosuluID.SelectedValue), AzamiMiktar = dec, OlcuBirimID=Convert.ToInt64(cmbOlcuBirimi.SelectedValue) };
-                    if (bs.Insert(entity))
-                    {
-                        GridDoldur();
-                    }
-                }
-                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            f = new UrunEkleGuncelle(this as UrunTanimla, entity);
+            f.MdiParent = anaform;
+            f.Show();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbSaklamaKosuluID_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
