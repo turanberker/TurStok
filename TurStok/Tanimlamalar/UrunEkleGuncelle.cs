@@ -99,5 +99,10 @@ namespace TurStok.Tanimlamalar
             }
 
         }
+
+        private void UrunEkleGuncelle_Load(object sender, EventArgs e)
+        {
+            cmbleriDoldur();
+        }
     }
 }

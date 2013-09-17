@@ -176,6 +176,7 @@
             this.Controls.Add(this.label3);
             this.Name = "UrunEkleGuncelle";
             this.Text = "Ürün Ekle Güncelle";
+            this.Load += new System.EventHandler(this.UrunEkleGuncelle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

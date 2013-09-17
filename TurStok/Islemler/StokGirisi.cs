@@ -40,46 +40,48 @@ namespace TurStok.Islemler
                 {
                     MessageBox.Show("Gelen Miktar Alanına Yanlış Veri Girdiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                using (FaturaDetayBS bs = new FaturaDetayBS())
+                else
                 {
-                    decimal Gelen;
-                    if (string.IsNullOrEmpty(txtGelenMiktar.Text))
-
-                        Gelen = Convert.ToDecimal(grdBeklenen.Rows[e.RowIndex].Cells["SiparisVerilenMiktar"].Value);
-                    else
-                        Gelen = Convert.ToDecimal(txtGelenMiktar.Text);
-
-                    if (bs.TeslimAl(Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["FaturaDetayID"].Value), Gelen))
+                    using (FaturaDetayBS bs = new FaturaDetayBS())
                     {
-                        using (StokBS sbs = new StokBS())
+                        decimal Gelen;
+                        if (string.IsNullOrEmpty(txtGelenMiktar.Text))
+
+                            Gelen = Convert.ToDecimal(grdBeklenen.Rows[e.RowIndex].Cells["SiparisVerilenMiktar"].Value);
+                        else
+                            Gelen = Convert.ToDecimal(txtGelenMiktar.Text);
+
+                        if (bs.TeslimAl(Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["FaturaDetayID"].Value), Gelen))
                         {
-                            StokEntity entity = new StokEntity();
-                            entity.OlcuBirimID = Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["OlcuBirimiID"].Value);
-                            entity.MarkaID = Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["MarkaID"].Value);
-                            entity.UrunID = Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["UrunID"].Value);
-                            entity.TedarikciID = Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["TedarikciID"].Value);
-                            entity.FaturaDetayID = Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["FaturaDetayID"].Value);
-                            entity.DepoID = Convert.ToInt64(cmbDepoID.SelectedValue);
-                            entity.KalanMiktar = Gelen;
-                            if (!string.IsNullOrEmpty(txtSonTarih.Text))
-                                entity.SonKullanmaTarihi = Convert.ToDateTime(txtSonTarih.Text);
-                            entity.GelisTarihi = DateTime.Today;
-                            GridDoldur();
-                            if (sbs.Insert(entity))
+                            using (StokBS sbs = new StokBS())
                             {
-                                MessageBox.Show("Malzeme Stoğa Eklenmiştir.", "Onay", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                anaform.GridleriDoldur();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Malzeme Depoya Girerken Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                StokEntity entity = new StokEntity();
+                                entity.OlcuBirimID = Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["OlcuBirimiID"].Value);
+                                entity.MarkaID = Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["MarkaID"].Value);
+                                entity.UrunID = Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["UrunID"].Value);
+                                entity.TedarikciID = Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["TedarikciID"].Value);
+                                entity.FaturaDetayID = Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["FaturaDetayID"].Value);
+                                entity.DepoID = Convert.ToInt64(cmbDepoID.SelectedValue);
+                                entity.KalanMiktar = Gelen;
+                                if (!string.IsNullOrEmpty(txtSonTarih.Text))
+                                    entity.SonKullanmaTarihi = Convert.ToDateTime(txtSonTarih.Text);
+                                entity.GelisTarihi = DateTime.Today;
+                                GridDoldur();
+                                if (sbs.Insert(entity))
+                                {
+                                    MessageBox.Show("Malzeme Stoğa Eklenmiştir.", "Onay", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    anaform.GridleriDoldur();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Malzeme Depoya Girerken Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Teslim Alırken Bir Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                        {
+                            MessageBox.Show("Teslim Alırken Bir Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }

@@ -238,6 +238,7 @@
             this.txtAdi.Name = "txtAdi";
             this.txtAdi.Size = new System.Drawing.Size(100, 23);
             this.txtAdi.TabIndex = 1;
+            this.txtAdi.TextChanged += new System.EventHandler(this.txtAdi_TextChanged);
             // 
             // label2
             // 
@@ -253,7 +254,8 @@
             this.txtKategori.Location = new System.Drawing.Point(148, 59);
             this.txtKategori.Name = "txtKategori";
             this.txtKategori.Size = new System.Drawing.Size(100, 23);
-            this.txtKategori.TabIndex = 1;
+            this.txtKategori.TabIndex = 2;
+            this.txtKategori.TextChanged += new System.EventHandler(this.txtAdi_TextChanged);
             // 
             // label3
             // 
@@ -269,7 +271,8 @@
             this.txtMarka.Location = new System.Drawing.Point(291, 59);
             this.txtMarka.Name = "txtMarka";
             this.txtMarka.Size = new System.Drawing.Size(100, 23);
-            this.txtMarka.TabIndex = 1;
+            this.txtMarka.TabIndex = 3;
+            this.txtMarka.TextChanged += new System.EventHandler(this.txtAdi_TextChanged);
             // 
             // label4
             // 
@@ -285,7 +288,8 @@
             this.txtTedarikci.Location = new System.Drawing.Point(427, 59);
             this.txtTedarikci.Name = "txtTedarikci";
             this.txtTedarikci.Size = new System.Drawing.Size(100, 23);
-            this.txtTedarikci.TabIndex = 1;
+            this.txtTedarikci.TabIndex = 4;
+            this.txtTedarikci.TextChanged += new System.EventHandler(this.txtAdi_TextChanged);
             // 
             // label5
             // 
@@ -301,7 +305,8 @@
             this.txtDepo.Location = new System.Drawing.Point(561, 59);
             this.txtDepo.Name = "txtDepo";
             this.txtDepo.Size = new System.Drawing.Size(100, 23);
-            this.txtDepo.TabIndex = 1;
+            this.txtDepo.TabIndex = 5;
+            this.txtDepo.TextChanged += new System.EventHandler(this.txtAdi_TextChanged);
             // 
             // groupBox1
             // 
