@@ -35,7 +35,6 @@ namespace TurStok
         }
         protected void ComboBoxDoldur()
         {
-
             cmbTedarikciID.ValueMember = "TedarikciID";
             cmbTedarikciID.DisplayMember = "TedarikciAdi";
             DataTable Ted = arac.TedarikcileriDoldur();
@@ -44,6 +43,12 @@ namespace TurStok
             cmbTedarikciID.SelectedIndex = 0;
             cmbDurumu.SelectedIndex = 0;
 
+            cmbOdeme.ValueMember = "OdemeSekilID";
+            cmbOdeme.DisplayMember = "OdemeSekli";
+            DataTable OdSek = arac.OdemeSekliDoldur();
+            OdSek.Rows.Add(0, 0, "Hepsi");
+            cmbOdeme.DataSource = OdSek;
+            cmbOdeme.SelectedIndex = 0;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -138,6 +143,14 @@ namespace TurStok
                     FaturaFiltre = dw.ToTable();
                 }
             }
+            if (cmbOdeme.Text != "Hepsi")
+            {
+                using (DataView dw = new DataView(dt))
+                {
+                    dw.RowFilter = string.Format(" OdemeSekliID = '{0}'", Convert.ToInt64(cmbOdeme.SelectedValue));
+                    FaturaFiltre = dw.ToTable();
+                }
+            }
             grdFatura.DataSource = FaturaFiltre;
         }
 
@@ -157,6 +170,11 @@ namespace TurStok
         }
 
         private void txtBitTar_TextChanged(object sender, EventArgs e)
+        {
+            FaturaFiltrele();
+        }
+
+        private void cmbOdeme_SelectedIndexChanged(object sender, EventArgs e)
         {
             FaturaFiltrele();
         }

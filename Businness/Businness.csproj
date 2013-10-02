@@ -50,6 +50,7 @@
     <Compile Include="FaturaBS.cs" />
     <Compile Include="FaturaDetayBS.cs" />
     <Compile Include="KategoriBS.cs" />
+    <Compile Include="IhtiyacListesiBS.cs" />
     <Compile Include="MarkaBS.cs" />
     <Compile Include="OdemeSekliBS.cs" />
     <Compile Include="OlcuBirimiBS.cs" />

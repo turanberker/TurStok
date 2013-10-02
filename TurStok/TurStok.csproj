@@ -23,9 +23,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>TurStok</ProductName>
+    <PublisherName>Berker TYRAB</PublisherName>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -62,6 +66,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TurStok.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -75,6 +82,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Hakkinda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hakkinda.Designer.cs">
+      <DependentUpon>Hakkinda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Islemler\FaturaDetay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +107,12 @@
       <DependentUpon>Faturalar.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\GridDoldurucular.cs" />
+    <Compile Include="Islemler\IhtiyacListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Islemler\IhtiyacListesi.Designer.cs">
+      <DependentUpon>IhtiyacListesi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Islemler\StokDetay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +252,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TurStokDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Hakkinda.resx">
+      <DependentUpon>Hakkinda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Islemler\FaturaDetay.resx">
       <DependentUpon>FaturaDetay.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Islemler\Faturalar.resx">
       <DependentUpon>Faturalar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Islemler\IhtiyacListesi.resx">
+      <DependentUpon>IhtiyacListesi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Islemler\StokDetay.resx">
       <DependentUpon>StokDetay.cs</DependentUpon>
@@ -358,7 +383,7 @@
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
+      <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>

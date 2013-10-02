@@ -42,6 +42,7 @@
     <Compile Include="FaturaDetayEntity.cs" />
     <Compile Include="FaturaEntity.cs" />
     <Compile Include="KategoriEntity.cs" />
+    <Compile Include="IhtiyacListesiEntity.cs" />
     <Compile Include="MarkaEntity.cs" />
     <Compile Include="OdemeSekliEntity.cs" />
     <Compile Include="OlcuBirimiEntity.cs" />

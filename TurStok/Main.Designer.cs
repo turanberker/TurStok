@@ -46,6 +46,7 @@
             this.islemlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.faturalarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stokGirişiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.siparişLİstesiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -109,6 +110,7 @@
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AzamiMiktar2ay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hakkındaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -123,7 +125,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.girişToolStripMenuItem,
             this.tanımlamalarToolStripMenuItem,
-            this.islemlerToolStripMenuItem});
+            this.islemlerToolStripMenuItem,
+            this.hakkındaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1059, 27);
@@ -239,7 +242,8 @@
             // 
             this.islemlerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.faturalarToolStripMenuItem,
-            this.stokGirişiToolStripMenuItem});
+            this.stokGirişiToolStripMenuItem,
+            this.siparişLİstesiToolStripMenuItem});
             this.islemlerToolStripMenuItem.Enabled = false;
             this.islemlerToolStripMenuItem.Name = "islemlerToolStripMenuItem";
             this.islemlerToolStripMenuItem.Size = new System.Drawing.Size(77, 23);
@@ -248,16 +252,23 @@
             // faturalarToolStripMenuItem
             // 
             this.faturalarToolStripMenuItem.Name = "faturalarToolStripMenuItem";
-            this.faturalarToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
+            this.faturalarToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.faturalarToolStripMenuItem.Text = "Faturalar";
             this.faturalarToolStripMenuItem.Click += new System.EventHandler(this.faturalarToolStripMenuItem_Click);
             // 
             // stokGirişiToolStripMenuItem
             // 
             this.stokGirişiToolStripMenuItem.Name = "stokGirişiToolStripMenuItem";
-            this.stokGirişiToolStripMenuItem.Size = new System.Drawing.Size(150, 24);
+            this.stokGirişiToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.stokGirişiToolStripMenuItem.Text = "Stok Girişi";
             this.stokGirişiToolStripMenuItem.Click += new System.EventHandler(this.stokGirişiToolStripMenuItem_Click);
+            // 
+            // siparişLİstesiToolStripMenuItem
+            // 
+            this.siparişLİstesiToolStripMenuItem.Name = "siparişLİstesiToolStripMenuItem";
+            this.siparişLİstesiToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
+            this.siparişLİstesiToolStripMenuItem.Text = "İhtiyaç Listesi";
+            this.siparişLİstesiToolStripMenuItem.Click += new System.EventHandler(this.siparişLİstesiToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -293,7 +304,6 @@
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(159, 26);
             this.textBox2.TabIndex = 6;
-            this.textBox2.Text = "admin";
             // 
             // textBox1
             // 
@@ -302,7 +312,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(159, 26);
             this.textBox1.TabIndex = 5;
-            this.textBox1.Text = "Admin";
             // 
             // label2
             // 
@@ -419,7 +428,7 @@
             this.GelisTarihi1ay,
             this.MiadVarmi1ay,
             this.AzamiMiktar1ay});
-            this.grd1ay.Location = new System.Drawing.Point(125, 166);
+            this.grd1ay.Location = new System.Drawing.Point(91, 132);
             this.grd1ay.Name = "grd1ay";
             this.grd1ay.ReadOnly = true;
             this.grd1ay.Size = new System.Drawing.Size(366, 284);
@@ -579,7 +588,7 @@
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
             this.AzamiMiktarBitenler});
-            this.grdBitenler.Location = new System.Drawing.Point(125, 221);
+            this.grdBitenler.Location = new System.Drawing.Point(91, 187);
             this.grdBitenler.Name = "grdBitenler";
             this.grdBitenler.ReadOnly = true;
             this.grdBitenler.Size = new System.Drawing.Size(366, 284);
@@ -728,7 +737,7 @@
             this.dataGridViewTextBoxColumn25,
             this.dataGridViewTextBoxColumn26,
             this.AzamiMiktar2ay});
-            this.grd2ay.Location = new System.Drawing.Point(125, 269);
+            this.grd2ay.Location = new System.Drawing.Point(91, 235);
             this.grd2ay.Name = "grd2ay";
             this.grd2ay.ReadOnly = true;
             this.grd2ay.Size = new System.Drawing.Size(366, 284);
@@ -856,6 +865,13 @@
             this.AzamiMiktar2ay.ReadOnly = true;
             this.AzamiMiktar2ay.Visible = false;
             // 
+            // hakkındaToolStripMenuItem
+            // 
+            this.hakkındaToolStripMenuItem.Name = "hakkındaToolStripMenuItem";
+            this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(86, 23);
+            this.hakkındaToolStripMenuItem.Text = "Hakkında";
+            this.hakkındaToolStripMenuItem.Click += new System.EventHandler(this.hakkındaToolStripMenuItem_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -932,21 +948,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView grdBitenler;
         private System.Windows.Forms.DataGridView grd2ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StokID1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FaturaDetayID1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SNo1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UrunAdi1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SonKullanmaTarihi1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KalanMiktar1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KategoriAdi1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DepoAdi1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DepoID1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MarkaAdi1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TedarikciAdi1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OlcuBirimi1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GelisTarihi1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MiadVarmi1ay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AzamiMiktar1ay;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn FaturaDetayIDBitenler;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -977,6 +978,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private System.Windows.Forms.DataGridViewTextBoxColumn AzamiMiktar2ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StokID1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FaturaDetayID1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SNo1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UrunAdi1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SonKullanmaTarihi1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KalanMiktar1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KategoriAdi1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepoAdi1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepoID1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MarkaAdi1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TedarikciAdi1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OlcuBirimi1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GelisTarihi1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MiadVarmi1ay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AzamiMiktar1ay;
+        private System.Windows.Forms.ToolStripMenuItem siparişLİstesiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hakkındaToolStripMenuItem;
     }
 }
 

@@ -96,5 +96,10 @@ namespace TurStok
             }
             grdStok.DataSource = dt;
         }
+
+        private void splitter2_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
     }
 }

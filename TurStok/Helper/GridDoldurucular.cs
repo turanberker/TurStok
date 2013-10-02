@@ -20,6 +20,14 @@ namespace TurStok.Helper
             }
             return dt;
         }
+        public DataTable IhtiyacListesiDoldur()
+        {
+            using (IhtiyacListesiBS bs = new IhtiyacListesiBS())
+            {
+                dt = bs.JoinListe();
+            }
+            return dt;
+        }
         public DataTable FaturaDoldur()
         {
             using (FaturaBS bs = new FaturaBS())

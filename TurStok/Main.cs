@@ -122,6 +122,18 @@ namespace TurStok
             groupBox1.Visible = true;
             toolStripButton1.Enabled = false;
             toolStripLabel2.Text = "Giriş Yapın - " + DateTime.Today.ToString("dd.MM.yyyy");
+            using (DataView dw = new DataView(StokDataTable))
+            {
+                dw.RowFilter = "MiadVarmi = 'True'";
+                using (DataView bos = new DataView(dw.ToTable()))
+                {
+                    bos.RowFilter = "StokID ='0'";
+                    grd1ay.DataSource = bos.ToTable();
+                    grd2ay.DataSource = bos.ToTable();
+                    grdBitenler.DataSource = bos.ToTable();
+                }
+            }
+
         }
         private void markalarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -295,7 +307,7 @@ namespace TurStok
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("tr-TR");
             Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
             StokDataTable = arac.StoguGetir();
-
+            
             using (DataView dw = new DataView(StokDataTable))
             {
                 dw.RowFilter = "MiadVarmi = 'True'";
@@ -325,6 +337,38 @@ namespace TurStok
             if (f == null)
             {
                 f = new StokDetay(this as Main, secilen);
+                f.MdiParent = this;
+                f.Show();
+            }
+            else
+            {
+                f.BringToFront();
+                this.ActivateMdiChild(f);
+            }
+        }
+
+        private void siparişLİstesiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form f = Varmi("IhtiyacListesi");
+            if (f == null)
+            {
+                f = new İhtiyacListesi(this as Main);
+                f.MdiParent = this;
+                f.Show();
+            }
+            else
+            {
+                f.BringToFront();
+                this.ActivateMdiChild(f);
+            }
+        }
+
+        private void hakkındaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form f = Varmi("Hakkinda");
+            if (f == null)
+            {
+                f = new Hakkinda();
                 f.MdiParent = this;
                 f.Show();
             }

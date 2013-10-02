@@ -23,7 +23,6 @@ namespace TurStok.Islemler
         {
             if (grdBeklenen.Columns[e.ColumnIndex].Name == "Gir")
             {
-
                 System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("tr-TR");
                 DateTime tarih;
                 decimal gelen;
@@ -63,8 +62,20 @@ namespace TurStok.Islemler
                                 entity.FaturaDetayID = Convert.ToInt64(grdBeklenen.Rows[e.RowIndex].Cells["FaturaDetayID"].Value);
                                 entity.DepoID = Convert.ToInt64(cmbDepoID.SelectedValue);
                                 entity.KalanMiktar = Gelen;
-                                if (!string.IsNullOrEmpty(txtSonTarih.Text))
-                                    entity.SonKullanmaTarihi = Convert.ToDateTime(txtSonTarih.Text);
+                                //MiadVarmi
+                                if (Convert.ToBoolean(grdBeklenen.Rows[e.RowIndex].Cells["MiadVarmi"].Value))
+                                {
+                                    DateTime qtarih;
+                                    if (!DateTime.TryParse(txtSonTarih.Text, out tarih))
+                                    {
+                                        MessageBox.Show("Girişi Yapılan Malzeme için bir Geçerli Bir Miat Girmeniz Gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                    else
+                                    {
+                                        entity.SonKullanmaTarihi = Convert.ToDateTime(txtSonTarih.Text);
+                                    }
+                                }
                                 entity.GelisTarihi = DateTime.Today;
                                 GridDoldur();
                                 if (sbs.Insert(entity))
