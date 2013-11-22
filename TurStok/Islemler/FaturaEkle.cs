@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace TurStok.Islemler
@@ -92,56 +94,80 @@ namespace TurStok.Islemler
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            decimal dec;
-            if (cmbTedarikciID.SelectedValue == "0" || cmbOdemeSekliID.SelectedValue == "0" || string.IsNullOrEmpty(txtFaturaNo.Text) || cmbParaBirimiID.SelectedValue == "0")
+            using (TransactionScope scope = new TransactionScope())
             {
-                MessageBox.Show("Bütün Alanları Doldurmanız Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (!string.IsNullOrEmpty(txtKur.Text) && decimal.TryParse(txtKur.Text, out dec))
-            {
-                MessageBox.Show("Kur Alanı Yanlış Veri Girdiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (detaylar == null || detaylar.Rows.Count == 0)
-            {
-                MessageBox.Show("En Az Bir Tane Fatura Detayı Girmeniz Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                FaturaEntity mainEntity = new FaturaEntity { Aciklama = txtAciklama.Text, FaturaNo = txtFaturaNo.Text, OdemeSekliID = Convert.ToInt64(cmbOdemeSekliID.SelectedValue), OdemeYapildimi = false, ParaBirimiID = Convert.ToInt64(cmbParaBirimiID.SelectedValue), TedarikciID = Convert.ToInt64(cmbTedarikciID.SelectedValue), FaturaTarihi = DateTime.Today };
-                if (!string.IsNullOrEmpty(txtKur.Text))
-                    mainEntity.Kur = Convert.ToDecimal(txtKur.Text);
-                using (FaturaBS bs = new FaturaBS())
+                try
                 {
-                    mainEntity.FaturaID = bs.Insert(mainEntity);
-                    if (mainEntity.FaturaID > 0)
+                    decimal dec;
+                    if (cmbTedarikciID.SelectedValue == "0" || cmbOdemeSekliID.SelectedValue == "0" || string.IsNullOrEmpty(txtFaturaNo.Text) || cmbParaBirimiID.SelectedValue == "0")
                     {
-                        FaturaDetayEntity detay = new FaturaDetayEntity();
-                        detay.FaturaID = mainEntity.FaturaID;
-                        
-                        detay.TeslimAlindimi = false;
-                        detay.GelenMiktar = 0;
-                        foreach (DataRow dr in detaylar.Rows)
+                        MessageBox.Show("Bütün Alanları Doldurmanız Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (!string.IsNullOrEmpty(txtKur.Text) && decimal.TryParse(txtKur.Text, out dec))
+                    {
+                        MessageBox.Show("Kur Alanı Yanlış Veri Girdiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (detaylar == null || detaylar.Rows.Count == 0)
+                    {
+                        MessageBox.Show("En Az Bir Tane Fatura Detayı Girmeniz Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        FaturaEntity mainEntity = new FaturaEntity { Aciklama = txtAciklama.Text, FaturaNo = txtFaturaNo.Text, OdemeSekliID = Convert.ToInt64(cmbOdemeSekliID.SelectedValue), OdemeYapildimi = false, ParaBirimiID = Convert.ToInt64(cmbParaBirimiID.SelectedValue), TedarikciID = Convert.ToInt64(cmbTedarikciID.SelectedValue), FaturaTarihi = DateTime.Today };
+                        if (!string.IsNullOrEmpty(txtKur.Text))
+                            mainEntity.Kur = Convert.ToDecimal(txtKur.Text);
+                        using (FaturaBS bs = new FaturaBS())
                         {
-                            using (FaturaDetayBS dbs = new FaturaDetayBS())
+                            mainEntity.FaturaID = bs.Insert(mainEntity);
+                            if (mainEntity.FaturaID > 0)
                             {
-                                detay.BirimFiyati = Convert.ToDecimal(dr["BirimFiyati"]);
-                                detay.KDVOrani = Convert.ToInt32(dr["KDVOrani"]);
-                                detay.SiparisVerilenMiktar = Convert.ToDecimal(dr["SiparisVerilenMiktar"]);
-                                detay.UrunID = Convert.ToInt64(dr["UrunID"]);
-                                detay.MarkaID = Convert.ToInt64(dr["MarkaID"]);
-                                dbs.Insert(detay);
-                            }
+                                FaturaDetayEntity detay = new FaturaDetayEntity();
+                                detay.FaturaID = mainEntity.FaturaID;
 
+                                detay.TeslimAlindimi = false;
+                                detay.GelenMiktar = 0;
+                                foreach (DataRow dr in detaylar.Rows)
+                                {
+                                    using (FaturaDetayBS dbs = new FaturaDetayBS())
+                                    {
+                                        detay.BirimFiyati = Convert.ToDecimal(dr["BirimFiyati"]);
+                                        detay.KDVOrani = Convert.ToInt32(dr["KDVOrani"]);
+                                        detay.SiparisVerilenMiktar = Convert.ToDecimal(dr["SiparisVerilenMiktar"]);
+                                        detay.UrunID = Convert.ToInt64(dr["UrunID"]);
+                                        detay.MarkaID = Convert.ToInt64(dr["MarkaID"]);
+                                        if (!dbs.Insert(detay))
+                                        {
+                                            MessageBox.Show("Detay Eklenirken Hata Oluştu. Lütfen Tekrar Deneyin!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return;
+                                        }
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Fatura Eklenirken Hata Oluştu. Lütfen Tekrar Deneyin!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
                         }
+                        MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        f.GridDoldur();
+                        this.Close();
+                        scope.Complete();
                     }
                 }
-                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                f.GridDoldur();
-                this.Close();
-            }
+                catch (Exception exp)
+                {
+                    StackTrace st = new StackTrace();
+                    StackFrame sf = new StackFrame();
+                    new Helper.ExceptionLogger().ThrowExp(exp, this as Form, sf.GetMethod().Name);
+                    return;
+                }
 
+            }
         }
     }
 }

@@ -38,30 +38,38 @@ namespace TurStok.Tanimlamalar
             {
                 MessageBox.Show("Depo Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (f.dt.Rows.Cast<DataRow>().Where(x => (x["DepoAdi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
-            {
-                MessageBox.Show("Böyle Bir Depo Mevcuttur. Aynı Depo İsmini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
             else
             {
                 if (button1.Text == "Ekle")
                 {
-                    using (DepoBS bs = new DepoBS())
+                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["DepoAdi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
                     {
-                        DepoEntity entity = new DepoEntity { DepoAdi = txtAdi.Text };
-                        if (bs.Insert(entity))
+                        MessageBox.Show("Böyle Bir Depo Mevcuttur. Aynı Depo İsmini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        using (DepoBS bs = new DepoBS())
                         {
-                            MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            f.GridDoldur();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            DepoEntity entity = new DepoEntity { DepoAdi = txtAdi.Text };
+                            if (bs.Insert(entity))
+                            {
+                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                f.GridDoldur();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
                 else if (button1.Text == "Güncelle")
                 {
+                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["DepoAdi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim() && x["DepoID"].ToString() != button1.Tag.ToString()).Count() > 0)
+                    {
+                        MessageBox.Show("Böyle Bir Depo Mevcuttur. Aynı Depo İsmini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                     using (DepoBS bs = new DepoBS())
                     {
                         DepoEntity entity = new DepoEntity { DepoID = Convert.ToInt64(button1.Tag), DepoAdi = txtAdi.Text };

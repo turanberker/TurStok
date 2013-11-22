@@ -72,9 +72,9 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 16);
+            this.label1.Size = new System.Drawing.Size(83, 16);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Kategori Adı";
+            this.label1.Text = "Saklama Yeri";
             // 
             // DepoEkleGuncelle
             // 
@@ -88,7 +88,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "DepoEkleGuncelle";
-            this.Text = "Depo Ekle Güncelle";
+            this.Text = "Saklama Yeri Ekle Güncelle";
             this.Load += new System.EventHandler(this.DepoEkleGuncelle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

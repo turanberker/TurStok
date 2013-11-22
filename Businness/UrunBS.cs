@@ -31,5 +31,10 @@ namespace Businness
         {
             return vek.ExecuteNonQuery(CommandType.Text, "Update Urun set  UrunAdi=@a,  AzamiMiktar=@b ,  SaklamaKosuluID=@c, KategoriID=@d, OlcuBirimID=@e where UrunID=@f", entity.UrunAdi, entity.AzamiMiktar, entity.SaklamaKosuluID, entity.KategoriID, entity.OlcuBirimID, entity.UrunID) > 0 ? true : false;
         }
+        public DataTable JoinListe(long UrunID)
+        {
+            return vek.GetDataTable(CommandType.Text, "select u.UrunID, u.KategoriID,  u.AzamiMiktar, u.SaklamaKosuluID, u.UrunAdi,u.OlcuBirimID,ob.OlcuBirimi, k.KategoriAdi,k.MiadVarmi, sk.SaklamaKosulu from Urun U inner join Kategori k on k.KategoriID=u.KategoriID inner join SaklamaKosulu sk on sk.SaklamaKosuluID=u.SaklamaKosuluID inner join OlcuBirimi ob on u.OlcuBirimID=ob.OlcuBirimiID where u.URUNID=@a", UrunID);
+            // return vek.GetDT(TurVek.SorguTipi.text, vek.DataTableOlustur(typeof(OlcuBirimiEntity)), "Select * from OlcuBirimi");
+        }
     }
 }

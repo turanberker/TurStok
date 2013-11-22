@@ -88,7 +88,7 @@ namespace TurVek
             }
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i] == null)
+                if (values[i] == null) 
                 {
                     cmd.Parameters.AddWithValue(parametreler[i], DBNull.Value);
                 }

@@ -34,41 +34,51 @@ namespace TurStok.Tanimlamalar
             {
                 MessageBox.Show("Saklama Koşulu Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (f.dt.Rows.Cast<DataRow>().Where(x => (x["SaklamaKosulu"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
-            {
-                MessageBox.Show("Böyle Bir Saklama Koşulu Mevcuttur. Aynı Kuşulu Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
+                       else
             {
                 if (button1.Text == "Ekle")
                 {
-                    using (SaklamaKosuluBS bs = new SaklamaKosuluBS())
+                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["SaklamaKosulu"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
                     {
-                        SaklamaKosuluEntity entity = new SaklamaKosuluEntity { SaklamaKosuluAdi = txtAdi.Text };
-                        if (bs.Insert(entity))
+                        MessageBox.Show("Böyle Bir Saklama Koşulu Mevcuttur. Aynı Kuşulu Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        using (SaklamaKosuluBS bs = new SaklamaKosuluBS())
                         {
-                            MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            f.GridDoldur();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            SaklamaKosuluEntity entity = new SaklamaKosuluEntity { SaklamaKosuluAdi = txtAdi.Text };
+                            if (bs.Insert(entity))
+                            {
+                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                f.GridDoldur();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
                 else if (button1.Text == "Güncelle")
                 {
-                    using (SaklamaKosuluBS bs = new SaklamaKosuluBS())
+                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["SaklamaKosulu"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim() &&x["SaklamaKosuluID"].ToString()!=button1.Tag.ToString()).Count() > 0)
                     {
-                        SaklamaKosuluEntity entity = new SaklamaKosuluEntity { SaklamaKosuluID = Convert.ToInt64(button1.Tag), SaklamaKosuluAdi = txtAdi.Text };
-                        if (bs.Update(entity))
+                        MessageBox.Show("Böyle Bir Saklama Koşulu Mevcuttur. Aynı Kuşulu Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        using (SaklamaKosuluBS bs = new SaklamaKosuluBS())
                         {
-                            MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            f.GridDoldur();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Güncelleme Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            SaklamaKosuluEntity entity = new SaklamaKosuluEntity { SaklamaKosuluID = Convert.ToInt64(button1.Tag), SaklamaKosuluAdi = txtAdi.Text };
+                            if (bs.Update(entity))
+                            {
+                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                f.GridDoldur();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Güncelleme Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }

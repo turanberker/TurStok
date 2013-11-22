@@ -47,6 +47,7 @@
             this.faturalarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stokGirişiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.siparişLİstesiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hakkındaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -110,7 +111,6 @@
             this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AzamiMiktar2ay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hakkındaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -269,6 +269,13 @@
             this.siparişLİstesiToolStripMenuItem.Size = new System.Drawing.Size(173, 24);
             this.siparişLİstesiToolStripMenuItem.Text = "İhtiyaç Listesi";
             this.siparişLİstesiToolStripMenuItem.Click += new System.EventHandler(this.siparişLİstesiToolStripMenuItem_Click);
+            // 
+            // hakkındaToolStripMenuItem
+            // 
+            this.hakkındaToolStripMenuItem.Name = "hakkındaToolStripMenuItem";
+            this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(86, 23);
+            this.hakkındaToolStripMenuItem.Text = "Hakkında";
+            this.hakkındaToolStripMenuItem.Click += new System.EventHandler(this.hakkındaToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -593,7 +600,7 @@
             this.grdBitenler.ReadOnly = true;
             this.grdBitenler.Size = new System.Drawing.Size(366, 284);
             this.grdBitenler.TabIndex = 23;
-            this.grdBitenler.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd1ay_CellContentDoubleClick);
+            this.grdBitenler.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdBitenler_CellContentDoubleClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -742,7 +749,7 @@
             this.grd2ay.ReadOnly = true;
             this.grd2ay.Size = new System.Drawing.Size(366, 284);
             this.grd2ay.TabIndex = 24;
-            this.grd2ay.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd1ay_CellContentDoubleClick);
+            this.grd2ay.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grd2ay_CellContentDoubleClick);
             // 
             // dataGridViewTextBoxColumn14
             // 
@@ -864,13 +871,6 @@
             this.AzamiMiktar2ay.Name = "AzamiMiktar2ay";
             this.AzamiMiktar2ay.ReadOnly = true;
             this.AzamiMiktar2ay.Visible = false;
-            // 
-            // hakkındaToolStripMenuItem
-            // 
-            this.hakkındaToolStripMenuItem.Name = "hakkındaToolStripMenuItem";
-            this.hakkındaToolStripMenuItem.Size = new System.Drawing.Size(86, 23);
-            this.hakkındaToolStripMenuItem.Text = "Hakkında";
-            this.hakkındaToolStripMenuItem.Click += new System.EventHandler(this.hakkındaToolStripMenuItem_Click);
             // 
             // Main
             // 

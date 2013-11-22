@@ -9,6 +9,8 @@ namespace DataType
     {
         public long UrunID { get; set; }
         public long KategoriID { get; set; }
+
+        //Asgari Miktar olacak. Yanlış yazıldı.  Miktarı azalmış ürünü alerti için kullanılıyor.
         public decimal? AzamiMiktar { get; set; }
        
         public long SaklamaKosuluID { get; set; }

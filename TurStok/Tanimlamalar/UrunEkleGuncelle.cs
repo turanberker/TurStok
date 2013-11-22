@@ -56,41 +56,52 @@ namespace TurStok.Tanimlamalar
             {
                 MessageBox.Show("İlgili alanları doldurmanız gerekmektedir.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (f.dt.Rows.Cast<DataRow>().Where(x => (x["UrunAdi"]).ToString().ToLower().Trim() == txtUrunAdi.Text.ToLower().Trim()).Count() > 0)
-            {
-                MessageBox.Show("Böyle Bir Ürün Vardır. Aynı Ürünü Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
- else
+
+            else
             {
                 if (button1.Text == "Ekle")
                 {
-                    using (UrunBS bs = new UrunBS())
+                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["UrunAdi"]).ToString().ToLower().Trim() == txtUrunAdi.Text.ToLower().Trim()).Count() > 0)
                     {
-                        UrunEntity entity = new UrunEntity { UrunAdi =txtUrunAdi.Text, SaklamaKosuluID=Convert.ToInt64(cmbSaklamaKosuluID.SelectedValue), OlcuBirimID=Convert.ToInt64( cmbOlcuBirimi.SelectedValue), KategoriID=Convert.ToInt64(cmbKategoriID.SelectedValue), AzamiMiktar=Convert.ToDecimal(txtAzami.Text)};
-                        if (bs.Insert(entity))
+                        MessageBox.Show("Böyle Bir Ürün Vardır. Aynı Ürünü Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        using (UrunBS bs = new UrunBS())
                         {
-                            MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            f.GridDoldur();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UrunEntity entity = new UrunEntity { UrunAdi = txtUrunAdi.Text, SaklamaKosuluID = Convert.ToInt64(cmbSaklamaKosuluID.SelectedValue), OlcuBirimID = Convert.ToInt64(cmbOlcuBirimi.SelectedValue), KategoriID = Convert.ToInt64(cmbKategoriID.SelectedValue), AzamiMiktar = Convert.ToDecimal(txtAzami.Text) };
+                            if (bs.Insert(entity))
+                            {
+                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                f.GridDoldur();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
                 else if (button1.Text == "Güncelle")
                 {
-                    using (UrunBS bs = new UrunBS())
+                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["UrunAdi"]).ToString().ToLower().Trim() == txtUrunAdi.Text.ToLower().Trim()&&x["UrunID"].ToString()!=button1.Tag.ToString()).Count() > 0)
                     {
-                        UrunEntity entity = new UrunEntity {UrunID=Convert.ToInt64(button1.Tag), UrunAdi =txtUrunAdi.Text, SaklamaKosuluID=Convert.ToInt64(cmbSaklamaKosuluID.SelectedValue), OlcuBirimID=Convert.ToInt64( cmbOlcuBirimi.SelectedValue), KategoriID=Convert.ToInt64(cmbKategoriID.SelectedValue), AzamiMiktar=Convert.ToDecimal(txtAzami.Text)};
-                        if (bs.Update(entity))
+                        MessageBox.Show("Böyle Bir Ürün Vardır. Aynı Ürünü Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        using (UrunBS bs = new UrunBS())
                         {
-                            MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            f.GridDoldur();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Güncelleme Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            UrunEntity entity = new UrunEntity { UrunID = Convert.ToInt64(button1.Tag), UrunAdi = txtUrunAdi.Text, SaklamaKosuluID = Convert.ToInt64(cmbSaklamaKosuluID.SelectedValue), OlcuBirimID = Convert.ToInt64(cmbOlcuBirimi.SelectedValue), KategoriID = Convert.ToInt64(cmbKategoriID.SelectedValue), AzamiMiktar = Convert.ToDecimal(txtAzami.Text) };
+                            if (bs.Update(entity))
+                            {
+                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                f.GridDoldur();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Güncelleme Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -103,6 +114,11 @@ namespace TurStok.Tanimlamalar
         private void UrunEkleGuncelle_Load(object sender, EventArgs e)
         {
             cmbleriDoldur();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

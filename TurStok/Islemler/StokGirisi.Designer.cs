@@ -30,16 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.grdBeklenen = new System.Windows.Forms.DataGridView();
-            this.turStokDataSet = new TurStok.TurStokDataSet();
-            this.depoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.depoTableAdapter = new TurStok.TurStokDataSetTableAdapters.DepoTableAdapter();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbDepoID = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtSonTarih = new System.Windows.Forms.MaskedTextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtGelenMiktar = new System.Windows.Forms.TextBox();
             this.FaturaDetayID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DSNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UrunId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +42,17 @@
             this.OlcuBirimi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MiadVarmi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Gir = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.turStokDataSet = new TurStok.TurStokDataSet();
+            this.depoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.depoTableAdapter = new TurStok.TurStokDataSetTableAdapters.DepoTableAdapter();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtGelenMiktar = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtSonTarih = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbDepoID = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdBeklenen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.turStokDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.depoBindingSource)).BeginInit();
@@ -83,89 +84,6 @@
             this.grdBeklenen.Size = new System.Drawing.Size(746, 409);
             this.grdBeklenen.TabIndex = 1;
             this.grdBeklenen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdFaturaDetay_CellContentClick);
-            // 
-            // turStokDataSet
-            // 
-            this.turStokDataSet.DataSetName = "TurStokDataSet";
-            this.turStokDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // depoBindingSource
-            // 
-            this.depoBindingSource.DataMember = "Depo";
-            this.depoBindingSource.DataSource = this.turStokDataSet;
-            // 
-            // depoTableAdapter
-            // 
-            this.depoTableAdapter.ClearBeforeFill = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtGelenMiktar);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtSonTarih);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cmbDepoID);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(14, 434);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(645, 123);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Malzeme Bilgileri";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Depo Adı";
-            // 
-            // cmbDepoID
-            // 
-            this.cmbDepoID.FormattingEnabled = true;
-            this.cmbDepoID.Location = new System.Drawing.Point(10, 58);
-            this.cmbDepoID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmbDepoID.Name = "cmbDepoID";
-            this.cmbDepoID.Size = new System.Drawing.Size(149, 24);
-            this.cmbDepoID.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(176, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Son Kullanım Tarihi";
-            // 
-            // txtSonTarih
-            // 
-            this.txtSonTarih.Location = new System.Drawing.Point(179, 58);
-            this.txtSonTarih.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSonTarih.Mask = "00.00.0000";
-            this.txtSonTarih.Name = "txtSonTarih";
-            this.txtSonTarih.Size = new System.Drawing.Size(123, 23);
-            this.txtSonTarih.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(327, 37);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(275, 16);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Gelen miktar (Beklenenden Farklıysa Doldurun)";
-            // 
-            // txtGelenMiktar
-            // 
-            this.txtGelenMiktar.Location = new System.Drawing.Point(330, 57);
-            this.txtGelenMiktar.Name = "txtGelenMiktar";
-            this.txtGelenMiktar.Size = new System.Drawing.Size(156, 23);
-            this.txtGelenMiktar.TabIndex = 6;
             // 
             // FaturaDetayID
             // 
@@ -269,11 +187,106 @@
             this.Gir.ToolTipText = "Teslim Al";
             this.Gir.UseColumnTextForButtonValue = true;
             // 
+            // turStokDataSet
+            // 
+            this.turStokDataSet.DataSetName = "TurStokDataSet";
+            this.turStokDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // depoBindingSource
+            // 
+            this.depoBindingSource.DataMember = "Depo";
+            this.depoBindingSource.DataSource = this.turStokDataSet;
+            // 
+            // depoTableAdapter
+            // 
+            this.depoTableAdapter.ClearBeforeFill = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtGelenMiktar);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtSonTarih);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.cmbDepoID);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(14, 434);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(645, 123);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Malzeme Bilgileri";
+            // 
+            // txtGelenMiktar
+            // 
+            this.txtGelenMiktar.Location = new System.Drawing.Point(330, 57);
+            this.txtGelenMiktar.Name = "txtGelenMiktar";
+            this.txtGelenMiktar.Size = new System.Drawing.Size(156, 23);
+            this.txtGelenMiktar.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(327, 37);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(275, 16);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Gelen miktar (Beklenenden Farklıysa Doldurun)";
+            // 
+            // txtSonTarih
+            // 
+            this.txtSonTarih.Location = new System.Drawing.Point(179, 58);
+            this.txtSonTarih.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSonTarih.Mask = "00.00.0000";
+            this.txtSonTarih.Name = "txtSonTarih";
+            this.txtSonTarih.Size = new System.Drawing.Size(123, 23);
+            this.txtSonTarih.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(176, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(119, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Son Kullanım Tarihi";
+            // 
+            // cmbDepoID
+            // 
+            this.cmbDepoID.FormattingEnabled = true;
+            this.cmbDepoID.Location = new System.Drawing.Point(10, 58);
+            this.cmbDepoID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbDepoID.Name = "cmbDepoID";
+            this.cmbDepoID.Size = new System.Drawing.Size(149, 24);
+            this.cmbDepoID.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Depo Adı";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(24, 564);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(149, 39);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Faturasız Giriş";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // StokGirisi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(792, 655);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grdBeklenen);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -315,5 +328,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OlcuBirimi;
         private System.Windows.Forms.DataGridViewCheckBoxColumn MiadVarmi;
         private System.Windows.Forms.DataGridViewButtonColumn Gir;
+        private System.Windows.Forms.Button button1;
     }
 }

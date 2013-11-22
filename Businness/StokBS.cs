@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Businness
 {
-    public class StokBS:DisposeEt
+    public class StokBS : DisposeEt
     {
         TurVek.TurVek vek;
         public StokBS()
@@ -25,16 +25,25 @@ namespace Businness
         }
         public bool Insert(StokEntity entity)
         {
-            return vek.ExecuteNonQuery(CommandType.Text, "insert into Stok (UrunID,DepoID,MarkaID,TedarikciID, KalanMiktar, GelisTarihi,SonKullanmaTarihi,FaturaDetayID,OlcuBirimID) values(@a,@b,@c,@d,@e,@f,@g,@h,@J)", entity.UrunID, entity.DepoID, entity.MarkaID, entity.TedarikciID, entity.KalanMiktar, entity.GelisTarihi, entity.SonKullanmaTarihi.Value, entity.FaturaDetayID.Value, entity.OlcuBirimID) > 0 ? true : false;
+            if (entity.SonKullanmaTarihi.HasValue && entity.FaturaDetayID.HasValue)
+                return vek.ExecuteNonQuery(CommandType.Text, "insert into Stok (UrunID,DepoID,MarkaID,TedarikciID, KalanMiktar, GelisTarihi,SonKullanmaTarihi,FaturaDetayID,OlcuBirimID) values(@a,@b,@c,@d,@e,@f,@g,@h,@J)", entity.UrunID, entity.DepoID, entity.MarkaID, entity.TedarikciID, entity.KalanMiktar, entity.GelisTarihi, entity.SonKullanmaTarihi, entity.FaturaDetayID, entity.OlcuBirimID) > 0 ? true : false;
+            else if (entity.SonKullanmaTarihi.HasValue && !entity.FaturaDetayID.HasValue)
+                return vek.ExecuteNonQuery(CommandType.Text, "insert into Stok (UrunID,DepoID,MarkaID,TedarikciID, KalanMiktar, GelisTarihi,SonKullanmaTarihi,OlcuBirimID) values(@a,@b,@c,@d,@e,@f,@g,@h)", entity.UrunID, entity.DepoID, entity.MarkaID, entity.TedarikciID, entity.KalanMiktar, entity.GelisTarihi, entity.SonKullanmaTarihi, entity.OlcuBirimID) > 0 ? true : false;
+            else if (!entity.SonKullanmaTarihi.HasValue && !entity.FaturaDetayID.HasValue)
+                return vek.ExecuteNonQuery(CommandType.Text, "insert into Stok (UrunID,DepoID,MarkaID,TedarikciID, KalanMiktar, GelisTarihi,OlcuBirimID) values(@a,@b,@c,@d,@e,@f,@g)", entity.UrunID, entity.DepoID, entity.MarkaID, entity.TedarikciID, entity.KalanMiktar, entity.GelisTarihi, entity.OlcuBirimID) > 0 ? true : false;
+            else if (!entity.SonKullanmaTarihi.HasValue && entity.FaturaDetayID.HasValue)
+                return vek.ExecuteNonQuery(CommandType.Text, "insert into Stok (UrunID,DepoID,MarkaID,TedarikciID, KalanMiktar, GelisTarihi,FaturaDetayID,OlcuBirimID) values(@a,@b,@c,@d,@e,@f,@g,@h)", entity.UrunID, entity.DepoID, entity.MarkaID, entity.TedarikciID, entity.KalanMiktar, entity.GelisTarihi,  entity.FaturaDetayID, entity.OlcuBirimID) > 0 ? true : false;
+            else return false;
+
         }
         public bool DepodanCik(long StokID, decimal KalanMiktar)
         {
-            return vek.ExecuteNonQuery(CommandType.Text, "update Stok set KalanMiktar=@kalan  where StokID=@a ", KalanMiktar,StokID) > 0 ? true : false;
+            return vek.ExecuteNonQuery(CommandType.Text, "update Stok set KalanMiktar=@kalan  where StokID=@a ", KalanMiktar, StokID) > 0 ? true : false;
         }
         public bool DepoDegistir(long StokID, long DepoID)
         {
             return vek.ExecuteNonQuery(CommandType.Text, "update Stok set DepoID=@DepoID  where StokID=@a ", DepoID, StokID) > 0 ? true : false;
         }
-        
+
     }
 }

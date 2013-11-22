@@ -22,7 +22,7 @@ namespace TurStok.Islemler
             lblDeposu.Text = secilen["DepoAdi"].ToString();
             lblGelisTarihi.Text = Convert.ToDateTime(secilen["GelisTarihi"]).ToShortDateString();
             lblKategorisi.Text = secilen["KategoriAdi"].ToString();
-            lblSonKullanmaTarihi.Text = Convert.ToDateTime(secilen["SonKullanmaTarihi"]).ToShortDateString();
+            lblSonKullanmaTarihi.Text =!string.IsNullOrEmpty(secilen["SonKullanmaTarihi"].ToString())? Convert.ToDateTime(secilen["SonKullanmaTarihi"]).ToString("dd.MM.yyyy"):"-";
             lblDeposu.Text = secilen["DepoAdi"].ToString();
             lblTedarikcisi.Text = secilen["TedarikciAdi"].ToString();
             button1.Tag = secilen["StokID"];

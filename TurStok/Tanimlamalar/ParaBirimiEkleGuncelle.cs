@@ -18,7 +18,7 @@ namespace TurStok.Tanimlamalar
             InitializeComponent();
             f = form as ParaBirimiTanimla;
         }
-        public ParaBirimiEkleGuncelle (ParaBirimiTanimla form, ParaBirimiEntity entity)
+        public ParaBirimiEkleGuncelle(ParaBirimiTanimla form, ParaBirimiEntity entity)
         {
             InitializeComponent();
             f = form as ParaBirimiTanimla;
@@ -34,46 +34,56 @@ namespace TurStok.Tanimlamalar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
             if (string.IsNullOrEmpty(txtAdi.Text))
             {
                 MessageBox.Show("Para Birimi Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (f.dt.Rows.Cast<DataRow>().Where(x => (x["ParaBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
-            {
-                MessageBox.Show("Böyle Bir Para Birimi Vardır. Aynı Para Birimini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
                 if (button1.Text == "Ekle")
                 {
-                    using (ParaBirimiBS bs = new ParaBirimiBS())
+                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["ParaBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
                     {
-                        ParaBirimiEntity entity = new ParaBirimiEntity { ParaBirimi = txtAdi.Text };
-                        if (bs.Insert(entity))
+                        MessageBox.Show("Böyle Bir Para Birimi Vardır. Aynı Para Birimini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        using (ParaBirimiBS bs = new ParaBirimiBS())
                         {
-                            MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            f.GridDoldur();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            ParaBirimiEntity entity = new ParaBirimiEntity { ParaBirimi = txtAdi.Text };
+                            if (bs.Insert(entity))
+                            {
+                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                f.GridDoldur();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
                 else if (button1.Text == "Güncelle")
                 {
-                    using (ParaBirimiBS bs = new ParaBirimiBS())
+                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["ParaBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()&&x["ParaBirimiID"].ToString()!=button1.Tag.ToString()).Count() > 0)
                     {
-                        ParaBirimiEntity entity = new ParaBirimiEntity { ParaBirimiID = Convert.ToInt64(button1.Tag), ParaBirimi = txtAdi.Text };
-                        if (bs.Update(entity))
+                        MessageBox.Show("Böyle Bir Para Birimi Vardır. Aynı Para Birimini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        using (ParaBirimiBS bs = new ParaBirimiBS())
                         {
-                            MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            f.GridDoldur();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Güncelleme Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            ParaBirimiEntity entity = new ParaBirimiEntity { ParaBirimiID = Convert.ToInt64(button1.Tag), ParaBirimi = txtAdi.Text };
+                            if (bs.Update(entity))
+                            {
+                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                f.GridDoldur();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Güncelleme Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }

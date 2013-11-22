@@ -95,7 +95,7 @@
             this.Controls.Add(this.grdOlcuBirimi);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "DepoTanimla";
-            this.Text = "Depo Tanımla";
+            this.Text = "Saykalam Yeri Tanımla";
             this.Load += new System.EventHandler(this.DepoTanimla_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdOlcuBirimi)).EndInit();
             this.ResumeLayout(false);

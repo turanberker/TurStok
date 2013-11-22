@@ -69,10 +69,14 @@
   <PropertyGroup>
     <StartupObject>TurStok.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>1380753776_143829.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -88,6 +92,8 @@
     <Compile Include="Hakkinda.Designer.cs">
       <DependentUpon>Hakkinda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ExceptionLogger.cs" />
+    <Compile Include="Helper\MailClass.cs" />
     <Compile Include="Islemler\FaturaDetay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,12 @@
       <DependentUpon>Faturalar.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\GridDoldurucular.cs" />
+    <Compile Include="Islemler\FaturasizGiris.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Islemler\FaturasizGiris.Designer.cs">
+      <DependentUpon>FaturasizGiris.cs</DependentUpon>
+    </Compile>
     <Compile Include="Islemler\IhtiyacListesi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +276,9 @@
     <EmbeddedResource Include="Islemler\Faturalar.resx">
       <DependentUpon>Faturalar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Islemler\FaturasizGiris.resx">
+      <DependentUpon>FaturasizGiris.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Islemler\IhtiyacListesi.resx">
       <DependentUpon>IhtiyacListesi.cs</DependentUpon>
     </EmbeddedResource>
@@ -377,7 +392,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="1380753776_143829.ico" />
+    <Content Include="icon\kisayol.ico" />
     <Content Include="icon\Odeme.png" />
+    <Content Include="MailFormat\ExceptionMail.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

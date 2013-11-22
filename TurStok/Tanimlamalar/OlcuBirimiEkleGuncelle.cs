@@ -34,41 +34,51 @@ namespace TurStok.Tanimlamalar
             {
                 MessageBox.Show("Ölçü Birimi Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (f.dt.Rows.Cast<DataRow>().Where(x => (x["OlcuBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
-            {
-                MessageBox.Show("Böyle Bir Ölçü Birimi Vardır. Aynı Ölçü Birimini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
+                        else
             {
                 if (button1.Text == "Ekle")
                 {
-                    using (OlcuBirimiBS bs = new OlcuBirimiBS())
+                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["OlcuBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
                     {
-                        OlcuBirimiEntity entity = new OlcuBirimiEntity { OlcuBirimi = txtAdi.Text };
-                        if (bs.Insert(entity))
+                        MessageBox.Show("Böyle Bir Ölçü Birimi Vardır. Aynı Ölçü Birimini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        using (OlcuBirimiBS bs = new OlcuBirimiBS())
                         {
-                            MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            f.GridDoldur();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            OlcuBirimiEntity entity = new OlcuBirimiEntity { OlcuBirimi = txtAdi.Text };
+                            if (bs.Insert(entity))
+                            {
+                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                f.GridDoldur();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
                 else if (button1.Text == "Güncelle")
                 {
-                    using (OlcuBirimiBS bs = new OlcuBirimiBS())
+                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["OlcuBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()&&x["OlcuBirimiID"].ToString()!=button1.Tag.ToString()).Count() > 0)
                     {
-                        OlcuBirimiEntity entity = new OlcuBirimiEntity { OlcuBirimiID = Convert.ToInt64(button1.Tag), OlcuBirimi = txtAdi.Text };
-                        if (bs.Update(entity))
+                        MessageBox.Show("Böyle Bir Ölçü Birimi Vardır. Aynı Ölçü Birimini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        using (OlcuBirimiBS bs = new OlcuBirimiBS())
                         {
-                            MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            f.GridDoldur();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Güncelleme Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            OlcuBirimiEntity entity = new OlcuBirimiEntity { OlcuBirimiID = Convert.ToInt64(button1.Tag), OlcuBirimi = txtAdi.Text };
+                            if (bs.Update(entity))
+                            {
+                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                f.GridDoldur();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Güncelleme Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }

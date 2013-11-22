@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using TurStok.Islemler;
@@ -80,36 +82,46 @@ namespace TurStok
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "Admin" && textBox2.Text == "admin")
-            {
 
-                tanımlamalarToolStripMenuItem.Enabled = true;
-                islemlerToolStripMenuItem.Enabled = true;
-                cikisToolStripMenuItem.Enabled = true;
-                bağlanToolStripMenuItem.Enabled = false;
-                toolStripLabel2.Text = "Admin - " + DateTime.Today.ToString("dd.MM.yyyy");
-                toolStripButton1.Enabled = true;
-                
-                groupBox1.Visible = false;
-                GridleriDoldur();
-
-            }
-            else if (textBox1.Text == "User" && textBox2.Text == "user")
+            try
             {
+                if (textBox1.Text == "Admin" && textBox2.Text == "admin")
+                {
 
-                islemlerToolStripMenuItem.Enabled = true;
-                cikisToolStripMenuItem.Enabled = true;
-                bağlanToolStripMenuItem.Enabled = false;
-                toolStripLabel2.Text = "User - " + DateTime.Today.ToString("dd.MM.yyyy");
-                toolStripButton1.Enabled = true;
-                groupBox1.Visible = false;
-                GridleriDoldur();
+                    tanımlamalarToolStripMenuItem.Enabled = true;
+                    islemlerToolStripMenuItem.Enabled = true;
+                    cikisToolStripMenuItem.Enabled = true;
+                    bağlanToolStripMenuItem.Enabled = false;
+                    toolStripLabel2.Text = "Admin - " + DateTime.Today.ToString("dd.MM.yyyy");
+                    toolStripButton1.Enabled = true;
+
+                    groupBox1.Visible = false;
+                    GridleriDoldur();
+
+                }
+                else if (textBox1.Text == "User" && textBox2.Text == "user")
+                {
+
+                    islemlerToolStripMenuItem.Enabled = true;
+                    cikisToolStripMenuItem.Enabled = true;
+                    bağlanToolStripMenuItem.Enabled = false;
+                    toolStripLabel2.Text = "User - " + DateTime.Today.ToString("dd.MM.yyyy");
+                    toolStripButton1.Enabled = true;
+                    groupBox1.Visible = false;
+                    GridleriDoldur();
+                }
+                else
+                {
+                    MessageBox.Show("Kullanıcı Adı-Şifre Uyumsuz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                textBox1.Text = textBox2.Text = "";
             }
-            else
+            catch (Exception exp)
             {
-                MessageBox.Show("Kullanıcı Adı-Şifre Uyumsuz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StackTrace st = new StackTrace();
+                StackFrame sf = new StackFrame();
+                new Helper.ExceptionLogger().ThrowExp(exp, this as Form, sf.GetMethod().Name);
             }
-            textBox1.Text = textBox2.Text = "";
         }
         private void cikisToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -276,7 +288,7 @@ namespace TurStok
             Form f = Varmi("Stok");
             if (f == null)
             {
-                f = new Stok(this as Main,StokDataTable);
+                f = new Stok(this as Main, StokDataTable);
                 f.MdiParent = this;
                 f.Show();
             }
@@ -307,7 +319,7 @@ namespace TurStok
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("tr-TR");
             Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
             StokDataTable = arac.StoguGetir();
-            
+
             using (DataView dw = new DataView(StokDataTable))
             {
                 dw.RowFilter = "MiadVarmi = 'True'";
@@ -331,20 +343,16 @@ namespace TurStok
 
         private void grd1ay_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            DataRow secilen = StokDataTable.Rows.Cast<DataRow>().Where(x => x["StokID"].ToString() == (sender as DataGridView).Rows[e.RowIndex].Cells[0].Value.ToString()).FirstOrDefault();
+            //      string ID = (sender as DataGridView).Rows[e.RowIndex].Cells[0].Value.ToString();
+            DataRow secilen = StokDataTable.Rows.Cast<DataRow>().Where(x => x["StokID"].ToString() == grd1ay.Rows[e.RowIndex].Cells["StokID1ay"].Value.ToString()).FirstOrDefault();
             Form f = Varmi("StokDetay");
-            if (f == null)
+            if (f != null)
             {
-                f = new StokDetay(this as Main, secilen);
-                f.MdiParent = this;
-                f.Show();
+                f.Close();
             }
-            else
-            {
-                f.BringToFront();
-                this.ActivateMdiChild(f);
-            }
+            f = new StokDetay(this as Main, secilen);
+            f.MdiParent = this;
+            f.Show();
         }
 
         private void siparişLİstesiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -377,6 +385,34 @@ namespace TurStok
                 f.BringToFront();
                 this.ActivateMdiChild(f);
             }
+        }
+
+        private void grd2ay_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //   string ID = (sender as DataGridView).Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn14"].Value.ToString();
+            DataRow secilen = StokDataTable.Rows.Cast<DataRow>().Where(x => x["StokID"].ToString() == grd2ay.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn14"].Value.ToString()).FirstOrDefault();
+            Form f = Varmi("StokDetay");
+            if (f != null)
+            {
+                f.Close();
+            }
+            f = new StokDetay(this as Main, secilen);
+            f.MdiParent = this;
+            f.Show();
+        }
+
+        private void grdBitenler_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //string ID = (sender as DataGridView).Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn1"].Value.ToString();
+            DataRow secilen = StokDataTable.Rows.Cast<DataRow>().Where(x => x["StokID"].ToString() == grdBitenler.Rows[e.RowIndex].Cells["dataGridViewTextBoxColumn1"].Value.ToString()).FirstOrDefault();
+            Form f = Varmi("StokDetay");
+            if (f != null)
+            {
+                f.Close();
+            }
+            f = new StokDetay(this as Main, secilen);
+            f.MdiParent = this;
+            f.Show();
         }
 
     }

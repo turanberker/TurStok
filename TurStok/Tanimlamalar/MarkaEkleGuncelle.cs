@@ -33,41 +33,51 @@ namespace TurStok.Tanimlamalar
             {
                 MessageBox.Show("Marka Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (f.dt.Rows.Cast<DataRow>().Where(x => (x["MarkaAdi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
-            {
-                MessageBox.Show("Böyle Bir Marka Vardır. Aynı Kategori Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
+                       else
             {
                 if (button1.Text == "Ekle")
                 {
-                    using (MarkaBS bs = new MarkaBS())
+                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["MarkaAdi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
                     {
-                        MarkaEntity entity = new MarkaEntity { MarkaAdi = txtAdi.Text };
-                        if (bs.Insert(entity))
+                        MessageBox.Show("Böyle Bir Marka Vardır. Aynı Kategori Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        using (MarkaBS bs = new MarkaBS())
                         {
-                            MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            f.GridDoldur();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MarkaEntity entity = new MarkaEntity { MarkaAdi = txtAdi.Text };
+                            if (bs.Insert(entity))
+                            {
+                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                f.GridDoldur();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
                 else if (button1.Text == "Güncelle")
                 {
-                    using (MarkaBS bs = new MarkaBS())
+                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["MarkaAdi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()&&x["MarkaID"].ToString()!=button1.Tag.ToString()).Count() > 0)
                     {
-                        MarkaEntity entity = new MarkaEntity { MarkaID = Convert.ToInt64(button1.Tag), MarkaAdi = txtAdi.Text };
-                        if (bs.Update(entity))
+                        MessageBox.Show("Böyle Bir Marka Vardır. Aynı Kategori Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        using (MarkaBS bs = new MarkaBS())
                         {
-                            MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            f.GridDoldur();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Güncelleme Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MarkaEntity entity = new MarkaEntity { MarkaID = Convert.ToInt64(button1.Tag), MarkaAdi = txtAdi.Text };
+                            if (bs.Update(entity))
+                            {
+                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                f.GridDoldur();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Güncelleme Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
