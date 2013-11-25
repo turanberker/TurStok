@@ -27,7 +27,8 @@ namespace TurStok
         
         private void grdStok_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataRow secilen = anaform.StokDataTable.Rows.Cast<DataRow>().Where(x => x["StokID"].ToString() == (sender as DataGridView).Rows[e.RowIndex].Cells[0].Value.ToString()).FirstOrDefault();
+            string asd = grdStok.Rows[e.RowIndex].Cells["StokID"].Value.ToString();
+            DataRow secilen = anaform.StokDataTable.Rows.Cast<DataRow>().Where(x => x["StokID"].ToString() == grdStok.Rows[e.RowIndex].Cells["StokID"].Value.ToString()).FirstOrDefault();
             Form f =anaform.Varmi("StokDetay");
             if (f == null)
             {

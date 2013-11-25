@@ -29,6 +29,22 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkOdeme = new System.Windows.Forms.CheckBox();
+            this.lblAciklama = new System.Windows.Forms.Label();
+            this.lblOdemeSekli = new System.Windows.Forms.Label();
+            this.lblParaBirimi = new System.Windows.Forms.Label();
+            this.lblFaturaTutari = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblKur = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblTedarikci = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblFaturaTarihi = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblFaturaNo = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.grdFaturaDetay = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.SNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,26 +55,9 @@
             this.OlcuBirimi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BirimFiyati = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KDVOrani = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToplamFiyat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KDVTutari = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KDVDahil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TeslimAlindimi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.lblFaturaNo = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblFaturaTarihi = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblTedarikci = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblKur = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblFaturaTutari = new System.Windows.Forms.Label();
-            this.lblParaBirimi = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblOdemeSekli = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.lblAciklama = new System.Windows.Forms.Label();
-            this.chkOdeme = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdFaturaDetay)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -90,6 +89,183 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fatura Bilgisi";
             // 
+            // chkOdeme
+            // 
+            this.chkOdeme.AutoSize = true;
+            this.chkOdeme.Enabled = false;
+            this.chkOdeme.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.chkOdeme.Location = new System.Drawing.Point(9, 193);
+            this.chkOdeme.Name = "chkOdeme";
+            this.chkOdeme.Size = new System.Drawing.Size(129, 17);
+            this.chkOdeme.TabIndex = 8;
+            this.chkOdeme.Text = "Ödemesi Yapıldımı";
+            this.chkOdeme.UseVisualStyleBackColor = true;
+            // 
+            // lblAciklama
+            // 
+            this.lblAciklama.AccessibleName = "";
+            this.lblAciklama.AutoSize = true;
+            this.lblAciklama.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblAciklama.Location = new System.Drawing.Point(147, 162);
+            this.lblAciklama.Name = "lblAciklama";
+            this.lblAciklama.Size = new System.Drawing.Size(48, 13);
+            this.lblAciklama.TabIndex = 7;
+            this.lblAciklama.Text = "Ürün Adı";
+            // 
+            // lblOdemeSekli
+            // 
+            this.lblOdemeSekli.AccessibleName = "";
+            this.lblOdemeSekli.AutoSize = true;
+            this.lblOdemeSekli.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblOdemeSekli.Location = new System.Drawing.Point(147, 140);
+            this.lblOdemeSekli.Name = "lblOdemeSekli";
+            this.lblOdemeSekli.Size = new System.Drawing.Size(48, 13);
+            this.lblOdemeSekli.TabIndex = 7;
+            this.lblOdemeSekli.Text = "Ürün Adı";
+            // 
+            // lblParaBirimi
+            // 
+            this.lblParaBirimi.AccessibleName = "";
+            this.lblParaBirimi.AutoSize = true;
+            this.lblParaBirimi.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblParaBirimi.Location = new System.Drawing.Point(220, 118);
+            this.lblParaBirimi.Name = "lblParaBirimi";
+            this.lblParaBirimi.Size = new System.Drawing.Size(48, 13);
+            this.lblParaBirimi.TabIndex = 7;
+            this.lblParaBirimi.Text = "Ürün Adı";
+            // 
+            // lblFaturaTutari
+            // 
+            this.lblFaturaTutari.AccessibleName = "";
+            this.lblFaturaTutari.AutoSize = true;
+            this.lblFaturaTutari.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblFaturaTutari.Location = new System.Drawing.Point(147, 118);
+            this.lblFaturaTutari.Name = "lblFaturaTutari";
+            this.lblFaturaTutari.Size = new System.Drawing.Size(48, 13);
+            this.lblFaturaTutari.TabIndex = 7;
+            this.lblFaturaTutari.Text = "Ürün Adı";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(6, 162);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(71, 13);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Açıklama   :";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(6, 140);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(89, 13);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Ödeme Şekli   :";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(6, 118);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Fatura Tutarı   :";
+            // 
+            // lblKur
+            // 
+            this.lblKur.AccessibleName = "";
+            this.lblKur.AutoSize = true;
+            this.lblKur.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblKur.Location = new System.Drawing.Point(147, 93);
+            this.lblKur.Name = "lblKur";
+            this.lblKur.Size = new System.Drawing.Size(48, 13);
+            this.lblKur.TabIndex = 7;
+            this.lblKur.Text = "Ürün Adı";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(6, 93);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Kur   :";
+            // 
+            // lblTedarikci
+            // 
+            this.lblTedarikci.AccessibleName = "";
+            this.lblTedarikci.AutoSize = true;
+            this.lblTedarikci.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblTedarikci.Location = new System.Drawing.Point(147, 70);
+            this.lblTedarikci.Name = "lblTedarikci";
+            this.lblTedarikci.Size = new System.Drawing.Size(48, 13);
+            this.lblTedarikci.TabIndex = 7;
+            this.lblTedarikci.Text = "Ürün Adı";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(6, 70);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Firma Adi   :";
+            // 
+            // lblFaturaTarihi
+            // 
+            this.lblFaturaTarihi.AccessibleName = "";
+            this.lblFaturaTarihi.AutoSize = true;
+            this.lblFaturaTarihi.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblFaturaTarihi.Location = new System.Drawing.Point(147, 46);
+            this.lblFaturaTarihi.Name = "lblFaturaTarihi";
+            this.lblFaturaTarihi.Size = new System.Drawing.Size(48, 13);
+            this.lblFaturaTarihi.TabIndex = 5;
+            this.lblFaturaTarihi.Text = "Ürün Adı";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(6, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Fatura Tarihi   :";
+            // 
+            // lblFaturaNo
+            // 
+            this.lblFaturaNo.AccessibleName = "";
+            this.lblFaturaNo.AutoSize = true;
+            this.lblFaturaNo.Font = new System.Drawing.Font("Tahoma", 8.25F);
+            this.lblFaturaNo.Location = new System.Drawing.Point(147, 22);
+            this.lblFaturaNo.Name = "lblFaturaNo";
+            this.lblFaturaNo.Size = new System.Drawing.Size(48, 13);
+            this.lblFaturaNo.TabIndex = 3;
+            this.lblFaturaNo.Text = "Ürün Adı";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Red;
+            this.label1.Location = new System.Drawing.Point(6, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Fatura No   :";
+            // 
             // grdFaturaDetay
             // 
             this.grdFaturaDetay.AllowUserToAddRows = false;
@@ -104,7 +280,6 @@
             this.OlcuBirimi,
             this.BirimFiyati,
             this.KDVOrani,
-            this.ToplamFiyat,
             this.KDVTutari,
             this.KDVDahil,
             this.TeslimAlindimi});
@@ -182,7 +357,7 @@
             // BirimFiyati
             // 
             this.BirimFiyati.DataPropertyName = "BirimFiyati";
-            this.BirimFiyati.HeaderText = "Birim Fiyati";
+            this.BirimFiyati.HeaderText = "Toplam Fiyati";
             this.BirimFiyati.Name = "BirimFiyati";
             this.BirimFiyati.ReadOnly = true;
             this.BirimFiyati.Width = 80;
@@ -194,16 +369,6 @@
             this.KDVOrani.Name = "KDVOrani";
             this.KDVOrani.ReadOnly = true;
             this.KDVOrani.Width = 80;
-            // 
-            // ToplamFiyat
-            // 
-            this.ToplamFiyat.DataPropertyName = "ToplamFiyat";
-            this.ToplamFiyat.HeaderText = "Toplam Fiyat";
-            this.ToplamFiyat.Name = "ToplamFiyat";
-            this.ToplamFiyat.ReadOnly = true;
-            this.ToplamFiyat.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ToplamFiyat.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ToplamFiyat.Width = 80;
             // 
             // KDVTutari
             // 
@@ -234,183 +399,6 @@
             this.TeslimAlindimi.ReadOnly = true;
             this.TeslimAlindimi.TrueValue = "True";
             // 
-            // lblFaturaNo
-            // 
-            this.lblFaturaNo.AccessibleName = "";
-            this.lblFaturaNo.AutoSize = true;
-            this.lblFaturaNo.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblFaturaNo.Location = new System.Drawing.Point(147, 22);
-            this.lblFaturaNo.Name = "lblFaturaNo";
-            this.lblFaturaNo.Size = new System.Drawing.Size(48, 13);
-            this.lblFaturaNo.TabIndex = 3;
-            this.lblFaturaNo.Text = "Ürün Adı";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(6, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Fatura No   :";
-            // 
-            // lblFaturaTarihi
-            // 
-            this.lblFaturaTarihi.AccessibleName = "";
-            this.lblFaturaTarihi.AutoSize = true;
-            this.lblFaturaTarihi.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblFaturaTarihi.Location = new System.Drawing.Point(147, 46);
-            this.lblFaturaTarihi.Name = "lblFaturaTarihi";
-            this.lblFaturaTarihi.Size = new System.Drawing.Size(48, 13);
-            this.lblFaturaTarihi.TabIndex = 5;
-            this.lblFaturaTarihi.Text = "Ürün Adı";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(6, 46);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Fatura Tarihi   :";
-            // 
-            // lblTedarikci
-            // 
-            this.lblTedarikci.AccessibleName = "";
-            this.lblTedarikci.AutoSize = true;
-            this.lblTedarikci.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblTedarikci.Location = new System.Drawing.Point(147, 70);
-            this.lblTedarikci.Name = "lblTedarikci";
-            this.lblTedarikci.Size = new System.Drawing.Size(48, 13);
-            this.lblTedarikci.TabIndex = 7;
-            this.lblTedarikci.Text = "Ürün Adı";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(6, 70);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Firma Adi   :";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(6, 93);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Kur   :";
-            // 
-            // lblKur
-            // 
-            this.lblKur.AccessibleName = "";
-            this.lblKur.AutoSize = true;
-            this.lblKur.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblKur.Location = new System.Drawing.Point(147, 93);
-            this.lblKur.Name = "lblKur";
-            this.lblKur.Size = new System.Drawing.Size(48, 13);
-            this.lblKur.TabIndex = 7;
-            this.lblKur.Text = "Ürün Adı";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(6, 118);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(93, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Fatura Tutarı   :";
-            // 
-            // lblFaturaTutari
-            // 
-            this.lblFaturaTutari.AccessibleName = "";
-            this.lblFaturaTutari.AutoSize = true;
-            this.lblFaturaTutari.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblFaturaTutari.Location = new System.Drawing.Point(147, 118);
-            this.lblFaturaTutari.Name = "lblFaturaTutari";
-            this.lblFaturaTutari.Size = new System.Drawing.Size(48, 13);
-            this.lblFaturaTutari.TabIndex = 7;
-            this.lblFaturaTutari.Text = "Ürün Adı";
-            // 
-            // lblParaBirimi
-            // 
-            this.lblParaBirimi.AccessibleName = "";
-            this.lblParaBirimi.AutoSize = true;
-            this.lblParaBirimi.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblParaBirimi.Location = new System.Drawing.Point(220, 118);
-            this.lblParaBirimi.Name = "lblParaBirimi";
-            this.lblParaBirimi.Size = new System.Drawing.Size(48, 13);
-            this.lblParaBirimi.TabIndex = 7;
-            this.lblParaBirimi.Text = "Ürün Adı";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(6, 140);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(89, 13);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "Ödeme Şekli   :";
-            // 
-            // lblOdemeSekli
-            // 
-            this.lblOdemeSekli.AccessibleName = "";
-            this.lblOdemeSekli.AutoSize = true;
-            this.lblOdemeSekli.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblOdemeSekli.Location = new System.Drawing.Point(147, 140);
-            this.lblOdemeSekli.Name = "lblOdemeSekli";
-            this.lblOdemeSekli.Size = new System.Drawing.Size(48, 13);
-            this.lblOdemeSekli.TabIndex = 7;
-            this.lblOdemeSekli.Text = "Ürün Adı";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(6, 162);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(71, 13);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "Açıklama   :";
-            // 
-            // lblAciklama
-            // 
-            this.lblAciklama.AccessibleName = "";
-            this.lblAciklama.AutoSize = true;
-            this.lblAciklama.Font = new System.Drawing.Font("Tahoma", 8.25F);
-            this.lblAciklama.Location = new System.Drawing.Point(147, 162);
-            this.lblAciklama.Name = "lblAciklama";
-            this.lblAciklama.Size = new System.Drawing.Size(48, 13);
-            this.lblAciklama.TabIndex = 7;
-            this.lblAciklama.Text = "Ürün Adı";
-            // 
-            // chkOdeme
-            // 
-            this.chkOdeme.AutoSize = true;
-            this.chkOdeme.Enabled = false;
-            this.chkOdeme.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.chkOdeme.Location = new System.Drawing.Point(9, 193);
-            this.chkOdeme.Name = "chkOdeme";
-            this.chkOdeme.Size = new System.Drawing.Size(129, 17);
-            this.chkOdeme.TabIndex = 8;
-            this.chkOdeme.Text = "Ödemesi Yapıldımı";
-            this.chkOdeme.UseVisualStyleBackColor = true;
-            // 
             // FaturaDetay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -435,18 +423,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView grdFaturaDetay;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UrunAdi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MarkaAdi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SiparisVerilenMiktar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GelenMiktar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OlcuBirimi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BirimFiyati;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KDVOrani;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ToplamFiyat;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KDVTutari;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KDVDahil;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn TeslimAlindimi;
         private System.Windows.Forms.Label lblFaturaNo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chkOdeme;
@@ -463,5 +439,16 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblFaturaTarihi;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UrunAdi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MarkaAdi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SiparisVerilenMiktar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GelenMiktar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OlcuBirimi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BirimFiyati;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KDVOrani;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KDVTutari;
+        private System.Windows.Forms.DataGridViewTextBoxColumn KDVDahil;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn TeslimAlindimi;
     }
 }

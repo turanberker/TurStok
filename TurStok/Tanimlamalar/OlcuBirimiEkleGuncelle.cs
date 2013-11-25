@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace TurStok.Tanimlamalar
@@ -18,7 +20,7 @@ namespace TurStok.Tanimlamalar
             InitializeComponent();
             f = form as OlcuBirimiTanimla;
         }
-        public OlcuBirimiEkleGuncelle(OlcuBirimiTanimla form,OlcuBirimiEntity entity)
+        public OlcuBirimiEkleGuncelle(OlcuBirimiTanimla form, OlcuBirimiEntity entity)
         {
             InitializeComponent();
             f = form as OlcuBirimiTanimla;
@@ -29,61 +31,74 @@ namespace TurStok.Tanimlamalar
         OlcuBirimiTanimla f;
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            if (string.IsNullOrEmpty(txtAdi.Text))
+            using (TransactionScope scope = new TransactionScope())
             {
-                MessageBox.Show("Ölçü Birimi Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-                        else
-            {
-                if (button1.Text == "Ekle")
+                try
                 {
-                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["OlcuBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
+                    if (string.IsNullOrEmpty(txtAdi.Text))
                     {
-                        MessageBox.Show("Böyle Bir Ölçü Birimi Vardır. Aynı Ölçü Birimini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Ölçü Birimi Adı Kısmını doldurmanız gerekmektedir", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
                     }
                     else
                     {
-                        using (OlcuBirimiBS bs = new OlcuBirimiBS())
+                        if (button1.Text == "Ekle")
                         {
-                            OlcuBirimiEntity entity = new OlcuBirimiEntity { OlcuBirimi = txtAdi.Text };
-                            if (bs.Insert(entity))
+                            if (f.dt.Rows.Cast<DataRow>().Where(x => (x["OlcuBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()).Count() > 0)
                             {
-                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                f.GridDoldur();
+                                MessageBox.Show("Böyle Bir Ölçü Birimi Vardır. Aynı Ölçü Birimini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
                             }
                             else
                             {
-                                MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                using (OlcuBirimiBS bs = new OlcuBirimiBS())
+                                {
+                                    OlcuBirimiEntity entity = new OlcuBirimiEntity { OlcuBirimi = txtAdi.Text };
+                                    if (bs.Insert(entity))
+                                    {
+                                        MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        f.GridDoldur();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Kayıt İşlemi Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+                                    }
+                                }
                             }
                         }
+                        else if (button1.Text == "Güncelle")
+                        {
+                            if (f.dt.Rows.Cast<DataRow>().Where(x => (x["OlcuBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim() && x["OlcuBirimiID"].ToString() != button1.Tag.ToString()).Count() > 0)
+                            {
+                                MessageBox.Show("Böyle Bir Ölçü Birimi Vardır. Aynı Ölçü Birimini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+                            }
+                            else
+                            {
+                                using (OlcuBirimiBS bs = new OlcuBirimiBS())
+                                {
+                                    OlcuBirimiEntity entity = new OlcuBirimiEntity { OlcuBirimiID = Convert.ToInt64(button1.Tag), OlcuBirimi = txtAdi.Text };
+                                    if (bs.Update(entity))
+                                    {
+                                        MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        f.GridDoldur();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Güncelleme Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+                                    }
+                                }
+                            }
+                        }
+                        scope.Complete();
+                        f.BringToFront();
+                        this.Close();
                     }
                 }
-                else if (button1.Text == "Güncelle")
+                catch (Exception exp)
                 {
-                    if (f.dt.Rows.Cast<DataRow>().Where(x => (x["OlcuBirimi"]).ToString().ToLower().Trim() == txtAdi.Text.ToLower().Trim()&&x["OlcuBirimiID"].ToString()!=button1.Tag.ToString()).Count() > 0)
-                    {
-                        MessageBox.Show("Böyle Bir Ölçü Birimi Vardır. Aynı Ölçü Birimini Tekrar Ekleyemezsiniz", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        using (OlcuBirimiBS bs = new OlcuBirimiBS())
-                        {
-                            OlcuBirimiEntity entity = new OlcuBirimiEntity { OlcuBirimiID = Convert.ToInt64(button1.Tag), OlcuBirimi = txtAdi.Text };
-                            if (bs.Update(entity))
-                            {
-                                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                f.GridDoldur();
-                            }
-                            else
-                            {
-                                MessageBox.Show("Güncelleme Sırasında Hata Oluştu. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
+                    StackTrace st = new StackTrace();
+                    StackFrame sf = new StackFrame();
+                    new Helper.ExceptionLogger().ThrowExp(exp, this as Form, sf.GetMethod().Name);
+                    return;
                 }
-                f.BringToFront();
-                this.Close();
             }
         }
 

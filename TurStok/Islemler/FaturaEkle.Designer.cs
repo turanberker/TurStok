@@ -43,10 +43,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.grdDetaylar = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblBirim = new System.Windows.Forms.Label();
             this.btnDetayEkle = new System.Windows.Forms.Button();
             this.cmbKDVOrani = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtBirimFiyati = new System.Windows.Forms.TextBox();
+            this.txtToplamFiyati = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSiparisVerilenMiktar = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -61,11 +62,12 @@
             this.MarkaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MarkaAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SiparisVerilenMiktar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BirimFiyati = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToplamFiyati = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KDVOrani = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KDVTutari = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GenelToplam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sil = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.UniqueID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetaylar)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -214,24 +216,27 @@
             this.MarkaID,
             this.MarkaAdi,
             this.SiparisVerilenMiktar,
-            this.BirimFiyati,
             this.ToplamFiyati,
             this.KDVOrani,
             this.KDVTutari,
-            this.GenelToplam});
+            this.GenelToplam,
+            this.Sil,
+            this.UniqueID});
             this.grdDetaylar.Location = new System.Drawing.Point(15, 149);
             this.grdDetaylar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.grdDetaylar.Name = "grdDetaylar";
             this.grdDetaylar.ReadOnly = true;
             this.grdDetaylar.Size = new System.Drawing.Size(986, 185);
             this.grdDetaylar.TabIndex = 1;
+            this.grdDetaylar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDetaylar_CellContentClick);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblBirim);
             this.groupBox2.Controls.Add(this.btnDetayEkle);
             this.groupBox2.Controls.Add(this.cmbKDVOrani);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.txtBirimFiyati);
+            this.groupBox2.Controls.Add(this.txtToplamFiyati);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.txtSiparisVerilenMiktar);
             this.groupBox2.Controls.Add(this.label9);
@@ -247,6 +252,15 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fatura Detayı Ekle";
+            // 
+            // lblBirim
+            // 
+            this.lblBirim.AutoSize = true;
+            this.lblBirim.Location = new System.Drawing.Point(465, 66);
+            this.lblBirim.Name = "lblBirim";
+            this.lblBirim.Size = new System.Drawing.Size(49, 16);
+            this.lblBirim.TabIndex = 19;
+            this.lblBirim.Text = "label12";
             // 
             // btnDetayEkle
             // 
@@ -268,7 +282,7 @@
             "1",
             "8",
             "18"});
-            this.cmbKDVOrani.Location = new System.Drawing.Point(617, 65);
+            this.cmbKDVOrani.Location = new System.Drawing.Point(649, 65);
             this.cmbKDVOrani.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbKDVOrani.Name = "cmbKDVOrani";
             this.cmbKDVOrani.Size = new System.Drawing.Size(168, 24);
@@ -277,29 +291,29 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(614, 32);
+            this.label11.Location = new System.Drawing.Point(646, 32);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(66, 16);
             this.label11.TabIndex = 16;
             this.label11.Text = "KDV Oranı";
             // 
-            // txtBirimFiyati
+            // txtToplamFiyati
             // 
-            this.txtBirimFiyati.Location = new System.Drawing.Point(493, 66);
-            this.txtBirimFiyati.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtBirimFiyati.MaxLength = 20;
-            this.txtBirimFiyati.Name = "txtBirimFiyati";
-            this.txtBirimFiyati.Size = new System.Drawing.Size(116, 23);
-            this.txtBirimFiyati.TabIndex = 15;
+            this.txtToplamFiyati.Location = new System.Drawing.Point(525, 66);
+            this.txtToplamFiyati.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtToplamFiyati.MaxLength = 20;
+            this.txtToplamFiyati.Name = "txtToplamFiyati";
+            this.txtToplamFiyati.Size = new System.Drawing.Size(116, 23);
+            this.txtToplamFiyati.TabIndex = 15;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(490, 32);
+            this.label10.Location = new System.Drawing.Point(522, 32);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 16);
+            this.label10.Size = new System.Drawing.Size(85, 16);
             this.label10.TabIndex = 14;
-            this.label10.Text = "Birim Fiyatı";
+            this.label10.Text = "Toplam Fiyatı";
             // 
             // txtSiparisVerilenMiktar
             // 
@@ -307,7 +321,7 @@
             this.txtSiparisVerilenMiktar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSiparisVerilenMiktar.MaxLength = 20;
             this.txtSiparisVerilenMiktar.Name = "txtSiparisVerilenMiktar";
-            this.txtSiparisVerilenMiktar.Size = new System.Drawing.Size(116, 23);
+            this.txtSiparisVerilenMiktar.Size = new System.Drawing.Size(94, 23);
             this.txtSiparisVerilenMiktar.TabIndex = 13;
             // 
             // label9
@@ -345,6 +359,7 @@
             this.cmbUrunID.Name = "cmbUrunID";
             this.cmbUrunID.Size = new System.Drawing.Size(168, 24);
             this.cmbUrunID.TabIndex = 9;
+            this.cmbUrunID.SelectedIndexChanged += new System.EventHandler(this.cmbUrunID_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -415,14 +430,6 @@
             this.SiparisVerilenMiktar.ReadOnly = true;
             this.SiparisVerilenMiktar.Width = 150;
             // 
-            // BirimFiyati
-            // 
-            this.BirimFiyati.DataPropertyName = "BirimFiyati";
-            this.BirimFiyati.HeaderText = "BirimFiyati";
-            this.BirimFiyati.Name = "BirimFiyati";
-            this.BirimFiyati.ReadOnly = true;
-            this.BirimFiyati.Width = 110;
-            // 
             // ToplamFiyati
             // 
             this.ToplamFiyati.DataPropertyName = "ToplamFiyati";
@@ -454,6 +461,23 @@
             this.GenelToplam.Name = "GenelToplam";
             this.GenelToplam.ReadOnly = true;
             this.GenelToplam.Width = 110;
+            // 
+            // Sil
+            // 
+            this.Sil.DataPropertyName = "UniqueID";
+            this.Sil.HeaderText = "Sil";
+            this.Sil.Name = "Sil";
+            this.Sil.ReadOnly = true;
+            this.Sil.Text = "Sil";
+            this.Sil.UseColumnTextForButtonValue = true;
+            // 
+            // UniqueID
+            // 
+            this.UniqueID.DataPropertyName = "UniqueID";
+            this.UniqueID.HeaderText = "UniqueID";
+            this.UniqueID.Name = "UniqueID";
+            this.UniqueID.ReadOnly = true;
+            this.UniqueID.Visible = false;
             // 
             // FaturaEkle
             // 
@@ -498,7 +522,7 @@
         private System.Windows.Forms.Button btnDetayEkle;
         private System.Windows.Forms.ComboBox cmbKDVOrani;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtBirimFiyati;
+        private System.Windows.Forms.TextBox txtToplamFiyati;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtSiparisVerilenMiktar;
         private System.Windows.Forms.Label label9;
@@ -507,17 +531,19 @@
         private System.Windows.Forms.ComboBox cmbUrunID;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblBirim;
         private System.Windows.Forms.DataGridViewTextBoxColumn SNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn UrunID;
         private System.Windows.Forms.DataGridViewTextBoxColumn UrunAdi;
         private System.Windows.Forms.DataGridViewTextBoxColumn MarkaID;
         private System.Windows.Forms.DataGridViewTextBoxColumn MarkaAdi;
         private System.Windows.Forms.DataGridViewTextBoxColumn SiparisVerilenMiktar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BirimFiyati;
         private System.Windows.Forms.DataGridViewTextBoxColumn ToplamFiyati;
         private System.Windows.Forms.DataGridViewTextBoxColumn KDVOrani;
         private System.Windows.Forms.DataGridViewTextBoxColumn KDVTutari;
         private System.Windows.Forms.DataGridViewTextBoxColumn GenelToplam;
+        private System.Windows.Forms.DataGridViewButtonColumn Sil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UniqueID;
 
     }
 }

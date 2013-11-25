@@ -22,7 +22,7 @@ namespace Businness
         }
         public DataTable JoinListe()
         {
-            return vek.GetDataTable(CommandType.Text, "select f.FaturaID,f.FaturaNo,f.TedarikciID,f.FaturaTarihi, f.Aciklama,f.ParaBirimiID,f.Kur, f.OdemeYapildimi, t.TedarikciAdi,p.ParaBirimi, f.OdemeSekliID,od.OdemeSekli, (select SUM(fd.SiparisVerilenMiktar*fd.BirimFiyati*(100+fd.KDVOrani)/100) from FaturaDetay fd where fd.FaturaID=f.FaturaID) FaturaTutari from Fatura f inner join Tedarikci t on t.TedarikciID=f.TedarikciID inner join ParaBirimi p on p.ParaBirimiID=f.ParaBirimiID inner join OdemeSekli od on od.OdemeSekilID=f.OdemeSekliID");
+            return vek.GetDataTable(CommandType.Text, "select f.FaturaID,f.FaturaNo,f.TedarikciID,f.FaturaTarihi, f.Aciklama,f.ParaBirimiID,f.Kur, f.OdemeYapildimi, t.TedarikciAdi,p.ParaBirimi, f.OdemeSekliID,od.OdemeSekli, (select SUM(fd.BirimFiyati*(100+fd.KDVOrani)/100) from FaturaDetay fd where fd.FaturaID=f.FaturaID) FaturaTutari from Fatura f inner join Tedarikci t on t.TedarikciID=f.TedarikciID inner join ParaBirimi p on p.ParaBirimiID=f.ParaBirimiID inner join OdemeSekli od on od.OdemeSekilID=f.OdemeSekliID");
         }
         public long Insert(FaturaEntity entity)
         {
@@ -34,7 +34,11 @@ namespace Businness
         }
         public DataTable FaturaGetirbyFaturaDetayID(long FaturaDetayID)
         {
-            return vek.GetDataTable(CommandType.Text, "select f.FaturaNo,f.FaturaTarihi, f.Aciklama,f.Kur, f.OdemeYapildimi, t.TedarikciAdi, p.ParaBirimi, od.OdemeSekli, (select SUM(fd.SiparisVerilenMiktar*fd.BirimFiyati*(100+fd.KDVOrani)/100) from FaturaDetay fd where fd.FaturaID=f.FaturaID) FaturaTutari from Fatura f inner join Tedarikci t on t.TedarikciID=f.TedarikciID inner join ParaBirimi p on p.ParaBirimiID=f.ParaBirimiID inner join OdemeSekli od on od.OdemeSekilID=f.OdemeSekliID where FaturaID=(select FaturaID from FaturaDetay where  FaturaDetayID=@a)", FaturaDetayID);
+            return vek.GetDataTable(CommandType.Text, "select f.FaturaNo,f.FaturaTarihi, f.Aciklama,f.Kur, f.OdemeYapildimi, t.TedarikciAdi, p.ParaBirimi, od.OdemeSekli, (select SUM(fd.BirimFiyati*(100+fd.KDVOrani)/100) from FaturaDetay fd where fd.FaturaID=f.FaturaID) FaturaTutari from Fatura f inner join Tedarikci t on t.TedarikciID=f.TedarikciID inner join ParaBirimi p on p.ParaBirimiID=f.ParaBirimiID inner join OdemeSekli od on od.OdemeSekilID=f.OdemeSekliID where FaturaID=(select FaturaID from FaturaDetay where  FaturaDetayID=@a)", FaturaDetayID);
+        }
+        public bool Sil(long FaturaID)
+        {
+            return vek.ExecuteNonQuery(CommandType.Text, "if(select COUNT(*) from FaturaDetay where FaturaID=@a and TeslimAlindimi=1)=0 begin Delete From FaturaDetay Where FaturaID=@a Delete from Fatura where FaturaID=@a end", FaturaID) > 0 ? true : false;
         }
     }
 }

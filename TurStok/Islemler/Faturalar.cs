@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Transactions;
 using System.Windows.Forms;
 using TurStok.Islemler;
 
@@ -23,6 +25,7 @@ namespace TurStok
         private Main anaform;
         public DataTable dt = new DataTable();
         Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
+        bool Editteble;
         private void Faturalar_Load(object sender, EventArgs e)
         {
             GridDoldur();
@@ -60,45 +63,85 @@ namespace TurStok
             f = new FaturaEkle(this as Faturalar);
             f.MdiParent = anaform;
             f.Show();
-           
+
         }
         private void grdFatura_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            groupBox1.Visible = false;
-            grdFaturaDetay.DataSource = null;
-            if (grdFatura.Columns[e.ColumnIndex].Name == "OdemeYap")
+            using (TransactionScope scope = new TransactionScope())
             {
-                if (grdFatura.Rows[e.RowIndex].Cells["OdemeYapildimi"].Value.ToString() == "False")
+                try
                 {
-                    using (FaturaBS bs = new FaturaBS())
+                    groupBox1.Visible = false;
+                    if (grdFatura.Columns[e.ColumnIndex].Name == "OdemeYap")
                     {
-                        if (bs.OdemeYap(Convert.ToInt64(grdFatura.Rows[e.RowIndex].Cells["FaturaID"].Value)))
+                        if (grdFatura.Rows[e.RowIndex].Cells["OdemeYapildimi"].Value.ToString() == "False")
                         {
-                            GridDoldur();
-                            MessageBox.Show("Ödeme Gerçekleşmiştir", "Onay", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            using (FaturaBS bs = new FaturaBS())
+                            {
+                                if (bs.OdemeYap(Convert.ToInt64(grdFatura.Rows[e.RowIndex].Cells["FaturaID"].Value)))
+                                {
+                                    GridDoldur();
+                                    MessageBox.Show("Ödeme Gerçekleşmiştir", "Onay", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    scope.Complete();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("İşlemi Sırasında Hata Olmuştur", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("İşlemi Sırasında Hata Olmuştur", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Ödeme Daha Önce Yapılmıştır", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
+                    else if (grdFatura.Columns[e.ColumnIndex].Name == "FSil")
+                    {
+                        if (grdFatura.Rows[e.RowIndex].Cells["OdemeYapildimi"].Value.ToString() == "True")
+                        {
+                            MessageBox.Show("Ödemesi Yapılmış Olduğu İçin Faturayı Silemezsiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
+                        else
+                        {
+                            using (FaturaBS bs = new FaturaBS())
+                            {
+                                if (bs.Sil(Convert.ToInt64(grdFatura.Rows[e.RowIndex].Cells["FaturaID"].Value)))
+                                {
+                                    GridDoldur();
+                                    MessageBox.Show("Fatura Silinmiştir..", "Onay", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    scope.Complete();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Taslimatı Gerçekleşmiş Ürün Olduğu İçin Fatura Silinememiştir.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Editteble = grdFatura.Rows[e.RowIndex].Cells["OdemeYapildimi"].Value.ToString() == "True" ? false : true;
+                        groupBox1.Visible = true;
+                        string faturaId = grdFatura.Rows[e.RowIndex].Cells["FaturaID"].Value.ToString();
+                        grdFaturaDetay.DataSource = arac.FaturaDetayDoldur(Convert.ToInt64(faturaId));
+                        grdFaturaDetay.Columns["FaturaDetayID"].Visible = false;
+                        grdFaturaDetay.Columns[2].Visible = false;
+                        grdFaturaDetay.Columns["UrunId"].Visible = false;
+                        grdFaturaDetay.Columns["MarkaID"].Visible = false;
+                        grdFaturaDetay.Columns["Sil"].Visible = true;
+                        scope.Complete();
+                    }
                 }
-                else
+                catch (Exception exp)
                 {
-                    MessageBox.Show("Ödeme Daha Önce Yapılmıştır", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    StackTrace st = new StackTrace();
+                    StackFrame sf = new StackFrame();
+                    new Helper.ExceptionLogger().ThrowExp(exp, this as Form, sf.GetMethod().Name);
+                    return;
                 }
-            }
-            else
-            {
-                
-                grdFaturaDetay.DataSource = null;
-                groupBox1.Visible = true;
-                string faturaId = grdFatura.Rows[e.RowIndex].Cells["FaturaID"].Value.ToString();
-                grdFaturaDetay.DataSource = arac.FaturaDetayDoldur(Convert.ToInt64(faturaId));
-                grdFaturaDetay.Columns["FaturaDetayID"].Visible = false;
-                grdFaturaDetay.Columns[2].Visible = false;
-                grdFaturaDetay.Columns["UrunId"].Visible = false;
-                grdFaturaDetay.Columns["MarkaID"].Visible = false;
             }
         }
         void FaturaFiltrele()
@@ -121,16 +164,16 @@ namespace TurStok
             {
                 using (DataView dw = new DataView(dt))
                 {
-                    dw.RowFilter = string.Format(" OdemeYapildimi = '{0}'", cmbDurumu.Text=="Ödemesi Yapılmişlar"?true:false );
+                    dw.RowFilter = string.Format(" OdemeYapildimi = '{0}'", cmbDurumu.Text == "Ödemesi Yapılmişlar" ? true : false);
                     FaturaFiltre = dw.ToTable();
                 }
             }
             DateTime tarih;
-            if (!string.IsNullOrEmpty(txtBasTar.Text) && !DateTime.TryParse(txtBasTar.Text, out tarih)&&txtBasTar.Text.Trim().Length==10)
+            if (!string.IsNullOrEmpty(txtBasTar.Text) && !DateTime.TryParse(txtBasTar.Text, out tarih) && txtBasTar.Text.Trim().Length == 10)
             {
                 using (DataView dw = new DataView(dt))
                 {
-                    dw.RowFilter = string.Format(" FaturaTarihi > '{0}'",tarih);
+                    dw.RowFilter = string.Format(" FaturaTarihi > '{0}'", tarih);
                     FaturaFiltre = dw.ToTable();
                 }
             }
@@ -177,6 +220,66 @@ namespace TurStok
         private void cmbOdeme_SelectedIndexChanged(object sender, EventArgs e)
         {
             FaturaFiltrele();
+        }
+
+        private void grdFaturaDetay_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            using (TransactionScope scope = new TransactionScope())
+            {
+                try
+                {
+                    if (e.ColumnIndex == grdFaturaDetay.Columns["Sil"].Index)
+                    {
+                        if (Convert.ToBoolean(grdFaturaDetay.Rows[e.RowIndex].Cells["TeslimAlindimi"].Value))
+                        {
+                            MessageBox.Show("Ürün Teslim Alındığından bu Kalem Silinemez!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            using (FaturaDetayBS bs = new FaturaDetayBS())
+                            {
+                                if (Editteble)
+                                {
+                                    string asd = grdFaturaDetay.Rows[e.RowIndex].Cells["FaturaDetayID"].Value.ToString();
+                                    if (bs.Sil(Convert.ToInt64(asd)))
+                                    {
+                                        MessageBox.Show("İşleminiz Başarı İle Gerçekleşmiştir.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        grdFaturaDetay.DataSource = null;
+                                        string faturaId = grdFatura.Rows[e.RowIndex].Cells["DFaturaID"].Value.ToString();
+                                        grdFaturaDetay.DataSource = arac.FaturaDetayDoldur(Convert.ToInt64(faturaId));
+                                        grdFaturaDetay.Columns["FaturaDetayID"].Visible = false;
+                                        grdFaturaDetay.Columns[2].Visible = false;
+                                        grdFaturaDetay.Columns["UrunId"].Visible = false;
+                                        grdFaturaDetay.Columns["MarkaID"].Visible = false;
+                                        grdFaturaDetay.Columns["Sil"].Visible = true;
+                                        GridDoldur();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("İşlemi Sırasında Hata Olmuştur. Lütfen Tekrar Deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        return;
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Faturanın Ödemesi Yapıldığından Silme İşlemi Yapamazsınız.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                    scope.Complete();
+                }
+                catch (Exception exp)
+                {
+                    StackTrace st = new StackTrace();
+                    StackFrame sf = new StackFrame();
+                    new Helper.ExceptionLogger().ThrowExp(exp, this as Form, sf.GetMethod().Name);
+                    return;
+                }
+
+            }
         }
     }
 }

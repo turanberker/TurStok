@@ -42,7 +42,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtDepo = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StokID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FaturaDetayIDgrd2ay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,7 +67,7 @@
             this.grdStok.AllowUserToDeleteRows = false;
             this.grdStok.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdStok.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn14,
+            this.StokID,
             this.FaturaDetayIDgrd2ay,
             this.dataGridViewTextBoxColumn15,
             this.dataGridViewTextBoxColumn16,
@@ -215,13 +215,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Arama";
             // 
-            // dataGridViewTextBoxColumn14
+            // StokID
             // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "StokID";
-            this.dataGridViewTextBoxColumn14.HeaderText = "StokID";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            this.dataGridViewTextBoxColumn14.Visible = false;
+            this.StokID.DataPropertyName = "StokID";
+            this.StokID.HeaderText = "StokID";
+            this.StokID.Name = "StokID";
+            this.StokID.ReadOnly = true;
+            this.StokID.Visible = false;
             // 
             // FaturaDetayIDgrd2ay
             // 
@@ -365,7 +365,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtDepo;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StokID;
         private System.Windows.Forms.DataGridViewTextBoxColumn FaturaDetayIDgrd2ay;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;

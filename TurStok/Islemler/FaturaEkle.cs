@@ -53,41 +53,54 @@ namespace TurStok.Islemler
             detaylar.Columns.Add("MarkaID", typeof(Int64));
             detaylar.Columns.Add("MarkaAdi", typeof(String));
             detaylar.Columns.Add("SiparisVerilenMiktar", typeof(Decimal));
-            detaylar.Columns.Add("BirimFiyati", typeof(Decimal));
             detaylar.Columns.Add("ToplamFiyati", typeof(Decimal));
             detaylar.Columns.Add("KDVOrani", typeof(Int32));
             detaylar.Columns.Add("KDVTutari", typeof(Decimal));
             detaylar.Columns.Add("GenelToplam", typeof(Decimal));
+            detaylar.Columns.Add("UniqueID", typeof(string));
             cmbleriDoldur();
         }
 
         private void btnDetayEkle_Click(object sender, EventArgs e)
         {
-            decimal dec;
-            if (cmbUrunID.SelectedValue == "0" || cmbMarkaID.SelectedValue == "0" || string.IsNullOrEmpty(txtSiparisVerilenMiktar.Text) || string.IsNullOrEmpty(txtBirimFiyati.Text) || !string.IsNullOrEmpty(cmbKDVOrani.SelectedText))
+            using (TransactionScope scope = new TransactionScope())
             {
-                MessageBox.Show("Bütün Alanları Doldurmanız Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (!decimal.TryParse(txtSiparisVerilenMiktar.Text, out dec) || !decimal.TryParse(txtBirimFiyati.Text, out dec))
-            {
-                MessageBox.Show("Birim Fiyat ve(ya) Sipariş Verilen Miktar Alanlarına Yanlış Veri Girdiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                decimal bf = Convert.ToDecimal(txtBirimFiyati.Text);
-                decimal miktar = Convert.ToDecimal(txtSiparisVerilenMiktar.Text);
-                decimal toplamfiyat = bf * miktar;
-                int kdvoran = Convert.ToInt32(cmbKDVOrani.Text);
-                decimal kdv = toplamfiyat * kdvoran / 100;
-                decimal kdvlitoplam = toplamfiyat + kdv;
+                try
+                {
+                    decimal dec;
+                    if (cmbUrunID.SelectedValue == "0" || cmbMarkaID.SelectedValue == "0" || string.IsNullOrEmpty(txtSiparisVerilenMiktar.Text) || string.IsNullOrEmpty(txtToplamFiyati.Text) || !string.IsNullOrEmpty(cmbKDVOrani.SelectedText))
+                    {
+                        MessageBox.Show("Bütün Alanları Doldurmanız Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (!decimal.TryParse(txtSiparisVerilenMiktar.Text, out dec) || !decimal.TryParse(txtToplamFiyati.Text, out dec))
+                    {
+                        MessageBox.Show("Birim Fiyat ve(ya) Sipariş Verilen Miktar Alanlarına Yanlış Veri Girdiniz!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        decimal miktar = Convert.ToDecimal(txtSiparisVerilenMiktar.Text);
+                        decimal toplamfiyat = Convert.ToDecimal(txtToplamFiyati.Text);
+                        int kdvoran = Convert.ToInt32(cmbKDVOrani.Text);
+                        decimal kdv = toplamfiyat * kdvoran / 100;
+                        decimal kdvlitoplam = toplamfiyat + kdv;
 
-                detaylar.Rows.Add(detaylar.Rows.Count + 1, Convert.ToInt64(cmbUrunID.SelectedValue), cmbUrunID.Text, Convert.ToInt64(cmbMarkaID.SelectedValue), cmbMarkaID.Text, miktar, bf, toplamfiyat, kdvoran, kdv, kdvlitoplam);
-                grdDetaylar.DataSource = detaylar;
-                cmbUrunID.SelectedIndex = 0;
-                cmbMarkaID.SelectedIndex = 0;
-                txtBirimFiyati.Text = "";
-                txtSiparisVerilenMiktar.Text = "";
-                cmbKDVOrani.SelectedIndex = 0;
+                        detaylar.Rows.Add(detaylar.Rows.Count + 1, Convert.ToInt64(cmbUrunID.SelectedValue), cmbUrunID.Text, Convert.ToInt64(cmbMarkaID.SelectedValue), cmbMarkaID.Text, miktar, toplamfiyat, kdvoran, kdv, kdvlitoplam, Guid.NewGuid().ToString());
+                        grdDetaylar.DataSource = detaylar;
+                        cmbUrunID.SelectedIndex = 0;
+                        cmbMarkaID.SelectedIndex = 0;
+                        txtToplamFiyati.Text = "";
+                        txtSiparisVerilenMiktar.Text = "";
+                        cmbKDVOrani.SelectedIndex = 0;
+                        scope.Complete();
+                    }
+                }
+                catch (Exception exp)
+                {
+                    StackTrace st = new StackTrace();
+                    StackFrame sf = new StackFrame();
+                    new Helper.ExceptionLogger().ThrowExp(exp, this as Form, sf.GetMethod().Name);
+                    return;
+                }
             }
 
         }
@@ -126,14 +139,13 @@ namespace TurStok.Islemler
                             {
                                 FaturaDetayEntity detay = new FaturaDetayEntity();
                                 detay.FaturaID = mainEntity.FaturaID;
-
                                 detay.TeslimAlindimi = false;
                                 detay.GelenMiktar = 0;
                                 foreach (DataRow dr in detaylar.Rows)
                                 {
                                     using (FaturaDetayBS dbs = new FaturaDetayBS())
                                     {
-                                        detay.BirimFiyati = Convert.ToDecimal(dr["BirimFiyati"]);
+                                        detay.BirimFiyati = Convert.ToDecimal(dr["ToplamFiyati"]);
                                         detay.KDVOrani = Convert.ToInt32(dr["KDVOrani"]);
                                         detay.SiparisVerilenMiktar = Convert.ToDecimal(dr["SiparisVerilenMiktar"]);
                                         detay.UrunID = Convert.ToInt64(dr["UrunID"]);
@@ -154,10 +166,54 @@ namespace TurStok.Islemler
                             }
                         }
                         MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                         f.GridDoldur();
-                        this.Close();
                         scope.Complete();
+                        this.Close();
+
                     }
+                }
+                catch (Exception exp)
+                {
+                    StackTrace st = new StackTrace();
+                    StackFrame sf = new StackFrame();
+                    new Helper.ExceptionLogger().ThrowExp(exp, this as Form, sf.GetMethod().Name);
+                    return;
+                }
+            }
+        }
+
+        private void cmbUrunID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbUrunID.SelectedValue != "0")
+            {
+                using (Businness.UrunBS bs = new Businness.UrunBS())
+                {
+                    DataTable dt = bs.JoinListe(Convert.ToInt64(cmbUrunID.SelectedValue));
+                    if (dt != null || dt.Rows.Count > 0)
+                    {
+                        lblBirim.Text = dt.Rows[0]["OlcuBirimi"].ToString();
+                    }
+                }
+            }
+            else
+                lblBirim.Text = "";
+        }
+
+        private void grdDetaylar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            using (TransactionScope scope = new TransactionScope())
+            {
+                try
+                {
+                    if (e.ColumnIndex == grdDetaylar.Columns["Sil"].Index)
+                    {
+                        string qid = grdDetaylar.Rows[e.RowIndex].Cells["UniqueID"].Value.ToString();
+                        DataRow secilen = detaylar.Rows.Cast<DataRow>().Where(x => x["UniqueID"].ToString() == grdDetaylar.Rows[e.RowIndex].Cells["UniqueID"].Value.ToString()).FirstOrDefault();
+                        detaylar.Rows.Remove(secilen);
+                        grdDetaylar.DataSource = detaylar;
+                    }
+                    scope.Complete();
                 }
                 catch (Exception exp)
                 {

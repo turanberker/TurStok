@@ -20,7 +20,7 @@ namespace Businness
         }
         public DataTable JoinListe(long FaturaID)
         {
-            return vek.GetDataTable(CommandType.Text, "select fd.FaturaDetayID,fd.FaturaID, fd.UrunID, fd.MarkaID, fd.SiparisVerilenMiktar, fd.GelenMiktar, fd.BirimFiyati, fd.KDVOrani, fd.TeslimAlindimi, fd.SiparisVerilenMiktar*fd.BirimFiyati ToplamFiyat,fd.BirimFiyati*fd.SiparisVerilenMiktar*fd.KDVOrani/100 KDVTutari, fd.BirimFiyati*fd.SiparisVerilenMiktar*(100+fd.KDVOrani)/100 KDVDahil,u.UrunAdi, m.MarkaAdi, ob.OlcuBirimi from FaturaDetay fd inner join Urun u on u.UrunID=fd.UrunID inner join Marka m on m.MarkaID=fd.MarkaID inner join OlcuBirimi ob on ob.OlcuBirimiID=u.OlcuBirimID where fd.FaturaID=@Id", FaturaID);
+            return vek.GetDataTable(CommandType.Text, "select fd.FaturaDetayID,fd.FaturaID, fd.UrunID, fd.MarkaID, fd.SiparisVerilenMiktar, fd.GelenMiktar, fd.BirimFiyati, fd.KDVOrani, fd.TeslimAlindimi, fd.BirimFiyati ToplamFiyat,fd.BirimFiyati*fd.KDVOrani/100 KDVTutari, fd.BirimFiyati*(100+fd.KDVOrani)/100 KDVDahil,u.UrunAdi, m.MarkaAdi, ob.OlcuBirimi from FaturaDetay fd inner join Urun u on u.UrunID=fd.UrunID inner join Marka m on m.MarkaID=fd.MarkaID inner join OlcuBirimi ob on ob.OlcuBirimiID=u.OlcuBirimID where fd.FaturaID=@Id", FaturaID);
         }
         public DataTable JoinListeforStokGiris()
         {
@@ -32,7 +32,12 @@ namespace Businness
         }
         public DataTable JoinListebyFaturaDetayID(long FaturaDetayID)
         {
-            return vek.GetDataTable(CommandType.Text, "select  fd.SiparisVerilenMiktar, fd.GelenMiktar, fd.BirimFiyati, fd.KDVOrani, fd.TeslimAlindimi, fd.SiparisVerilenMiktar*fd.BirimFiyati ToplamFiyat,fd.BirimFiyati*fd.SiparisVerilenMiktar*fd.KDVOrani/100 KDVTutari, fd.BirimFiyati*fd.SiparisVerilenMiktar*(100+fd.KDVOrani)/100 KDVDahil,u.UrunAdi, m.MarkaAdi, ob.OlcuBirimi from FaturaDetay fd inner join Urun u on u.UrunID=fd.UrunID inner join Marka m on m.MarkaID=fd.MarkaID inner join OlcuBirimi ob on ob.OlcuBirimiID=u.OlcuBirimID where FaturaID=(select FaturaID from FaturaDetay where FaturaDetayID=@ID)", FaturaDetayID);
+            return vek.GetDataTable(CommandType.Text, "select  fd.SiparisVerilenMiktar, fd.GelenMiktar, fd.BirimFiyati, fd.KDVOrani, fd.TeslimAlindimi, fd.BirimFiyati*fd.KDVOrani/100 KDVTutari, fd.BirimFiyati*(100+fd.KDVOrani)/100 KDVDahil,u.UrunAdi, m.MarkaAdi, ob.OlcuBirimi from FaturaDetay fd inner join Urun u on u.UrunID=fd.UrunID inner join Marka m on m.MarkaID=fd.MarkaID inner join OlcuBirimi ob on ob.OlcuBirimiID=u.OlcuBirimID where FaturaID=(select FaturaID from FaturaDetay where FaturaDetayID=@ID)", FaturaDetayID);
         }
+        public bool Sil(long FaturaDetayID)
+        {
+            return vek.ExecuteNonQuery(CommandType.Text, "Delete From FaturaDetay Where FaturaDetayID=@a", FaturaDetayID) > 0 ? true : false;
+        }
+        
     }
 }

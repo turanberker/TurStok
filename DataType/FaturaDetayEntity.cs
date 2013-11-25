@@ -14,7 +14,7 @@ namespace DataType
         public decimal SiparisVerilenMiktar { get; set; }
         public decimal? GelenMiktar { get; set; }
     
-        public decimal BirimFiyati { get; set; }
+        public decimal BirimFiyati { get; set; }//Buraya Kalemin Toplam Fiyat girilir. (birimfiyatı*miktar)
         public int KDVOrani { get; set; }
         public bool TeslimAlindimi { get; set; }
     }
