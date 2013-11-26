@@ -44,6 +44,8 @@
             // 
             // cmbOlcuBirimi
             // 
+            this.cmbOlcuBirimi.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbOlcuBirimi.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbOlcuBirimi.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.cmbOlcuBirimi.FormattingEnabled = true;
             this.cmbOlcuBirimi.Location = new System.Drawing.Point(124, 156);
@@ -63,6 +65,8 @@
             // 
             // cmbSaklamaKosuluID
             // 
+            this.cmbSaklamaKosuluID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbSaklamaKosuluID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbSaklamaKosuluID.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.cmbSaklamaKosuluID.FormattingEnabled = true;
             this.cmbSaklamaKosuluID.Location = new System.Drawing.Point(124, 212);
@@ -80,6 +84,8 @@
             // 
             // cmbKategoriID
             // 
+            this.cmbKategoriID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbKategoriID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbKategoriID.Font = new System.Drawing.Font("Tahoma", 9.75F);
             this.cmbKategoriID.FormattingEnabled = true;
             this.cmbKategoriID.Location = new System.Drawing.Point(124, 46);
@@ -163,6 +169,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(318, 319);
+            this.Controls.Add(this.cmbKategoriID);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbSaklamaKosuluID);
@@ -173,7 +180,6 @@
             this.Controls.Add(this.txtUrunAdi);
             this.Controls.Add(this.txtAzami);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cmbKategoriID);
             this.Controls.Add(this.label3);
             this.Name = "UrunEkleGuncelle";
             this.Text = "Ürün Ekle Güncelle";

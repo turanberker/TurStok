@@ -87,9 +87,9 @@ namespace TurStok.Tanimlamalar
                                 }
                             }
                         }
-                        scope.Complete();
                         f.BringToFront();
                         this.Close();
+                        scope.Complete();
                     }
                 }
                 catch (Exception exp)

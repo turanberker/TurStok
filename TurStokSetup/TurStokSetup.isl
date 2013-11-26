@@ -4495,7 +4495,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>ProductCode</td><td>{C631F9AD-B9AB-42F5-BEE4-D7F978BA668E}</td><td/></row>
 		<row><td>ProductName</td><td>TurStok</td><td/></row>
-		<row><td>ProductVersion</td><td>1.01.0000</td><td/></row>
+		<row><td>ProductVersion</td><td>1.02.0000</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>

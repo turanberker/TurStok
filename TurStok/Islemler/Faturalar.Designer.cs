@@ -29,18 +29,24 @@
         private void InitializeComponent()
         {
             this.grdFatura = new System.Windows.Forms.DataGridView();
+            this.FaturaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FaturaNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TedarikciID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TedarikciAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FaturaTarihi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aciklama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParaBirimID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ParaBirimi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OdemeSekliID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OdemeSekli = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FaturaTutari = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Kur = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OdemeYapildimi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.OdemeYap = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.FSil = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grdFaturaDetay = new System.Windows.Forms.DataGridView();
-            this.cmbDurumu = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbTedarikciID = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtBasTar = new System.Windows.Forms.MaskedTextBox();
-            this.txtBitTar = new System.Windows.Forms.MaskedTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.cmbOdeme = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.DSNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FaturaDetayID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DFaturaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,22 +64,16 @@
             this.KDVDahil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TeslimAlindimi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Sil = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.FaturaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FaturaNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TedarikciID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TedarikciAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FaturaTarihi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Aciklama = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParaBirimID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ParaBirimi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OdemeSekliID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OdemeSekli = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FaturaTutari = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Kur = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OdemeYapildimi = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.OdemeYap = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.FSil = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cmbDurumu = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbTedarikciID = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtBasTar = new System.Windows.Forms.MaskedTextBox();
+            this.txtBitTar = new System.Windows.Forms.MaskedTextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cmbOdeme = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdFatura)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdFaturaDetay)).BeginInit();
@@ -108,279 +108,6 @@
             this.grdFatura.Size = new System.Drawing.Size(1450, 325);
             this.grdFatura.TabIndex = 0;
             this.grdFatura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdFatura_CellContentClick_1);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.grdFaturaDetay);
-            this.groupBox1.Location = new System.Drawing.Point(15, 430);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(1442, 394);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Fatura Detayları";
-            this.groupBox1.Visible = false;
-            // 
-            // grdFaturaDetay
-            // 
-            this.grdFaturaDetay.AllowUserToAddRows = false;
-            this.grdFaturaDetay.AllowUserToDeleteRows = false;
-            this.grdFaturaDetay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdFaturaDetay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.DSNo,
-            this.FaturaDetayID,
-            this.DFaturaID,
-            this.UrunId,
-            this.UrunAdi,
-            this.MarkaID,
-            this.MarkaAdi,
-            this.SiparisVerilenMiktar,
-            this.GelenMiktar,
-            this.OlcuBirimi,
-            this.BirimFiyati,
-            this.ToplamFiyati,
-            this.KDVOrani,
-            this.KDV,
-            this.KDVDahil,
-            this.TeslimAlindimi,
-            this.Sil});
-            this.grdFaturaDetay.Location = new System.Drawing.Point(8, 37);
-            this.grdFaturaDetay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.grdFaturaDetay.Name = "grdFaturaDetay";
-            this.grdFaturaDetay.ReadOnly = true;
-            this.grdFaturaDetay.Size = new System.Drawing.Size(1346, 332);
-            this.grdFaturaDetay.TabIndex = 0;
-            this.grdFaturaDetay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdFaturaDetay_CellContentClick);
-            // 
-            // cmbDurumu
-            // 
-            this.cmbDurumu.FormattingEnabled = true;
-            this.cmbDurumu.Items.AddRange(new object[] {
-            "Hepsi",
-            "Ödemesi Yapılmişlar",
-            "Ödemesi Bekleyenler"});
-            this.cmbDurumu.Location = new System.Drawing.Point(856, 385);
-            this.cmbDurumu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmbDurumu.Name = "cmbDurumu";
-            this.cmbDurumu.Size = new System.Drawing.Size(278, 24);
-            this.cmbDurumu.TabIndex = 2;
-            this.cmbDurumu.SelectedIndexChanged += new System.EventHandler(this.cmbDurumu_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(862, 351);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 16);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Fatura Durumunu Seçin";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 351);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 16);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Tedarikçi Seçin";
-            // 
-            // cmbTedarikciID
-            // 
-            this.cmbTedarikciID.FormattingEnabled = true;
-            this.cmbTedarikciID.Location = new System.Drawing.Point(23, 385);
-            this.cmbTedarikciID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmbTedarikciID.Name = "cmbTedarikciID";
-            this.cmbTedarikciID.Size = new System.Drawing.Size(248, 24);
-            this.cmbTedarikciID.TabIndex = 5;
-            this.cmbTedarikciID.SelectedIndexChanged += new System.EventHandler(this.cmbTedarikciID_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(427, 351);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Sipariş Tarihi";
-            // 
-            // txtBasTar
-            // 
-            this.txtBasTar.Location = new System.Drawing.Point(301, 385);
-            this.txtBasTar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtBasTar.Mask = "00.00.0000";
-            this.txtBasTar.Name = "txtBasTar";
-            this.txtBasTar.Size = new System.Drawing.Size(115, 23);
-            this.txtBasTar.TabIndex = 7;
-            this.txtBasTar.TextChanged += new System.EventHandler(this.txtBasTar_TextChanged);
-            // 
-            // txtBitTar
-            // 
-            this.txtBitTar.Location = new System.Drawing.Point(484, 385);
-            this.txtBitTar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtBitTar.Mask = "00.00.0000";
-            this.txtBitTar.Name = "txtBitTar";
-            this.txtBitTar.Size = new System.Drawing.Size(94, 23);
-            this.txtBitTar.TabIndex = 9;
-            this.txtBitTar.TextChanged += new System.EventHandler(this.txtBitTar_TextChanged);
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1257, 352);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 57);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Fatura Ekle";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // cmbOdeme
-            // 
-            this.cmbOdeme.FormattingEnabled = true;
-            this.cmbOdeme.Location = new System.Drawing.Point(599, 386);
-            this.cmbOdeme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmbOdeme.Name = "cmbOdeme";
-            this.cmbOdeme.Size = new System.Drawing.Size(163, 24);
-            this.cmbOdeme.TabIndex = 12;
-            this.cmbOdeme.SelectedIndexChanged += new System.EventHandler(this.cmbOdeme_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(596, 352);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 16);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Ödeme Tipi Seçin";
-            // 
-            // DSNo
-            // 
-            this.DSNo.DataPropertyName = "SNo";
-            this.DSNo.HeaderText = "Sıra No";
-            this.DSNo.Name = "DSNo";
-            this.DSNo.ReadOnly = true;
-            // 
-            // FaturaDetayID
-            // 
-            this.FaturaDetayID.DataPropertyName = "FaturaDetayID";
-            this.FaturaDetayID.HeaderText = "FaturaDetayID";
-            this.FaturaDetayID.Name = "FaturaDetayID";
-            this.FaturaDetayID.ReadOnly = true;
-            this.FaturaDetayID.Visible = false;
-            // 
-            // DFaturaID
-            // 
-            this.DFaturaID.DataPropertyName = "FaturaID";
-            this.DFaturaID.HeaderText = "DFaturaID";
-            this.DFaturaID.Name = "DFaturaID";
-            this.DFaturaID.ReadOnly = true;
-            this.DFaturaID.Visible = false;
-            // 
-            // UrunId
-            // 
-            this.UrunId.DataPropertyName = "UrunID";
-            this.UrunId.HeaderText = "UrunID";
-            this.UrunId.Name = "UrunId";
-            this.UrunId.ReadOnly = true;
-            this.UrunId.Visible = false;
-            // 
-            // UrunAdi
-            // 
-            this.UrunAdi.DataPropertyName = "UrunAdi";
-            this.UrunAdi.HeaderText = "Ürün Adı";
-            this.UrunAdi.Name = "UrunAdi";
-            this.UrunAdi.ReadOnly = true;
-            // 
-            // MarkaID
-            // 
-            this.MarkaID.DataPropertyName = "MarkaID";
-            this.MarkaID.HeaderText = "MarkaID";
-            this.MarkaID.Name = "MarkaID";
-            this.MarkaID.ReadOnly = true;
-            this.MarkaID.Visible = false;
-            // 
-            // MarkaAdi
-            // 
-            this.MarkaAdi.DataPropertyName = "MarkaAdi";
-            this.MarkaAdi.HeaderText = "Marka Adı";
-            this.MarkaAdi.Name = "MarkaAdi";
-            this.MarkaAdi.ReadOnly = true;
-            // 
-            // SiparisVerilenMiktar
-            // 
-            this.SiparisVerilenMiktar.DataPropertyName = "SiparisVerilenMiktar";
-            this.SiparisVerilenMiktar.HeaderText = "Sipariş Verilen Miktar";
-            this.SiparisVerilenMiktar.Name = "SiparisVerilenMiktar";
-            this.SiparisVerilenMiktar.ReadOnly = true;
-            // 
-            // GelenMiktar
-            // 
-            this.GelenMiktar.DataPropertyName = "GelenMiktar";
-            this.GelenMiktar.HeaderText = "Gelen Miktar";
-            this.GelenMiktar.Name = "GelenMiktar";
-            this.GelenMiktar.ReadOnly = true;
-            // 
-            // OlcuBirimi
-            // 
-            this.OlcuBirimi.DataPropertyName = "OlcuBirimi";
-            this.OlcuBirimi.HeaderText = "Ölçü Birimi";
-            this.OlcuBirimi.Name = "OlcuBirimi";
-            this.OlcuBirimi.ReadOnly = true;
-            // 
-            // BirimFiyati
-            // 
-            this.BirimFiyati.DataPropertyName = "BirimFiyati";
-            this.BirimFiyati.HeaderText = "Birim Fiyati";
-            this.BirimFiyati.Name = "BirimFiyati";
-            this.BirimFiyati.ReadOnly = true;
-            // 
-            // ToplamFiyati
-            // 
-            this.ToplamFiyati.DataPropertyName = "ToplamFiyat";
-            this.ToplamFiyati.HeaderText = "Toplam Fiyati";
-            this.ToplamFiyati.Name = "ToplamFiyati";
-            this.ToplamFiyati.ReadOnly = true;
-            // 
-            // KDVOrani
-            // 
-            this.KDVOrani.DataPropertyName = "KDVOrani";
-            this.KDVOrani.HeaderText = "KDV Orani";
-            this.KDVOrani.Name = "KDVOrani";
-            this.KDVOrani.ReadOnly = true;
-            // 
-            // KDV
-            // 
-            this.KDV.DataPropertyName = "KDVTutari";
-            this.KDV.HeaderText = "KDV";
-            this.KDV.Name = "KDV";
-            this.KDV.ReadOnly = true;
-            // 
-            // KDVDahil
-            // 
-            this.KDVDahil.DataPropertyName = "KDVDahil";
-            this.KDVDahil.HeaderText = "Genel Toplam";
-            this.KDVDahil.Name = "KDVDahil";
-            this.KDVDahil.ReadOnly = true;
-            // 
-            // TeslimAlindimi
-            // 
-            this.TeslimAlindimi.DataPropertyName = "TeslimAlindimi";
-            this.TeslimAlindimi.FalseValue = "False";
-            this.TeslimAlindimi.HeaderText = "TeslimAlindimi";
-            this.TeslimAlindimi.Name = "TeslimAlindimi";
-            this.TeslimAlindimi.ReadOnly = true;
-            this.TeslimAlindimi.TrueValue = "True";
-            // 
-            // Sil
-            // 
-            this.Sil.DataPropertyName = "FaturaDetayID";
-            this.Sil.HeaderText = "Sil";
-            this.Sil.Name = "Sil";
-            this.Sil.ReadOnly = true;
-            this.Sil.Text = "Sil";
-            this.Sil.UseColumnTextForButtonValue = true;
             // 
             // FaturaID
             // 
@@ -509,6 +236,285 @@
             this.FSil.ReadOnly = true;
             this.FSil.Text = "Sil";
             this.FSil.UseColumnTextForButtonValue = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.grdFaturaDetay);
+            this.groupBox1.Location = new System.Drawing.Point(15, 430);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(1442, 394);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Fatura Detayları";
+            this.groupBox1.Visible = false;
+            // 
+            // grdFaturaDetay
+            // 
+            this.grdFaturaDetay.AllowUserToAddRows = false;
+            this.grdFaturaDetay.AllowUserToDeleteRows = false;
+            this.grdFaturaDetay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdFaturaDetay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DSNo,
+            this.FaturaDetayID,
+            this.DFaturaID,
+            this.UrunId,
+            this.UrunAdi,
+            this.MarkaID,
+            this.MarkaAdi,
+            this.SiparisVerilenMiktar,
+            this.GelenMiktar,
+            this.OlcuBirimi,
+            this.BirimFiyati,
+            this.ToplamFiyati,
+            this.KDVOrani,
+            this.KDV,
+            this.KDVDahil,
+            this.TeslimAlindimi,
+            this.Sil});
+            this.grdFaturaDetay.Location = new System.Drawing.Point(8, 37);
+            this.grdFaturaDetay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.grdFaturaDetay.Name = "grdFaturaDetay";
+            this.grdFaturaDetay.ReadOnly = true;
+            this.grdFaturaDetay.Size = new System.Drawing.Size(1346, 332);
+            this.grdFaturaDetay.TabIndex = 0;
+            this.grdFaturaDetay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdFaturaDetay_CellContentClick);
+            // 
+            // DSNo
+            // 
+            this.DSNo.DataPropertyName = "SNo";
+            this.DSNo.HeaderText = "Sıra No";
+            this.DSNo.Name = "DSNo";
+            this.DSNo.ReadOnly = true;
+            // 
+            // FaturaDetayID
+            // 
+            this.FaturaDetayID.DataPropertyName = "FaturaDetayID";
+            this.FaturaDetayID.HeaderText = "FaturaDetayID";
+            this.FaturaDetayID.Name = "FaturaDetayID";
+            this.FaturaDetayID.ReadOnly = true;
+            this.FaturaDetayID.Visible = false;
+            // 
+            // DFaturaID
+            // 
+            this.DFaturaID.DataPropertyName = "FaturaID";
+            this.DFaturaID.HeaderText = "DFaturaID";
+            this.DFaturaID.Name = "DFaturaID";
+            this.DFaturaID.ReadOnly = true;
+            this.DFaturaID.Visible = false;
+            // 
+            // UrunId
+            // 
+            this.UrunId.DataPropertyName = "UrunID";
+            this.UrunId.HeaderText = "UrunID";
+            this.UrunId.Name = "UrunId";
+            this.UrunId.ReadOnly = true;
+            this.UrunId.Visible = false;
+            // 
+            // UrunAdi
+            // 
+            this.UrunAdi.DataPropertyName = "UrunAdi";
+            this.UrunAdi.HeaderText = "Ürün Adı";
+            this.UrunAdi.Name = "UrunAdi";
+            this.UrunAdi.ReadOnly = true;
+            // 
+            // MarkaID
+            // 
+            this.MarkaID.DataPropertyName = "MarkaID";
+            this.MarkaID.HeaderText = "MarkaID";
+            this.MarkaID.Name = "MarkaID";
+            this.MarkaID.ReadOnly = true;
+            this.MarkaID.Visible = false;
+            // 
+            // MarkaAdi
+            // 
+            this.MarkaAdi.DataPropertyName = "MarkaAdi";
+            this.MarkaAdi.HeaderText = "Marka Adı";
+            this.MarkaAdi.Name = "MarkaAdi";
+            this.MarkaAdi.ReadOnly = true;
+            // 
+            // SiparisVerilenMiktar
+            // 
+            this.SiparisVerilenMiktar.DataPropertyName = "SiparisVerilenMiktar";
+            this.SiparisVerilenMiktar.HeaderText = "Sipariş Verilen Miktar";
+            this.SiparisVerilenMiktar.Name = "SiparisVerilenMiktar";
+            this.SiparisVerilenMiktar.ReadOnly = true;
+            // 
+            // GelenMiktar
+            // 
+            this.GelenMiktar.DataPropertyName = "GelenMiktar";
+            this.GelenMiktar.HeaderText = "Gelen Miktar";
+            this.GelenMiktar.Name = "GelenMiktar";
+            this.GelenMiktar.ReadOnly = true;
+            // 
+            // OlcuBirimi
+            // 
+            this.OlcuBirimi.DataPropertyName = "OlcuBirimi";
+            this.OlcuBirimi.HeaderText = "Ölçü Birimi";
+            this.OlcuBirimi.Name = "OlcuBirimi";
+            this.OlcuBirimi.ReadOnly = true;
+            // 
+            // BirimFiyati
+            // 
+            this.BirimFiyati.DataPropertyName = "BirimFiyati";
+            this.BirimFiyati.HeaderText = "Birim Fiyati";
+            this.BirimFiyati.Name = "BirimFiyati";
+            this.BirimFiyati.ReadOnly = true;
+            // 
+            // ToplamFiyati
+            // 
+            this.ToplamFiyati.DataPropertyName = "ToplamFiyat";
+            this.ToplamFiyati.HeaderText = "Toplam Fiyati";
+            this.ToplamFiyati.Name = "ToplamFiyati";
+            this.ToplamFiyati.ReadOnly = true;
+            // 
+            // KDVOrani
+            // 
+            this.KDVOrani.DataPropertyName = "KDVOrani";
+            this.KDVOrani.HeaderText = "KDV Orani";
+            this.KDVOrani.Name = "KDVOrani";
+            this.KDVOrani.ReadOnly = true;
+            // 
+            // KDV
+            // 
+            this.KDV.DataPropertyName = "KDVTutari";
+            this.KDV.HeaderText = "KDV";
+            this.KDV.Name = "KDV";
+            this.KDV.ReadOnly = true;
+            // 
+            // KDVDahil
+            // 
+            this.KDVDahil.DataPropertyName = "KDVDahil";
+            this.KDVDahil.HeaderText = "Genel Toplam";
+            this.KDVDahil.Name = "KDVDahil";
+            this.KDVDahil.ReadOnly = true;
+            // 
+            // TeslimAlindimi
+            // 
+            this.TeslimAlindimi.DataPropertyName = "TeslimAlindimi";
+            this.TeslimAlindimi.FalseValue = "False";
+            this.TeslimAlindimi.HeaderText = "TeslimAlindimi";
+            this.TeslimAlindimi.Name = "TeslimAlindimi";
+            this.TeslimAlindimi.ReadOnly = true;
+            this.TeslimAlindimi.TrueValue = "True";
+            // 
+            // Sil
+            // 
+            this.Sil.DataPropertyName = "FaturaDetayID";
+            this.Sil.HeaderText = "Sil";
+            this.Sil.Name = "Sil";
+            this.Sil.ReadOnly = true;
+            this.Sil.Text = "Sil";
+            this.Sil.UseColumnTextForButtonValue = true;
+            // 
+            // cmbDurumu
+            // 
+            this.cmbDurumu.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDurumu.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbDurumu.FormattingEnabled = true;
+            this.cmbDurumu.Items.AddRange(new object[] {
+            "Hepsi",
+            "Ödemesi Yapılmişlar",
+            "Ödemesi Bekleyenler"});
+            this.cmbDurumu.Location = new System.Drawing.Point(856, 385);
+            this.cmbDurumu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbDurumu.Name = "cmbDurumu";
+            this.cmbDurumu.Size = new System.Drawing.Size(278, 24);
+            this.cmbDurumu.TabIndex = 2;
+            this.cmbDurumu.SelectedIndexChanged += new System.EventHandler(this.cmbDurumu_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(862, 351);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 16);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Fatura Durumunu Seçin";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 351);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 16);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Tedarikçi Seçin";
+            // 
+            // cmbTedarikciID
+            // 
+            this.cmbTedarikciID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbTedarikciID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbTedarikciID.FormattingEnabled = true;
+            this.cmbTedarikciID.Location = new System.Drawing.Point(23, 385);
+            this.cmbTedarikciID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbTedarikciID.Name = "cmbTedarikciID";
+            this.cmbTedarikciID.Size = new System.Drawing.Size(248, 24);
+            this.cmbTedarikciID.TabIndex = 5;
+            this.cmbTedarikciID.SelectedIndexChanged += new System.EventHandler(this.cmbTedarikciID_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(427, 351);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Sipariş Tarihi";
+            // 
+            // txtBasTar
+            // 
+            this.txtBasTar.Location = new System.Drawing.Point(301, 385);
+            this.txtBasTar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtBasTar.Mask = "00.00.0000";
+            this.txtBasTar.Name = "txtBasTar";
+            this.txtBasTar.Size = new System.Drawing.Size(115, 23);
+            this.txtBasTar.TabIndex = 7;
+            this.txtBasTar.TextChanged += new System.EventHandler(this.txtBasTar_TextChanged);
+            // 
+            // txtBitTar
+            // 
+            this.txtBitTar.Location = new System.Drawing.Point(484, 385);
+            this.txtBitTar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtBitTar.Mask = "00.00.0000";
+            this.txtBitTar.Name = "txtBitTar";
+            this.txtBitTar.Size = new System.Drawing.Size(94, 23);
+            this.txtBitTar.TabIndex = 9;
+            this.txtBitTar.TextChanged += new System.EventHandler(this.txtBitTar_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1257, 352);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 57);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Fatura Ekle";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cmbOdeme
+            // 
+            this.cmbOdeme.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbOdeme.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbOdeme.FormattingEnabled = true;
+            this.cmbOdeme.Location = new System.Drawing.Point(599, 386);
+            this.cmbOdeme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbOdeme.Name = "cmbOdeme";
+            this.cmbOdeme.Size = new System.Drawing.Size(163, 24);
+            this.cmbOdeme.TabIndex = 12;
+            this.cmbOdeme.SelectedIndexChanged += new System.EventHandler(this.cmbOdeme_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(596, 352);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(109, 16);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Ödeme Tipi Seçin";
             // 
             // Faturalar
             // 

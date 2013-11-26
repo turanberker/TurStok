@@ -47,11 +47,11 @@
             this.lblBirimi = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtCekilen = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmbDepoID = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.cmbDepoID = new System.Windows.Forms.ComboBox();
             this.btnFatura = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -258,6 +258,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Depodan Düş";
             // 
+            // txtCekilen
+            // 
+            this.txtCekilen.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCekilen.Location = new System.Drawing.Point(210, 19);
+            this.txtCekilen.Name = "txtCekilen";
+            this.txtCekilen.Size = new System.Drawing.Size(115, 23);
+            this.txtCekilen.TabIndex = 19;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -267,14 +275,6 @@
             this.label2.Size = new System.Drawing.Size(142, 16);
             this.label2.TabIndex = 18;
             this.label2.Text = "Depodan Çekilen Miktar";
-            // 
-            // txtCekilen
-            // 
-            this.txtCekilen.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCekilen.Location = new System.Drawing.Point(210, 19);
-            this.txtCekilen.Name = "txtCekilen";
-            this.txtCekilen.Size = new System.Drawing.Size(115, 23);
-            this.txtCekilen.TabIndex = 19;
             // 
             // groupBox2
             // 
@@ -288,15 +288,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Depo Değiştir";
             // 
-            // cmbDepoID
-            // 
-            this.cmbDepoID.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDepoID.FormattingEnabled = true;
-            this.cmbDepoID.Location = new System.Drawing.Point(10, 26);
-            this.cmbDepoID.Name = "cmbDepoID";
-            this.cmbDepoID.Size = new System.Drawing.Size(319, 24);
-            this.cmbDepoID.TabIndex = 0;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(210, 56);
@@ -306,6 +297,17 @@
             this.button2.Text = "Depoya Taşı";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // cmbDepoID
+            // 
+            this.cmbDepoID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDepoID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbDepoID.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbDepoID.FormattingEnabled = true;
+            this.cmbDepoID.Location = new System.Drawing.Point(10, 26);
+            this.cmbDepoID.Name = "cmbDepoID";
+            this.cmbDepoID.Size = new System.Drawing.Size(319, 24);
+            this.cmbDepoID.TabIndex = 0;
             // 
             // btnFatura
             // 

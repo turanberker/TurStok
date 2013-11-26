@@ -42,6 +42,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grdDetaylar = new System.Windows.Forms.DataGridView();
+            this.SNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UrunID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UrunAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MarkaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MarkaAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SiparisVerilenMiktar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ToplamFiyati = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KDVOrani = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KDVTutari = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GenelToplam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sil = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.UniqueID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblBirim = new System.Windows.Forms.Label();
             this.btnDetayEkle = new System.Windows.Forms.Button();
@@ -56,18 +68,6 @@
             this.cmbUrunID = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.SNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UrunID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UrunAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MarkaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MarkaAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SiparisVerilenMiktar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ToplamFiyati = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KDVOrani = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KDVTutari = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GenelToplam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sil = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.UniqueID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetaylar)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -98,6 +98,8 @@
             // 
             // cmbOdemeSekliID
             // 
+            this.cmbOdemeSekliID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbOdemeSekliID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbOdemeSekliID.FormattingEnabled = true;
             this.cmbOdemeSekliID.Location = new System.Drawing.Point(741, 54);
             this.cmbOdemeSekliID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -116,6 +118,8 @@
             // 
             // cmbParaBirimiID
             // 
+            this.cmbParaBirimiID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbParaBirimiID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbParaBirimiID.FormattingEnabled = true;
             this.cmbParaBirimiID.Location = new System.Drawing.Point(441, 55);
             this.cmbParaBirimiID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -134,6 +138,8 @@
             // 
             // cmbTedarikciID
             // 
+            this.cmbTedarikciID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbTedarikciID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbTedarikciID.FormattingEnabled = true;
             this.cmbTedarikciID.Location = new System.Drawing.Point(141, 58);
             this.cmbTedarikciID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -229,158 +235,6 @@
             this.grdDetaylar.Size = new System.Drawing.Size(986, 185);
             this.grdDetaylar.TabIndex = 1;
             this.grdDetaylar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDetaylar_CellContentClick);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.lblBirim);
-            this.groupBox2.Controls.Add(this.btnDetayEkle);
-            this.groupBox2.Controls.Add(this.cmbKDVOrani);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.txtToplamFiyati);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.txtSiparisVerilenMiktar);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.cmbMarkaID);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.cmbUrunID);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Location = new System.Drawing.Point(15, 375);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox2.Size = new System.Drawing.Size(986, 165);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Fatura Detayı Ekle";
-            // 
-            // lblBirim
-            // 
-            this.lblBirim.AutoSize = true;
-            this.lblBirim.Location = new System.Drawing.Point(465, 66);
-            this.lblBirim.Name = "lblBirim";
-            this.lblBirim.Size = new System.Drawing.Size(49, 16);
-            this.lblBirim.TabIndex = 19;
-            this.lblBirim.Text = "label12";
-            // 
-            // btnDetayEkle
-            // 
-            this.btnDetayEkle.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.btnDetayEkle.Location = new System.Drawing.Point(12, 100);
-            this.btnDetayEkle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnDetayEkle.Name = "btnDetayEkle";
-            this.btnDetayEkle.Size = new System.Drawing.Size(96, 58);
-            this.btnDetayEkle.TabIndex = 18;
-            this.btnDetayEkle.Text = "Detay Ekle";
-            this.btnDetayEkle.UseVisualStyleBackColor = true;
-            this.btnDetayEkle.Click += new System.EventHandler(this.btnDetayEkle_Click);
-            // 
-            // cmbKDVOrani
-            // 
-            this.cmbKDVOrani.FormattingEnabled = true;
-            this.cmbKDVOrani.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "8",
-            "18"});
-            this.cmbKDVOrani.Location = new System.Drawing.Point(649, 65);
-            this.cmbKDVOrani.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmbKDVOrani.Name = "cmbKDVOrani";
-            this.cmbKDVOrani.Size = new System.Drawing.Size(168, 24);
-            this.cmbKDVOrani.TabIndex = 17;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(646, 32);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(66, 16);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "KDV Oranı";
-            // 
-            // txtToplamFiyati
-            // 
-            this.txtToplamFiyati.Location = new System.Drawing.Point(525, 66);
-            this.txtToplamFiyati.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtToplamFiyati.MaxLength = 20;
-            this.txtToplamFiyati.Name = "txtToplamFiyati";
-            this.txtToplamFiyati.Size = new System.Drawing.Size(116, 23);
-            this.txtToplamFiyati.TabIndex = 15;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(522, 32);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(85, 16);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "Toplam Fiyatı";
-            // 
-            // txtSiparisVerilenMiktar
-            // 
-            this.txtSiparisVerilenMiktar.Location = new System.Drawing.Point(364, 66);
-            this.txtSiparisVerilenMiktar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtSiparisVerilenMiktar.MaxLength = 20;
-            this.txtSiparisVerilenMiktar.Name = "txtSiparisVerilenMiktar";
-            this.txtSiparisVerilenMiktar.Size = new System.Drawing.Size(94, 23);
-            this.txtSiparisVerilenMiktar.TabIndex = 13;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(360, 32);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(130, 16);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Sipariş Verilen Miktar";
-            // 
-            // cmbMarkaID
-            // 
-            this.cmbMarkaID.FormattingEnabled = true;
-            this.cmbMarkaID.Location = new System.Drawing.Point(188, 66);
-            this.cmbMarkaID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmbMarkaID.Name = "cmbMarkaID";
-            this.cmbMarkaID.Size = new System.Drawing.Size(168, 24);
-            this.cmbMarkaID.TabIndex = 11;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(184, 33);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 16);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Marka";
-            // 
-            // cmbUrunID
-            // 
-            this.cmbUrunID.FormattingEnabled = true;
-            this.cmbUrunID.Location = new System.Drawing.Point(12, 66);
-            this.cmbUrunID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cmbUrunID.Name = "cmbUrunID";
-            this.cmbUrunID.Size = new System.Drawing.Size(168, 24);
-            this.cmbUrunID.TabIndex = 9;
-            this.cmbUrunID.SelectedIndexChanged += new System.EventHandler(this.cmbUrunID_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 33);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 16);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Ürün Adı";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(397, 559);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 66);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Faturayı Ekle";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // SNo
             // 
@@ -478,6 +332,164 @@
             this.UniqueID.Name = "UniqueID";
             this.UniqueID.ReadOnly = true;
             this.UniqueID.Visible = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblBirim);
+            this.groupBox2.Controls.Add(this.btnDetayEkle);
+            this.groupBox2.Controls.Add(this.cmbKDVOrani);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.txtToplamFiyati);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.txtSiparisVerilenMiktar);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.cmbMarkaID);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.cmbUrunID);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Location = new System.Drawing.Point(15, 375);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(986, 165);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Fatura Detayı Ekle";
+            // 
+            // lblBirim
+            // 
+            this.lblBirim.AutoSize = true;
+            this.lblBirim.Location = new System.Drawing.Point(465, 66);
+            this.lblBirim.Name = "lblBirim";
+            this.lblBirim.Size = new System.Drawing.Size(49, 16);
+            this.lblBirim.TabIndex = 19;
+            this.lblBirim.Text = "label12";
+            // 
+            // btnDetayEkle
+            // 
+            this.btnDetayEkle.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDetayEkle.Location = new System.Drawing.Point(12, 100);
+            this.btnDetayEkle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDetayEkle.Name = "btnDetayEkle";
+            this.btnDetayEkle.Size = new System.Drawing.Size(96, 58);
+            this.btnDetayEkle.TabIndex = 18;
+            this.btnDetayEkle.Text = "Detay Ekle";
+            this.btnDetayEkle.UseVisualStyleBackColor = true;
+            this.btnDetayEkle.Click += new System.EventHandler(this.btnDetayEkle_Click);
+            // 
+            // cmbKDVOrani
+            // 
+            this.cmbKDVOrani.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbKDVOrani.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbKDVOrani.FormattingEnabled = true;
+            this.cmbKDVOrani.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "8",
+            "18"});
+            this.cmbKDVOrani.Location = new System.Drawing.Point(649, 65);
+            this.cmbKDVOrani.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbKDVOrani.Name = "cmbKDVOrani";
+            this.cmbKDVOrani.Size = new System.Drawing.Size(168, 24);
+            this.cmbKDVOrani.TabIndex = 17;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(646, 32);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(66, 16);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "KDV Oranı";
+            // 
+            // txtToplamFiyati
+            // 
+            this.txtToplamFiyati.Location = new System.Drawing.Point(525, 66);
+            this.txtToplamFiyati.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtToplamFiyati.MaxLength = 20;
+            this.txtToplamFiyati.Name = "txtToplamFiyati";
+            this.txtToplamFiyati.Size = new System.Drawing.Size(116, 23);
+            this.txtToplamFiyati.TabIndex = 15;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(522, 32);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 16);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "Toplam Fiyatı";
+            // 
+            // txtSiparisVerilenMiktar
+            // 
+            this.txtSiparisVerilenMiktar.Location = new System.Drawing.Point(364, 66);
+            this.txtSiparisVerilenMiktar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtSiparisVerilenMiktar.MaxLength = 20;
+            this.txtSiparisVerilenMiktar.Name = "txtSiparisVerilenMiktar";
+            this.txtSiparisVerilenMiktar.Size = new System.Drawing.Size(94, 23);
+            this.txtSiparisVerilenMiktar.TabIndex = 13;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(360, 32);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(130, 16);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Sipariş Verilen Miktar";
+            // 
+            // cmbMarkaID
+            // 
+            this.cmbMarkaID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbMarkaID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbMarkaID.FormattingEnabled = true;
+            this.cmbMarkaID.Location = new System.Drawing.Point(188, 66);
+            this.cmbMarkaID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbMarkaID.Name = "cmbMarkaID";
+            this.cmbMarkaID.Size = new System.Drawing.Size(168, 24);
+            this.cmbMarkaID.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(184, 33);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(43, 16);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Marka";
+            // 
+            // cmbUrunID
+            // 
+            this.cmbUrunID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbUrunID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbUrunID.FormattingEnabled = true;
+            this.cmbUrunID.Location = new System.Drawing.Point(12, 66);
+            this.cmbUrunID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbUrunID.Name = "cmbUrunID";
+            this.cmbUrunID.Size = new System.Drawing.Size(168, 24);
+            this.cmbUrunID.TabIndex = 9;
+            this.cmbUrunID.SelectedIndexChanged += new System.EventHandler(this.cmbUrunID_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 33);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 16);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Ürün Adı";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.button1.Location = new System.Drawing.Point(397, 559);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(115, 66);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Faturayı Ekle";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FaturaEkle
             // 

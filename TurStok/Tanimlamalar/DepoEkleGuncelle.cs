@@ -94,9 +94,10 @@ namespace TurStok.Tanimlamalar
                                 }
                             }
                         }
-                        scope.Complete();
+                        
                         f.BringToFront();
                         this.Close();
+                        scope.Complete();
                     }
 
                 }

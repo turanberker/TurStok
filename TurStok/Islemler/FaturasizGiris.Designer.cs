@@ -67,6 +67,8 @@
             // 
             // cmbUrunID
             // 
+            this.cmbUrunID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbUrunID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbUrunID.FormattingEnabled = true;
             this.cmbUrunID.Location = new System.Drawing.Point(163, 8);
             this.cmbUrunID.Name = "cmbUrunID";
@@ -76,6 +78,8 @@
             // 
             // cmbDepoID
             // 
+            this.cmbDepoID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDepoID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbDepoID.FormattingEnabled = true;
             this.cmbDepoID.Location = new System.Drawing.Point(163, 34);
             this.cmbDepoID.Name = "cmbDepoID";
@@ -94,6 +98,8 @@
             // 
             // cmbMarkaID
             // 
+            this.cmbMarkaID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbMarkaID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbMarkaID.FormattingEnabled = true;
             this.cmbMarkaID.Location = new System.Drawing.Point(163, 61);
             this.cmbMarkaID.Name = "cmbMarkaID";
@@ -112,6 +118,8 @@
             // 
             // cmbTedarikciID
             // 
+            this.cmbTedarikciID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbTedarikciID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbTedarikciID.FormattingEnabled = true;
             this.cmbTedarikciID.Location = new System.Drawing.Point(163, 88);
             this.cmbTedarikciID.Name = "cmbTedarikciID";

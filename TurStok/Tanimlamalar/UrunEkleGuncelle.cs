@@ -113,6 +113,7 @@ namespace TurStok.Tanimlamalar
                         }
                         f.BringToFront();
                         this.Close();
+                        scope.Complete();
                     }
                 }
                 catch (Exception exp)

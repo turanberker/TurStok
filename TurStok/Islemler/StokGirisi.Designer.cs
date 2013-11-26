@@ -254,6 +254,8 @@
             // 
             // cmbDepoID
             // 
+            this.cmbDepoID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbDepoID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbDepoID.FormattingEnabled = true;
             this.cmbDepoID.Location = new System.Drawing.Point(10, 58);
             this.cmbDepoID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

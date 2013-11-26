@@ -30,14 +30,14 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.grdIhtiyacListesi = new System.Windows.Forms.DataGridView();
-            this.cmbUrunID = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UrunAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KategoriAdi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tarih = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sil = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cmbUrunID = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdIhtiyacListesi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,23 +70,6 @@
             this.grdIhtiyacListesi.Size = new System.Drawing.Size(646, 478);
             this.grdIhtiyacListesi.TabIndex = 4;
             this.grdIhtiyacListesi.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdIhtiyacListesi_CellContentClick);
-            // 
-            // cmbUrunID
-            // 
-            this.cmbUrunID.FormattingEnabled = true;
-            this.cmbUrunID.Location = new System.Drawing.Point(12, 523);
-            this.cmbUrunID.Name = "cmbUrunID";
-            this.cmbUrunID.Size = new System.Drawing.Size(255, 21);
-            this.cmbUrunID.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 504);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Eklenecek Ürün";
             // 
             // ID
             // 
@@ -133,6 +116,25 @@
             this.Sil.ReadOnly = true;
             this.Sil.Text = "Sil";
             this.Sil.UseColumnTextForButtonValue = true;
+            // 
+            // cmbUrunID
+            // 
+            this.cmbUrunID.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbUrunID.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbUrunID.FormattingEnabled = true;
+            this.cmbUrunID.Location = new System.Drawing.Point(12, 523);
+            this.cmbUrunID.Name = "cmbUrunID";
+            this.cmbUrunID.Size = new System.Drawing.Size(255, 21);
+            this.cmbUrunID.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 504);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Eklenecek Ürün";
             // 
             // İhtiyacListesi
             // 

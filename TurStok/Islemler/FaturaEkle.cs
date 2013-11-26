@@ -168,9 +168,9 @@ namespace TurStok.Islemler
                         MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         f.GridDoldur();
-                        scope.Complete();
+                        
                         this.Close();
-
+                        scope.Complete();
                     }
                 }
                 catch (Exception exp)
