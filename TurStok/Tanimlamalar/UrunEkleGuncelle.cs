@@ -62,7 +62,18 @@ namespace TurStok.Tanimlamalar
                     {
                         MessageBox.Show("İlgili alanları doldurmanız gerekmektedir.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
                     }
-
+                    else if (cmbKategoriID.SelectedValue == null)
+                    {
+                        MessageBox.Show("Böyle Bir Kategori Bulunmamaktadır. Lütfen Önce Kategori Ekleyiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+                    }
+                    else if (cmbSaklamaKosuluID.SelectedValue == null)
+                    {
+                        MessageBox.Show("Böyle Bir Saklama Koşulu Bulunmamaktadır. Lütfen Önce Saklama Koşul Ekleyiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+                    }
+                    else if (cmbOlcuBirimi.SelectedValue == null)
+                    {
+                        MessageBox.Show("Böyle Bir Ölçü Birimi Bulunmamaktadır. Lütfen Önce Ölçü Birimi Ekleyiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error); return;
+                    }
                     else
                     {
                         if (button1.Text == "Ekle")

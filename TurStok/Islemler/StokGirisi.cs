@@ -37,6 +37,12 @@ namespace TurStok.Islemler
                         if (string.IsNullOrEmpty(cmbDepoID.Text))
                         {
                             MessageBox.Show("Malzemenin Gireceği Depoyu Seçmediniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else if (cmbDepoID.SelectedValue == null)
+                        {
+                            MessageBox.Show("Böyle Bir Depo Bulunmamaktadır. Önce Depo Eklemeniz Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                         else if (Convert.ToBoolean(grdBeklenen.Rows[e.RowIndex].Cells["MiadVarmi"].Value) && !DateTime.TryParse(txtSonTarih.Text, out tarih))
                         {

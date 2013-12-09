@@ -59,7 +59,27 @@ namespace TurStok.Islemler
                         MessageBox.Show("Bütün Alanları Doldurmanız Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    else if (txtBitTar.Enabled == true&& !DateTime.TryParse(txtBitTar.Text, out tarih))
+                    else if (cmbUrunID.SelectedValue==null)
+                    {
+                        MessageBox.Show("Böyle Bir Ürün Bulunmamaktadır. Lütfen Önce Ürün Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (cmbTedarikciID.SelectedValue==null)
+                    {
+                        MessageBox.Show("Böyle Bir Tedarikçi Bulunmamaktadır. Lütfen Önce Tedarikçi Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (cmbMarkaID.SelectedValue==null)
+                    {
+                        MessageBox.Show("Böyle Bir Marka Bulunmamaktadır. Lütfen Önce Marka Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (cmbDepoID.SelectedValue==null)
+                    {
+                        MessageBox.Show("Böyle Bir Depo Bulunmamaktadır. Lütfen Önce Depo Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (txtBitTar.Enabled == true && !DateTime.TryParse(txtBitTar.Text, out tarih))
                     {
                         MessageBox.Show("Gelen Miktar Alanına Yanlış Veri Girdiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

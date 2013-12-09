@@ -42,7 +42,7 @@ namespace TurStok.Helper
                     MailMessage message = new MailMessage();
                     message.To.Add(to);
                     message.Subject = subject;
-                    message.From = new MailAddress("turanberker@yahoo.com");
+                    message.From = new MailAddress("turstok@gmail.com");
                     message.Body = body;
                     message.IsBodyHtml = true;
                     message.Priority = MailPriority.Normal;
@@ -74,7 +74,7 @@ namespace TurStok.Helper
                     MailMessage message = new MailMessage();
                     message.To.Add(to);
                     message.Subject = subject;
-                    message.From = new MailAddress("turanberker@yahoo.com");
+                    message.From = new MailAddress("turstok@gmail.com");
                     message.Body = body;
                     message.Priority = MailPriority.Normal;
                     message.IsBodyHtml = true;
@@ -105,7 +105,7 @@ namespace TurStok.Helper
                     MailMessage message = new MailMessage();
                     message.To.Add(to);
                     message.Subject = subject;
-                    message.From = new MailAddress("turanberker@yahoo.com");
+                    message.From = new MailAddress("turstok@gmail.com");
                     message.Body = body;
                     message.Priority = MailPriority.Normal;
                     message.IsBodyHtml = true;
@@ -140,7 +140,7 @@ namespace TurStok.Helper
                     message.To.Add(to);
                     // message.CC.Add(CC);
                     message.Subject = subject;
-                    message.From = new MailAddress("turanberker@yahoo.com");
+                    message.From = new MailAddress("turstok@gmail.com");
                     message.Body = body;
                     message.IsBodyHtml = true;
                     message.Priority = MailPriority.Normal;

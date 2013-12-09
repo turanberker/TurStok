@@ -68,9 +68,25 @@ namespace TurStok.Islemler
                 try
                 {
                     decimal dec;
-                    if (cmbUrunID.SelectedValue == "0" || cmbMarkaID.SelectedValue == "0" || string.IsNullOrEmpty(txtSiparisVerilenMiktar.Text) || string.IsNullOrEmpty(txtToplamFiyati.Text) || !string.IsNullOrEmpty(cmbKDVOrani.SelectedText))
+                    int kdvo;
+                    if (cmbUrunID.SelectedValue == "0" || cmbMarkaID.SelectedValue == "0" || string.IsNullOrEmpty(txtSiparisVerilenMiktar.Text) || string.IsNullOrEmpty(txtToplamFiyati.Text) || string.IsNullOrEmpty(cmbKDVOrani.SelectedText))
                     {
                         MessageBox.Show("Bütün Alanları Doldurmanız Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (cmbUrunID.SelectedValue == null)
+                    {
+                        MessageBox.Show("Böyle Bir Ürün Bulunmamaktadır. Lütfen Önce Ürün Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (cmbMarkaID.SelectedValue == null)
+                    {
+                        MessageBox.Show("Böyle Bir Marka Bulunmamaktadır. Lütfen Önce Marka Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (!int.TryParse( cmbKDVOrani.SelectedText, out kdvo))
+                    {
+                        MessageBox.Show("Böyle Bir KDV Oranı Bulunmamaktadır.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                     else if (!decimal.TryParse(txtSiparisVerilenMiktar.Text, out dec) || !decimal.TryParse(txtToplamFiyati.Text, out dec))
                     {
@@ -115,6 +131,21 @@ namespace TurStok.Islemler
                     if (cmbTedarikciID.SelectedValue == "0" || cmbOdemeSekliID.SelectedValue == "0" || string.IsNullOrEmpty(txtFaturaNo.Text) || cmbParaBirimiID.SelectedValue == "0")
                     {
                         MessageBox.Show("Bütün Alanları Doldurmanız Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (cmbTedarikciID.SelectedValue == null)
+                    {
+                        MessageBox.Show("Böyle Bir Tedarikçi Bulunmamaktadır. Lütfen Önce Tedarikçi Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (cmbParaBirimiID.SelectedValue == null)
+                    {
+                        MessageBox.Show("Böyle Bir Para Birimi Bulunmamaktadır. Lütfen Önce Para Birimi Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else if (cmbOdemeSekliID.SelectedValue == null)
+                    {
+                        MessageBox.Show("Böyle Bir Ödeme Şekli Bulunmamaktadır. Lütfen Önce Ödeme Şekli Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     else if (!string.IsNullOrEmpty(txtKur.Text) && decimal.TryParse(txtKur.Text, out dec))

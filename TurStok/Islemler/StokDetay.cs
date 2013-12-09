@@ -22,7 +22,7 @@ namespace TurStok.Islemler
             lblDeposu.Text = secilen["DepoAdi"].ToString();
             lblGelisTarihi.Text = Convert.ToDateTime(secilen["GelisTarihi"]).ToShortDateString();
             lblKategorisi.Text = secilen["KategoriAdi"].ToString();
-            lblSonKullanmaTarihi.Text =!string.IsNullOrEmpty(secilen["SonKullanmaTarihi"].ToString())? Convert.ToDateTime(secilen["SonKullanmaTarihi"]).ToString("dd.MM.yyyy"):"-";
+            lblSonKullanmaTarihi.Text = !string.IsNullOrEmpty(secilen["SonKullanmaTarihi"].ToString()) ? Convert.ToDateTime(secilen["SonKullanmaTarihi"]).ToString("dd.MM.yyyy") : "-";
             lblDeposu.Text = secilen["DepoAdi"].ToString();
             lblTedarikcisi.Text = secilen["TedarikciAdi"].ToString();
             button1.Tag = secilen["StokID"];
@@ -75,17 +75,25 @@ namespace TurStok.Islemler
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (StokBS bs = new StokBS())
+            if (cmbDepoID.SelectedValue == null)
             {
-                bs.DepoDegistir(Convert.ToInt64(button1.Tag), Convert.ToInt64(cmbDepoID.SelectedValue));
-                MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Anaform.GridleriDoldur();
+                MessageBox.Show("Böyle Bir Depo Bulunmamaktadır. Önce Depo Eklemeniz Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                using (StokBS bs = new StokBS())
+                {
+                    bs.DepoDegistir(Convert.ToInt64(button1.Tag), Convert.ToInt64(cmbDepoID.SelectedValue));
+                    MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Anaform.GridleriDoldur();
+                }
             }
         }
 
         private void btnFatura_Click(object sender, EventArgs e)
         {
-            Form f =Anaform. Varmi("FaturaDetay");
+            Form f = Anaform.Varmi("FaturaDetay");
             if (f == null)
             {
                 f = new FaturaDetay(Convert.ToInt64(btnFatura.Tag));
@@ -96,7 +104,7 @@ namespace TurStok.Islemler
             {
                 f.BringToFront();
                 this.ActivateMdiChild(f);
-            }           
+            }
         }
     }
 }

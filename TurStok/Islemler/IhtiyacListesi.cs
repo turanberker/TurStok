@@ -47,6 +47,11 @@ namespace TurStok.Islemler
                 MessageBox.Show("Ürün Seçmeniz gerekiyor!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            else if (cmbUrunID.SelectedValue == null)
+            {
+                MessageBox.Show("Böyle Bir Ürün Bulunmamaktadır. Önce Ürün Eklemeniz Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             using (DataView dw = new DataView(dt))
             {
                 dw.RowFilter = string.Format(" UrunID = {0}", cmbUrunID.SelectedValue.ToString());
