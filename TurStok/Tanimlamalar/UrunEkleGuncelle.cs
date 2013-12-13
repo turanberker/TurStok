@@ -32,6 +32,7 @@ namespace TurStok.Tanimlamalar
             cmbOlcuBirimi.SelectedValue = entity.OlcuBirimID;
             cmbSaklamaKosuluID.SelectedValue = entity.SaklamaKosuluID;
             button1.Tag = entity.UrunID;
+            button1.Text = "Güncelle";
         }
         protected void cmbleriDoldur()
         {

@@ -153,7 +153,7 @@ namespace TurStok.Islemler
             {
                 f.Close();
             }
-            f = new FaturasizGiris(this as StokGirisi);
+            f = new FaturasizGiris(this as StokGirisi, anaform);
             f.MdiParent = anaform;
             f.Show();
         }

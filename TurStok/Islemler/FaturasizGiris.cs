@@ -16,11 +16,13 @@ namespace TurStok.Islemler
     public partial class FaturasizGiris : Form
     {
         StokGirisi f;
+        private Main anaform;
         Helper.GridDoldurucular arac = new Helper.GridDoldurucular();
-        public FaturasizGiris(StokGirisi form)
+        public FaturasizGiris(StokGirisi form, Main Anaform)
         {
             InitializeComponent();
             f = form as StokGirisi;
+            anaform = Anaform;
         }
         protected void ComboBoxDoldur()
         {
@@ -59,22 +61,22 @@ namespace TurStok.Islemler
                         MessageBox.Show("Bütün Alanları Doldurmanız Gerekmektedir!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    else if (cmbUrunID.SelectedValue==null)
+                    else if (cmbUrunID.SelectedValue == null)
                     {
                         MessageBox.Show("Böyle Bir Ürün Bulunmamaktadır. Lütfen Önce Ürün Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    else if (cmbTedarikciID.SelectedValue==null)
+                    else if (cmbTedarikciID.SelectedValue == null)
                     {
                         MessageBox.Show("Böyle Bir Tedarikçi Bulunmamaktadır. Lütfen Önce Tedarikçi Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    else if (cmbMarkaID.SelectedValue==null)
+                    else if (cmbMarkaID.SelectedValue == null)
                     {
                         MessageBox.Show("Böyle Bir Marka Bulunmamaktadır. Lütfen Önce Marka Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    else if (cmbDepoID.SelectedValue==null)
+                    else if (cmbDepoID.SelectedValue == null)
                     {
                         MessageBox.Show("Böyle Bir Depo Bulunmamaktadır. Lütfen Önce Depo Ekleyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -121,6 +123,7 @@ namespace TurStok.Islemler
                             return;
                         }
                     }
+                    anaform.GridleriDoldur();
                     this.Close();
                     scope.Complete();
                 }
@@ -145,7 +148,7 @@ namespace TurStok.Islemler
                     {
                         OlcubirimID = Convert.ToInt64(dt.Rows[0]["OlcuBirimID"]);
                         txtBitTar.Enabled = dt.Rows[0]["MiadVarmi"].ToString() == "True" ? true : false;
-                        lblOlcuBirimi.Text = dt.Rows[0]["OlcuBirimi"].ToString(); 
+                        lblOlcuBirimi.Text = dt.Rows[0]["OlcuBirimi"].ToString();
                     }
                 }
             }

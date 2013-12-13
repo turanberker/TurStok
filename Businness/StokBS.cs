@@ -21,7 +21,7 @@ namespace Businness
         }
         public DataTable JoinListe()
         {
-            return vek.GetDataTable(CommandType.Text, "select s.StokID, s.KalanMiktar, s.GelisTarihi,  u.UrunAdi,  k.KategoriAdi, k.MiadVarmi , s.SonKullanmaTarihi ,d.DepoID, d.DepoAdi, m.MarkaAdi, t.TedarikciAdi,o.OlcuBirimi,u.AzamiMiktar, s.FaturaDetayID  from Stok s inner join Urun u on u.UrunID=s.UrunID inner join Depo d on s.DepoID=d.DepoID inner join Marka m on s.MarkaID=m.MarkaID inner join Tedarikci t on t.TedarikciID=s.TedarikciID inner join OlcuBirimi o on s.OlcuBirimID=o.OlcuBirimiID inner join Kategori k on k.KategoriID=u.KategoriID where KalanMiktar>0  order by s.SonKullanmaTarihi asc ");
+            return vek.GetDataTable(CommandType.Text, "select s.StokID,  k.KategoriAdi, u.UrunAdi,o.OlcuBirimi,m.MarkaAdi,t.TedarikciAdi, s.SonKullanmaTarihi, s.KalanMiktar, s.GelisTarihi,   k.MiadVarmi , d.DepoID, d.DepoAdi,  u.AzamiMiktar, s.FaturaDetayID  from Stok s inner join Urun u on u.UrunID=s.UrunID inner join Depo d on s.DepoID=d.DepoID inner join Marka m on s.MarkaID=m.MarkaID inner join Tedarikci t on t.TedarikciID=s.TedarikciID inner join OlcuBirimi o on s.OlcuBirimID=o.OlcuBirimiID inner join Kategori k on k.KategoriID=u.KategoriID where KalanMiktar>0  order by s.SonKullanmaTarihi asc ");
         }
         public bool Insert(StokEntity entity)
         {
