@@ -106,5 +106,28 @@ namespace TurStok.Islemler
                 this.ActivateMdiChild(f);
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            decimal cekilen;
+            if (string.IsNullOrEmpty(txtYeniMiktar.Text))
+            {
+                MessageBox.Show("Yeni Miktar Alanını Doldurmanız Gerekmektedir.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (!decimal.TryParse(txtYeniMiktar.Text, out cekilen))
+            {
+                MessageBox.Show("Yeni Miktar Alanına Sadece Sayı Girebilirsiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                lblKalanMiktar.Text = txtCekilen.Text ;
+                using (StokBS bs = new StokBS())
+                {
+                    bs.DepodanCik(Convert.ToInt64(button1.Tag), Convert.ToDecimal(lblKalanMiktar.Text));
+                    MessageBox.Show("İşleminiz Başarıyla Gerçekleşmiştir", "Sonuç", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Anaform.GridleriDoldur();
+                }
+            }
+        }
     }
 }

@@ -53,8 +53,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.cmbDepoID = new System.Windows.Forms.ComboBox();
             this.btnFatura = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtYeniMiktar = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -312,7 +317,7 @@
             // btnFatura
             // 
             this.btnFatura.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnFatura.Location = new System.Drawing.Point(225, 538);
+            this.btnFatura.Location = new System.Drawing.Point(225, 637);
             this.btnFatura.Name = "btnFatura";
             this.btnFatura.Size = new System.Drawing.Size(119, 28);
             this.btnFatura.TabIndex = 20;
@@ -320,11 +325,53 @@
             this.btnFatura.UseVisualStyleBackColor = true;
             this.btnFatura.Click += new System.EventHandler(this.btnFatura_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txtYeniMiktar);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(15, 538);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(342, 93);
+            this.groupBox3.TabIndex = 21;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Miktarı Değiştir";
+            // 
+            // txtYeniMiktar
+            // 
+            this.txtYeniMiktar.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtYeniMiktar.Location = new System.Drawing.Point(210, 19);
+            this.txtYeniMiktar.Name = "txtYeniMiktar";
+            this.txtYeniMiktar.Size = new System.Drawing.Size(115, 23);
+            this.txtYeniMiktar.TabIndex = 19;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(7, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 16);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Yeni Miktar";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(191, 53);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(138, 28);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "Miktarı Değiştir";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // StokDetay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 630);
+            this.ClientSize = new System.Drawing.Size(368, 687);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnFatura);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -353,6 +400,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,5 +434,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox cmbDepoID;
         private System.Windows.Forms.Button btnFatura;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtYeniMiktar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button3;
     }
 }
