@@ -29,19 +29,6 @@
         private void InitializeComponent()
         {
             this.grdStok = new System.Windows.Forms.DataGridView();
-            this.splitter1 = new System.Windows.Forms.Splitter();
-            this.splitter2 = new System.Windows.Forms.Splitter();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtAdi = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtKategori = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtMarka = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtTedarikci = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtDepo = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.StokID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FaturaDetayIDgrd2ay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +44,19 @@
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AzamiMiktar2ay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.splitter2 = new System.Windows.Forms.Splitter();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtAdi = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtKategori = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMarka = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtTedarikci = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtDepo = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdStok)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +90,120 @@
             this.grdStok.Size = new System.Drawing.Size(976, 533);
             this.grdStok.TabIndex = 25;
             this.grdStok.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdStok_CellContentDoubleClick);
+            // 
+            // StokID
+            // 
+            this.StokID.DataPropertyName = "StokID";
+            this.StokID.HeaderText = "StokID";
+            this.StokID.Name = "StokID";
+            this.StokID.ReadOnly = true;
+            this.StokID.Visible = false;
+            // 
+            // FaturaDetayIDgrd2ay
+            // 
+            this.FaturaDetayIDgrd2ay.DataPropertyName = "FaturaDetayID";
+            this.FaturaDetayIDgrd2ay.HeaderText = "FaturaDetayID";
+            this.FaturaDetayIDgrd2ay.Name = "FaturaDetayIDgrd2ay";
+            this.FaturaDetayIDgrd2ay.ReadOnly = true;
+            this.FaturaDetayIDgrd2ay.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "SNo";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Sıra No";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            this.dataGridViewTextBoxColumn15.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "UrunAdi";
+            this.dataGridViewTextBoxColumn16.HeaderText = "Urun Adi";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dataGridViewTextBoxColumn16.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "KategoriAdi";
+            this.dataGridViewTextBoxColumn19.HeaderText = "Kategori Adi";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.DataPropertyName = "MarkaAdi";
+            this.dataGridViewTextBoxColumn22.HeaderText = "Marka Adi";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            this.dataGridViewTextBoxColumn22.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.DataPropertyName = "TedarikciAdi";
+            this.dataGridViewTextBoxColumn23.HeaderText = "Tedarikci Adi";
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            this.dataGridViewTextBoxColumn23.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn25
+            // 
+            this.dataGridViewTextBoxColumn25.DataPropertyName = "GelisTarihi";
+            this.dataGridViewTextBoxColumn25.HeaderText = "Geliş Tarihi";
+            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
+            this.dataGridViewTextBoxColumn25.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "SonKullanmaTarihi";
+            this.dataGridViewTextBoxColumn17.HeaderText = "Son Kullanma Tarihi";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.DataPropertyName = "KalanMiktar";
+            this.dataGridViewTextBoxColumn18.HeaderText = "Kalan Miktar";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            this.dataGridViewTextBoxColumn18.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn24
+            // 
+            this.dataGridViewTextBoxColumn24.DataPropertyName = "OlcuBirimi";
+            this.dataGridViewTextBoxColumn24.HeaderText = "Ölçü Birimi";
+            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
+            this.dataGridViewTextBoxColumn24.ReadOnly = true;
+            this.dataGridViewTextBoxColumn24.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "DepoAdi";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Bulunduğu Depo";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "DepoID";
+            this.dataGridViewTextBoxColumn21.HeaderText = "DepoID1ay";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            this.dataGridViewTextBoxColumn21.ReadOnly = true;
+            this.dataGridViewTextBoxColumn21.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            this.dataGridViewTextBoxColumn26.DataPropertyName = "MiadVarmi";
+            this.dataGridViewTextBoxColumn26.HeaderText = "MiadVarmi";
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            this.dataGridViewTextBoxColumn26.ReadOnly = true;
+            this.dataGridViewTextBoxColumn26.Visible = false;
+            // 
+            // AzamiMiktar2ay
+            // 
+            this.AzamiMiktar2ay.DataPropertyName = "AzamiMiktar";
+            this.AzamiMiktar2ay.HeaderText = "AzamiMiktar2ay";
+            this.AzamiMiktar2ay.Name = "AzamiMiktar2ay";
+            this.AzamiMiktar2ay.ReadOnly = true;
+            this.AzamiMiktar2ay.Visible = false;
             // 
             // splitter1
             // 
@@ -215,120 +329,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Arama";
             // 
-            // StokID
-            // 
-            this.StokID.DataPropertyName = "StokID";
-            this.StokID.HeaderText = "StokID";
-            this.StokID.Name = "StokID";
-            this.StokID.ReadOnly = true;
-            this.StokID.Visible = false;
-            // 
-            // FaturaDetayIDgrd2ay
-            // 
-            this.FaturaDetayIDgrd2ay.DataPropertyName = "FaturaDetayID";
-            this.FaturaDetayIDgrd2ay.HeaderText = "FaturaDetayID";
-            this.FaturaDetayIDgrd2ay.Name = "FaturaDetayIDgrd2ay";
-            this.FaturaDetayIDgrd2ay.ReadOnly = true;
-            this.FaturaDetayIDgrd2ay.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "SNo";
-            this.dataGridViewTextBoxColumn15.HeaderText = "Sıra No";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            this.dataGridViewTextBoxColumn15.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "UrunAdi";
-            this.dataGridViewTextBoxColumn16.HeaderText = "Urun Adi";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Width = 130;
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "KategoriAdi";
-            this.dataGridViewTextBoxColumn19.HeaderText = "Kategori Adi";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn22
-            // 
-            this.dataGridViewTextBoxColumn22.DataPropertyName = "MarkaAdi";
-            this.dataGridViewTextBoxColumn22.HeaderText = "Marka Adi";
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            this.dataGridViewTextBoxColumn22.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn23
-            // 
-            this.dataGridViewTextBoxColumn23.DataPropertyName = "TedarikciAdi";
-            this.dataGridViewTextBoxColumn23.HeaderText = "Tedarikci Adi";
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            this.dataGridViewTextBoxColumn23.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn25
-            // 
-            this.dataGridViewTextBoxColumn25.DataPropertyName = "GelisTarihi";
-            this.dataGridViewTextBoxColumn25.HeaderText = "Geliş Tarihi";
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
-            this.dataGridViewTextBoxColumn25.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "SonKullanmaTarihi";
-            this.dataGridViewTextBoxColumn17.HeaderText = "Son Kullanma Tarihi";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "KalanMiktar";
-            this.dataGridViewTextBoxColumn18.HeaderText = "Kalan Miktar";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            this.dataGridViewTextBoxColumn18.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn24
-            // 
-            this.dataGridViewTextBoxColumn24.DataPropertyName = "OlcuBirimi";
-            this.dataGridViewTextBoxColumn24.HeaderText = "Ölçü Birimi";
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.ReadOnly = true;
-            this.dataGridViewTextBoxColumn24.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "DepoAdi";
-            this.dataGridViewTextBoxColumn20.HeaderText = "Bulunduğu Depo";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "DepoID";
-            this.dataGridViewTextBoxColumn21.HeaderText = "DepoID1ay";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
-            this.dataGridViewTextBoxColumn21.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn26
-            // 
-            this.dataGridViewTextBoxColumn26.DataPropertyName = "MiadVarmi";
-            this.dataGridViewTextBoxColumn26.HeaderText = "MiadVarmi";
-            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-            this.dataGridViewTextBoxColumn26.ReadOnly = true;
-            this.dataGridViewTextBoxColumn26.Visible = false;
-            // 
-            // AzamiMiktar2ay
-            // 
-            this.AzamiMiktar2ay.DataPropertyName = "AzamiMiktar";
-            this.AzamiMiktar2ay.HeaderText = "AzamiMiktar2ay";
-            this.AzamiMiktar2ay.Name = "AzamiMiktar2ay";
-            this.AzamiMiktar2ay.ReadOnly = true;
-            this.AzamiMiktar2ay.Visible = false;
-            // 
             // Stok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -351,7 +351,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView grdStok;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.Splitter splitter2;
         private System.Windows.Forms.Label label1;
@@ -380,6 +379,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private System.Windows.Forms.DataGridViewTextBoxColumn AzamiMiktar2ay;
+        private System.Windows.Forms.DataGridView grdStok;
 
     }
 }

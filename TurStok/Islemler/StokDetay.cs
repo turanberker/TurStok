@@ -120,7 +120,7 @@ namespace TurStok.Islemler
             }
             else
             {
-                lblKalanMiktar.Text = txtCekilen.Text ;
+                lblKalanMiktar.Text = txtYeniMiktar.Text;
                 using (StokBS bs = new StokBS())
                 {
                     bs.DepodanCik(Convert.ToInt64(button1.Tag), Convert.ToDecimal(lblKalanMiktar.Text));
